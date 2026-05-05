@@ -92,7 +92,9 @@ def clear_direction_choice_state():
     st.session_state.need_direction_choice = False
     st.session_state.direction_options = []
     st.session_state.selected_direction_option = ""
-    st.session_state.custom_direction_option = ""
+    st.session_state.direction_choice_widget_version = (
+        st.session_state.get("direction_choice_widget_version", 0) + 1
+    )
 
 
 if "app_state_initialized" not in st.session_state:
@@ -109,6 +111,7 @@ if "app_state_initialized" not in st.session_state:
     st.session_state.direction_options = []
     st.session_state.selected_direction_option = ""
     st.session_state.custom_direction_option = ""
+    st.session_state.direction_choice_widget_version = 0
     st.session_state.route_generation_notice = ""
     st.session_state.workflow_run_id = ""
     st.session_state.app_state_initialized = True
@@ -148,6 +151,9 @@ if "selected_direction_option" not in st.session_state:
 
 if "custom_direction_option" not in st.session_state:
     st.session_state.custom_direction_option = ""
+
+if "direction_choice_widget_version" not in st.session_state:
+    st.session_state.direction_choice_widget_version = 0
 
 if "route_generation_notice" not in st.session_state:
     st.session_state.route_generation_notice = ""
@@ -288,7 +294,9 @@ if st.session_state.is_waiting_followup:
                                 if st.session_state.direction_options
                                 else ""
                             )
-                            st.session_state.custom_direction_option = ""
+                            st.session_state.direction_choice_widget_version = (
+                                st.session_state.get("direction_choice_widget_version", 0) + 1
+                            )
                             st.session_state.route_generation_notice = (
                                 "你补充的信息已经能判断大方向，但还缺少生成高质量路线的关键细节。"
                                 "请选择一个更具体的方向继续。"
@@ -350,14 +358,18 @@ if st.session_state.need_direction_choice:
         selected_direction = ""
         st.warning("当前没有可用方向选项，请在下面输入一个更具体的方向。")
 
+    custom_direction_key = (
+        f"custom_direction_option_{st.session_state.get('direction_choice_widget_version', 0)}"
+    )
+
     st.text_input(
         "如果以上都不合适，请补充一个更具体的方向",
-        key="custom_direction_option",
+        key=custom_direction_key,
         placeholder="例如：做一套小红书文案生成流程，能批量出标题、正文和封面文案",
     )
 
     if st.button("使用该方向继续生成路线", type="primary"):
-        custom_direction = st.session_state.custom_direction_option.strip()
+        custom_direction = (st.session_state.get(custom_direction_key, "") or "").strip()
         final_direction = custom_direction or selected_direction
 
         if not final_direction.strip():

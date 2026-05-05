@@ -6,26 +6,31 @@ MAIN_BUCKET_KEYWORDS = {
         "课程", "课堂笔记", "知识点", "知识卡片", "闪卡", "anki", "Anki",
         "笔记整理", "论文阅读", "文献阅读", "长文阅读", "知识问答",
         "测验", "练习", "记忆", "每日任务", "薄弱点",
+        "编程学习", "课程学习", "学习辅助",
     ],
     "content": [
-        "内容", "内容创作", "自媒体", "账号运营", "内容矩阵",
+        "内容", "内容创作", "自媒体", "账号运营", "内容矩阵", "内容生产",
         "小红书", "公众号", "知乎", "B站", "哔哩哔哩", "抖音", "快手",
         "视频号", "微博", "多平台分发",
         "文案", "图文", "笔记", "标题", "封面", "封面文案", "正文",
-        "选题", "大纲", "脚本", "口播稿", "短视频脚本",
+        "选题", "大纲", "脚本", "口播稿", "短视频脚本", "短视频文案",
         "种草文案", "带货文案", "产品文案", "爆款标题",
         "评论区", "开头钩子", "结尾引导", "发布复盘",
         "文章", "长文", "短文", "播客", "直播切片", "二创",
         "涨粉", "点击率", "收藏", "互动", "转化", "热点", "改写", "润色", "排版",
+        "种草", "知识科普", "朋友圈", "社媒",
     ],
     "shortdrama": [
         "AI短剧", "短剧", "动漫短剧", "漫剧", "AI漫剧", "剧情短视频",
+        "微短剧", "真人短剧", "动画短剧", "竖屏短剧", "连续短剧", "系列短剧",
+        "剧情号", "短视频剧情", "抖音短剧", "快手短剧", "短剧脚本",
         "AI视频", "视频生成", "分镜", "镜头", "角色", "角色设定",
         "角色一致性", "角色图", "参考图", "画面提示词", "镜头提示词",
-        "成片", "剪辑", "配音", "字幕", "旁白", "台词",
+        "成片", "剪辑", "配音", "字幕", "旁白", "台词", "对白",
         "世界观", "剧本", "剧情", "预告片",
         "可灵", "即梦", "Runway", "Midjourney",
         "画面", "动作", "场景", "转场", "竖屏", "第一集", "连续剧", "故事", "冲突", "人设",
+        "拍摄", "发布",
     ],
 }
 
@@ -165,75 +170,51 @@ DIRECTION_OPTION_POOL = [
     },
     {
         "bucket": "shortdrama",
-        "option": "做 60 秒 AI 动漫短剧，包含角色设定、分镜、成片和发布",
-        "keywords": ["60秒", "AI动漫短剧", "短剧", "角色设定", "分镜", "成片"],
+        "option": "我是新手，想从 0 开始做一条短剧",
+        "keywords": ["新手", "从0", "短剧", "开始", "入门"],
         "priority": 10,
     },
     {
         "bucket": "shortdrama",
-        "option": "做 30 秒漫剧首集流程，重点是角色一致性和镜头生成",
-        "keywords": ["30秒", "漫剧", "首集", "角色一致性", "镜头"],
+        "option": "我想用 AI 做动漫短剧，需要工具和完整流程",
+        "keywords": ["AI动漫短剧", "AI短剧", "动漫短剧", "动漫", "AI", "动画短剧", "工具", "流程"],
         "priority": 10,
     },
     {
         "bucket": "shortdrama",
-        "option": "做 AI 短剧角色一致性流程，包含角色卡、参考图和镜头提示词",
-        "keywords": ["角色一致性", "角色卡", "参考图", "镜头提示词", "角色图"],
+        "option": "我想拍真人短剧，需要剧本、拍摄和剪辑流程",
+        "keywords": ["真人短剧", "真人", "拍摄", "剧本", "剪辑"],
+        "priority": 10,
+    },
+    {
+        "bucket": "shortdrama",
+        "option": "我已经有故事想法，想先整理剧情、角色和分集结构",
+        "keywords": ["故事", "剧情", "角色", "分集", "结构", "想法"],
         "priority": 9,
     },
     {
         "bucket": "shortdrama",
-        "option": "做短视频剧情分镜流程，包含脚本、画面、配音和剪辑",
-        "keywords": ["分镜", "剧情", "脚本", "画面", "配音", "剪辑"],
+        "option": "我想先把想法写成短剧脚本和对白",
+        "keywords": ["脚本", "对白", "短剧脚本", "短剧剧本", "台词", "写"],
         "priority": 9,
     },
     {
         "bucket": "shortdrama",
-        "option": "做 AI 视频脚本转分镜流程，把剧情拆成可生成镜头",
-        "keywords": ["AI视频", "脚本转分镜", "剧情", "镜头", "视频生成"],
+        "option": "我想做系列短剧，先规划人设、剧情线和多集内容",
+        "keywords": ["系列短剧", "系列", "人设", "剧情线", "多集", "连续"],
+        "priority": 9,
+    },
+    {
+        "bucket": "shortdrama",
+        "option": "我已经有内容，主要想优化标题、封面和发布节奏",
+        "keywords": ["标题", "封面", "发布", "优化", "包装", "封面标题"],
         "priority": 8,
     },
     {
         "bucket": "shortdrama",
-        "option": "做 AI 配音与字幕流程，包含台词整理、配音生成和剪辑同步",
-        "keywords": ["配音", "字幕", "台词", "旁白", "剪辑同步"],
+        "option": "我想把故事拆成一幕幕画面，方便后续生成或拍摄",
+        "keywords": ["分镜", "画面", "镜头", "一幕", "拆", "生成"],
         "priority": 8,
-    },
-    {
-        "bucket": "shortdrama",
-        "option": "做短剧封面与标题包装流程，用于提升点击吸引力",
-        "keywords": ["短剧", "封面", "标题", "包装", "点击"],
-        "priority": 7,
-    },
-    {
-        "bucket": "shortdrama",
-        "option": "做系列短剧世界观和角色设定流程，适合多集内容",
-        "keywords": ["系列", "世界观", "角色设定", "多集", "人设"],
-        "priority": 7,
-    },
-    {
-        "bucket": "shortdrama",
-        "option": "做 AI 漫剧预告片流程，包含高光片段、旁白和节奏剪辑",
-        "keywords": ["漫剧", "预告片", "高光", "旁白", "节奏剪辑"],
-        "priority": 7,
-    },
-    {
-        "bucket": "shortdrama",
-        "option": "做可灵 / 即梦视频生成流程，包含提示词、镜头生成和素材筛选",
-        "keywords": ["可灵", "即梦", "视频生成", "提示词", "镜头", "素材筛选"],
-        "priority": 7,
-    },
-    {
-        "bucket": "shortdrama",
-        "option": "做角色图到分镜视频流程，包含角色图、动作镜头和场景变化",
-        "keywords": ["角色图", "分镜视频", "动作", "镜头", "场景"],
-        "priority": 7,
-    },
-    {
-        "bucket": "shortdrama",
-        "option": "做短剧首集脚本到成片流程，包含剧本、分镜、配音、剪辑和发布",
-        "keywords": ["短剧", "首集", "剧本", "分镜", "配音", "剪辑", "发布"],
-        "priority": 7,
     },
 ]
 
@@ -252,6 +233,14 @@ GENERIC_FAILED_ANSWERS = [
 SUCCESS_ACTION_TERMS = [
     "流程", "工具", "生成", "计划", "复盘", "标题", "正文", "封面",
     "例句", "测验", "错词", "分镜", "成片", "配音", "剪辑", "发布", "反馈",
+]
+
+EXPLICIT_DOMAIN_GOALS = [
+    "动漫短剧", "AI动漫短剧", "AI 动漫短剧", "ai动漫短剧", "ai 动漫短剧",
+    "动画短剧", "真人短剧",
+    "短剧脚本", "短剧剧本",
+    "抖音剧情号", "短视频剧情号",
+    "小红书图文", "公众号文章", "背单词计划",
 ]
 
 SHORTDRAMA_TIEBREAK_TERMS = [
@@ -300,7 +289,7 @@ def build_direction_options(
     bucket: str,
     user_goal: str,
     followup_answer: str,
-    limit: int = 3,
+    limit: int = 6,
 ) -> list[str]:
     candidate_options = [
         item for item in DIRECTION_OPTION_POOL if item["bucket"] == bucket
@@ -333,6 +322,8 @@ def is_generic_failed_answer(followup_answer: str) -> bool:
 
 def is_specific_enough_answer(followup_answer: str) -> bool:
     normalized_answer = _normalize_text(followup_answer)
+    if any(_contains_keyword(followup_answer, goal) for goal in EXPLICIT_DOMAIN_GOALS):
+        return True
     if len(normalized_answer) < 14:
         return False
     return any(_contains_keyword(followup_answer, term) for term in SUCCESS_ACTION_TERMS)

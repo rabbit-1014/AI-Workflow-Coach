@@ -69,6 +69,23 @@ CLEAR_BUCKET_GOALS = [
     "ai短剧",
 ]
 
+CLEAR_DOMAIN_GOALS = [
+    "动漫短剧",
+    "AI动漫短剧",
+    "AI 动漫短剧",
+    "ai动漫短剧",
+    "ai 动漫短剧",
+    "动画短剧",
+    "真人短剧",
+    "短剧脚本",
+    "短剧剧本",
+    "抖音剧情号",
+    "短视频剧情号",
+    "小红书图文",
+    "公众号文章",
+    "背单词计划",
+]
+
 CONCRETE_GOAL_MARKERS = [
     "14天",
     "7天",
@@ -234,6 +251,9 @@ def _should_ask_followup(user_goal: str, followup_answer: str = "") -> bool:
     if _is_generic_initial_goal(user_goal):
         return True
 
+    if _has_clear_domain_goal(user_goal):
+        return False
+
     if normalized_goal in {_normalize_text(goal) for goal in CLEAR_BUCKET_GOALS}:
         return False
 
@@ -253,6 +273,13 @@ def _is_generic_initial_goal(user_goal: str) -> bool:
         _normalize_text(phrase) == normalized_goal
         or _normalize_text(phrase) in normalized_goal and len(normalized_goal) <= 12
         for phrase in GENERIC_INITIAL_GOAL_PHRASES
+    )
+
+
+def _has_clear_domain_goal(user_goal: str) -> bool:
+    return any(
+        _normalize_text(goal) in _normalize_text(user_goal)
+        for goal in CLEAR_DOMAIN_GOALS
     )
 
 
