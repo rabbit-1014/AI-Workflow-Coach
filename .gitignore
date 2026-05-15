@@ -1,0 +1,19 @@
+
+.env
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+logs/
+*.log
+vector_store/chroma_db/
+data/app_state.json
+_local_archive/
+*.bak
+*.bak2
+*.bak_anti_assumption
+*.bak_direction_state
+# system files
+.DS_Store
+Thumbs.db
