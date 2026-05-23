@@ -59,19 +59,23 @@ V1 边界：
 - DeepSeek-V4-Flash / `openai_compatible`（用于聊天生成模型）
 - Pydantic（结构化输出校验）
 - JSONL logs（本地可观测日志）
+- GitHub Actions（非网络回归门禁）
 
 ## 目录结构
 
 当前项目目录可简化理解为：
 
 ```text
-项目二/
+AI-Workflow-Coach/
 ├── app.py
 ├── config.py
 ├── prompts.py
 ├── schemas.py
 ├── requirements.txt
 ├── README.md
+├── .github/
+│   └── workflows/
+│       └── regression.yml
 ├── docs/
 │   ├── architecture.md
 │   └── engineering_notes.md
@@ -103,6 +107,11 @@ V1 边界：
 │   └── persistence.py
 └── evals/
     ├── run_smoke_check.py
+    ├── run_regression_gate.py
+    ├── run_real_quality_eval.py
+    ├── run_knowledge_gap_audit.py
+    ├── run_rag_ablation.py
+    ├── reports/
     └── ...
 ```
 
@@ -113,7 +122,7 @@ V1 边界：
 - `vector_store/`：Chroma 索引构建和检索封装。
 - `knowledge/`：本地 Markdown 知识库。
 - `utils/`：错误分类、日志、可观测性、运行摘要和本地状态持久化。
-- `evals/`：smoke check、内容评估和检索评估脚本。
+- `evals/`：本地 smoke check、真实质量评估、知识库缺口审查、RAG 消融和回归门禁脚本。
 
 ## 模型供应商配置
 
@@ -144,7 +153,7 @@ MAX_PARSE_CORRECTION_RETRIES=1
 - `CHAT_API_KEY` 用于聊天生成模型。
 - `DASHSCOPE_API_KEY` 用于 embedding（向量化）/ RAG（检索增强生成）。
 - 不要把真实 API key 写入仓库。
-- `.env.example` 只应保留占位符。
+- 可以参考上方变量创建本地 `.env`，其中只保留占位符或自己的本机配置。
 
 ## 可观测性与稳定性设计
 
@@ -182,10 +191,9 @@ MAX_PARSE_CORRECTION_RETRIES=1
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-cp .env.example .env
 ```
 
-然后编辑 `.env`，填写自己的 `CHAT_API_KEY` 和 `DASHSCOPE_API_KEY`。不要提交真实 key。
+然后参考上方变量创建 `.env`，填写自己的 `CHAT_API_KEY` 和 `DASHSCOPE_API_KEY`。不要提交真实 key。
 
 第一次运行前，或更新 `knowledge/` 后，可以构建向量库：
 
@@ -201,22 +209,29 @@ streamlit run app.py
 
 ## 测试方式
 
-### 本地非网络回归
+### 本地回归门禁
 
 ```bash
-.venv/bin/python evals/run_smoke_check.py --mode local
+python evals/run_regression_gate.py
 ```
 
 说明：
 
 - 不真实调用 DeepSeek / DashScope。
-- 适合日常开发后快速检查。
-- 当前最后一次结果：11 passed / 0 failed。
+- 顺序运行 `py_compile`、反擅自假设检查、方向选择检查和本地 smoke check。
+- 适合作为日常开发后的本地底线检查。
+- GitHub Actions 复用同一门禁，但只验证非网络回归，不评估模型输出质量。
+
+如只想运行本地 smoke check，也可以使用：
+
+```bash
+python evals/run_smoke_check.py --mode local
+```
 
 ### 真实链路验收
 
 ```bash
-.venv/bin/python evals/run_smoke_check.py --mode real
+python evals/run_smoke_check.py --mode real
 ```
 
 说明：
@@ -226,7 +241,33 @@ streamlit run app.py
 - 用于阶段验收。
 - 不适合每次小改都跑。
 
-## 当前 V1 边界与后续计划
+## 评估与回归体系
+
+第二阶段工程增强主要用于回答两个问题：系统是否真的能生成可用路线，以及后续改动有没有破坏主链路。
+
+- P1 Real Quality Evaluation：使用真实模型运行黄金样例，人工复核路线生成质量；该评估会调用真实 API，不进入 CI。
+- P1.5a Knowledge Gap Audit：基于真实 case、检索片段和知识库内容，审查当前 knowledge 是否支撑核心场景。
+- P2 RAG Ablation：对同一批 case 做 with-RAG / without-RAG 成对对比。当前结论是，RAG 主要提升工具推荐具体性和 grounding（依据锚定），但对减少泛化表达帮助有限。
+- P3 Local Regression Gate + CI：提供非网络本地回归门禁，并接入 GitHub Actions，用于检查系统底线是否被改坏。
+
+真实质量评估和 RAG 消融可以手动运行：
+
+```bash
+python evals/run_real_quality_eval.py --limit 10
+python evals/run_rag_ablation.py --limit 9
+```
+
+这两类评估会调用真实 API，可能产生费用和等待时间，不作为 CI gate。
+
+## 报告文件
+
+当前评估报告保存在 `evals/reports/`：
+
+- `evals/reports/latest_real_quality_report.md`
+- `evals/reports/latest_knowledge_gap_audit_report.md`
+- `evals/reports/latest_rag_ablation_report.md`
+
+## 当前边界与后续计划
 
 当前 V1 已完成：
 
@@ -241,9 +282,18 @@ streamlit run app.py
 - run summary
 - 外部服务有限重试
 - smoke check / regression gate
+- 真实质量评估、知识库缺口审查和 RAG 消融基线
+
+当前边界：
+
+- 对于“用 AI 完成任务”和“开发 AI 工具”边界不清的输入，系统当前倾向于补问或方向选择；后续可以引入低置信度意图识别兜底。
+- RAG 能提升工具推荐具体性和知识 grounding，但不能单独解决所有泛化表达问题。
+- P1 / P2 属于手动真实评估，不适合放进 CI；CI 只做非网络回归门禁。
 
 后续可扩展：
 
+- 低置信度意图识别
+- 固定 demo 样例和面试展示脚本
 - FastAPI 服务化
 - 用户历史记录
 - 日志轮转
