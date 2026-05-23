@@ -1,0 +1,2263 @@
+{
+  "generated_at": "2026-05-23T12:46:30",
+  "git_commit": "8282cec",
+  "mode": "P2 RAG ablation v1 paired real eval",
+  "disclaimer": "P2 v1 is a single-run paired baseline and does not claim statistical significance.",
+  "limit": 9,
+  "case_id": "",
+  "total_pairs": 9,
+  "stopped_early": false,
+  "stop_reason": "",
+  "core_summary": {
+    "valid_core_case_count": 8,
+    "preliminary_winner_distribution": {
+      "with_rag": 7,
+      "tie": 1
+    },
+    "avg_named_tool_count_delta": 4.38,
+    "avg_expected_tool_hit_delta": 3.5,
+    "avg_focus_keyword_hit_delta": 0.25,
+    "avg_step_focus_delta": 0.12,
+    "avg_generic_phrase_delta": -0.38
+  },
+  "pair_valid_count": 9,
+  "pair_invalid_count": 0,
+  "pairs": [
+    {
+      "case_id": "shortdrama_core_01",
+      "case_group": "core_ablation_cases",
+      "scenario": "AI 动漫短剧",
+      "user_goal": "AI 动漫短剧",
+      "followup_answer": "",
+      "notes": "核心极简输入，用于观察 RAG 是否减少泛化并支撑短剧制作闭环。",
+      "with_rag_result": {
+        "ablation_mode": "with_rag",
+        "workflow_run_id": "route_20260523_123703_50031f",
+        "final_stage": "route_generated",
+        "route_generated": true,
+        "schema_valid": true,
+        "failure_type": "none",
+        "route_step_names": [
+          "设定/IP 方向",
+          "角色视觉锁定",
+          "分镜脚本",
+          "生成镜头",
+          "剪辑发布验证"
+        ],
+        "step_count": 5,
+        "retrieval_count": 1,
+        "retrieval_doc_count": 9,
+        "retrieved_sources": [
+          "tools",
+          "workflows",
+          "blockages"
+        ],
+        "retrieved_snippet_preview": [
+          {
+            "source": "tools",
+            "file_name": "tools.md",
+            "section_index": "3",
+            "chunk_index": "20",
+            "excerpt": "## 常用工具组合 ### ChatGPT / 通义千问 - 常用步骤：设定、剧情大纲、分镜脚本、提示词、字幕和标题。 - 适合产出：角色设定、世界观一句话、分镜表、镜头提示词、旁白。 - 轻量替代：豆包。 - 最小用法：要求输出分镜表，字段包含镜头、时长、画面、动作、台词、提示"
+          },
+          {
+            "source": "workflows",
+            "file_name": "workflows.md",
+            "section_index": "10",
+            "chunk_index": "31",
+            "excerpt": "## 路径模式 1：AI 动漫短剧 - 适用场景：用户想做 AI / 动漫短剧，但尚未明确时长、集数、平台或风格。 - 目标产物：一条可启动的动漫短剧制作路线；具体时长、集数和发布平台应在第一步由用户确认。 - 新手建议：可以从较短版本开始试水，例如 30-60 秒短片或 1-2"
+          },
+          {
+            "source": "workflows",
+            "file_name": "workflows.md",
+            "section_index": "9",
+            "chunk_index": "30",
+            "excerpt": "## 典型最小闭环 设定/IP 方向 -> 角色视觉一致性 -> 分镜/脚本 -> 生成/剪辑 -> 首轮验证/发布 最低闭环不是\"生成几段好看的视频\"，而是完成一条可测试的短剧作品；具体集数、时长和发布平台应由用户确认。 ---"
+          }
+        ],
+        "route_context_chars": 3937,
+        "route_context_preview": "# 工具知识片段\n【片段 1】\nsource: tools\nfile_name: tools.md\nsection_index: 3\nchunk_index: 20\ncontent:\n## 常用工具组合\n\n### ChatGPT / 通义千问\n\n- 常用步骤：设定、剧情大纲、分镜脚本、提示词、字幕和标题。\n- 适合产出：角色设定、世界观一句话、分镜表、镜头提示词、旁白。\n- 轻量替代：豆包。\n- 最小用法：要求输出分镜表，字段包含镜头、时长、画面、动作、台词、提示词。\n\n### 即梦 / Midjourney / 豆包图像\n\n- 常用步骤：角色视觉、场景图、关键帧、封面图。\n- 适合产出：角色基准图、表情图、场景参考、首图。\n- 轻量替代：平台素材库、手绘草图。\n- 最小用法：先生成角色基准图，再复用角色描述和参考图，不要每个镜头重新发明角色。\n\n### 可灵 / Runway / Pika / 即梦视频\n\n- 常用步骤：图生视频、文生视频、短镜头生成。\n- 适合产出：3 到 5 秒镜头片段、动作镜头、转场素材。\n- 轻量替代：静态图 + 剪映运镜。\n- 最小用法：优先图生视频，输入明",
+        "latency_ms": 31749,
+        "model_call_count": 1,
+        "self_correction_count": 0,
+        "retrieval_trace_available": true,
+        "route_result": {
+          "task_summary": "为用户生成一条从零开始制作 AI 动漫短剧的可执行工作流路线，覆盖设定、角色、分镜、生成、剪辑发布，并适配无具体参数前提。",
+          "route_type": "完整路线",
+          "steps": [
+            {
+              "step_name": "设定/IP 方向",
+              "step_goal": "明确短剧的题材、主角、冲突、风格和初步目标平台，锁定可延续的故事方向。",
+              "primary_tool": "ChatGPT / 通义千问",
+              "backup_tool": "豆包（轻量替代，适合快速脑暴）",
+              "suggested_input": "用户口头描述或关键词，如“校园”“悬疑”“女主逃跑”等；如果用户暂无灵感，可引导回答“你最想画什么风格？主角是男是女？核心冲突是什么？”",
+              "expected_output": "一份短剧设定文档，包含：题材（如奇幻/都市）、主角一句话（姓名+核心特征）、核心冲突（如“被追杀的画家必须画活所画之物”）、情绪钩子（前10秒抓住观众的元素）、风格关键词（如“日系赛博朋克”“水墨武侠”）以及目标平台建议（抖音/B站/YouTube Shorts等）。",
+              "execution_tip": "不要一开始追求宏大世界观，先确认主角和冲突即可。目标平台可暂时不选，但建议在第一步与用户确认，避免后期适配痛苦。",
+              "ready_check": "已产出至少一个主角、一个核心冲突和一个情绪钩子，且用户能复述“这是一个关于____的故事”"
+            },
+            {
+              "step_name": "角色视觉锁定",
+              "step_goal": "生成可信赖的主角基准图，确保后续所有镜头角色一致。",
+              "primary_tool": "即梦 / Midjourney / 豆包图像",
+              "backup_tool": "平台素材库或手绘草图（若不想用生成工具，可先手绘角色轮廓再生成）",
+              "suggested_input": "角色设定中的描述（年龄、发型、脸型、服装、主色、气质），建议写成 80-120 字锁定卡；可附带参考图（电影截图、画风示例）。",
+              "expected_output": "至少一张正面半身基准图 + 一张全身图；同时产出一份角色锁定卡（固定提示词模板，后续只变动作/表情/场景）。",
+              "execution_tip": "选定1张主参考图，不要混用风格差异大的图。生成后让旁观者判断是否能认出同一角色。如果漂移，返回调整锁定卡描述。",
+              "ready_check": "连续生成3张不同动作/表情的图，旁观者能判断是同一角色（参考卡点提醒：连续生成3张图测试一致性）"
+            },
+            {
+              "step_name": "分镜脚本",
+              "step_goal": "将故事拆成可执行的镜头列表，每个镜头只含一个主要动作，直接可用于视频工具生成。",
+              "primary_tool": "ChatGPT / 通义千问",
+              "backup_tool": "手动表格（Excel/Notion）",
+              "suggested_input": "设定文档 + 主角冲突；用户可提供大致剧情时序（如“开头：主角发现异常，然后逃跑，遇到帮手”）。",
+              "expected_output": "一张分镜表，字段包含：镜头编号、时长（建议3-5秒）、景别（近景/中景/远景）、画面描述、动作描述、台词（如果有）、角色参考图编号、提示词（不变角色词+可变动作场景词）。建议产出5-8个镜头。",
+              "execution_tip": "严格遵循“一个镜头一个动作”，避免回忆、转场、情绪变化挤在一个镜头里。复杂剧情拆成多个短镜头。输出后检查每个分镜是否能直接变成图生视频/文生视频提示词。",
+              "ready_check": "每个分镜都对应一个明确的主要动作，且每个镜头可独立生成提示词，无二义性"
+            },
+            {
+              "step_name": "生成镜头",
+              "step_goal": "根据分镜表批量生成高质量短镜头素材，确保角色一致性且画面可用。",
+              "primary_tool": "可灵 / Runway / Pika / 即梦视频（优先图生视频）",
+              "backup_tool": "静态图 + 剪映运镜（若视频工具效果不佳或需快速验证）",
+              "suggested_input": "每个分镜的角色锁定提示词 + 场景动作描述 + 角色基准图作为参考图。",
+              "expected_output": "3-8条3-5秒的视频片段，每条对应一个分镜；片段无明显角色漂移，动作清晰，画面风格统一。",
+              "execution_tip": "优先选择图生视频，输入角色基准图+单一动作描述。避免一个镜头包含多个动作。不要一次生成全部镜头，先试生成1-2个看看效果，调整提示词再批量。",
+              "ready_check": "所有镜头能按剧情顺序剪在一起，静音播放也能看懂主角、冲突和结果（参考卡点提醒）"
+            },
+            {
+              "step_name": "剪辑发布验证",
+              "step_goal": "将镜头剪辑成片，添加字幕、配音、BGM、封面，发布到目标平台并记录关键数据。",
+              "primary_tool": "剪映 / CapCut",
+              "backup_tool": "手机相册剪辑或平台内置剪辑器（轻量替代）",
+              "suggested_input": "生成的镜头素材 + 分镜表中的台词/旁白 + 标题思路 + 封面图（可从镜头中选一帧或用即梦生成）。配音可用 ElevenLabs 或剪映文本朗读。",
+              "expected_output": "一条完整成片（建议时长根据用户确认，新手可先做30-60秒试水）+ 发布标题 + 封面 + 配音 + 字幕；发布后记录：完播率区间、互动数（评论/点赞）、用户反馈关键词（如“看不懂”“画风好看”“主角是谁”）。",
+              "execution_tip": "剪映先按顺序拼镜头，静音版本检查叙事逻辑；再加字幕和配音（短剧优先用剪映文本朗读降低门槛）；发布时写一个能说明“为什么值得看”的标题，前3秒有钩子。数据记录只记录观察项和区间，不要编造具体数据。",
+              "ready_check": "用户能看懂主角是谁、发生了什么、后续内容期待点是什么；发布后至少能收集到一条有效观看反馈（评论或完播记录）"
+            }
+          ]
+        },
+        "error_message": ""
+      },
+      "without_rag_result": {
+        "ablation_mode": "without_rag",
+        "workflow_run_id": "route_20260523_123735_2c040a",
+        "final_stage": "route_generated",
+        "route_generated": true,
+        "schema_valid": true,
+        "failure_type": "none",
+        "route_step_names": [
+          "故事构思与脚本生成",
+          "角色与视觉风格设计",
+          "分镜与关键帧生成",
+          "AI动画生成（主体制作）",
+          "配音与音效合成",
+          "后期剪辑与渲染输出",
+          "发布与初步反馈记录"
+        ],
+        "step_count": 7,
+        "retrieval_count": 0,
+        "retrieval_doc_count": 0,
+        "retrieved_sources": [],
+        "retrieved_snippet_preview": [],
+        "route_context_chars": 68,
+        "route_context_preview": "# 工具知识片段\n没有检索到相关片段。\n\n# Workflow 模板片段\n没有检索到相关片段。\n\n# 卡点提醒片段\n没有检索到相关片段。",
+        "latency_ms": 31232,
+        "model_call_count": 1,
+        "self_correction_count": 0,
+        "retrieval_trace_available": false,
+        "route_result": {
+          "task_summary": "用户想要利用AI工具制作一部动漫风格的短剧（如几分钟的动画故事），需要一条从零到发布的完整工作流路线，包含故事构思、视觉设计、动画生成、声音合成和发布环节。由于未提供具体参数，路线采用通用起步建议，用户可根据自身情况调整。",
+          "route_type": "通用起步路线",
+          "steps": [
+            {
+              "step_name": "故事构思与脚本生成",
+              "step_goal": "确定短剧的核心创意、剧情大纲和对话脚本，为后续视觉和动画提供基础。",
+              "primary_tool": "ChatGPT / Claude（文本生成），搭配Notion或Obsidian整理故事元素。",
+              "backup_tool": "DeepSeek（免费替代），原因：同样支持长文本生成和角色对话。",
+              "suggested_input": "简短描述：短剧类型（如搞笑、悬疑、科幻）、目标受众、大概时长（如1-3分钟）、核心冲突。",
+              "expected_output": "一个包含故事梗概、3-5个关键场景描述、主要角色（2-3个）性格与对话风格、开头-发展-高潮-结尾的粗略分节脚本（可直接用于分镜）。",
+              "execution_tip": "先让AI生成多个故事方向，选择最有画面感的一个；对话要紧凑，避免冗长旁白，适合短剧节奏。",
+              "ready_check": "已产出至少一个完整的故事大纲和至少两个主要角色的对话样稿，整体长度匹配预期时长。"
+            },
+            {
+              "step_name": "角色与视觉风格设计",
+              "step_goal": "确定角色形象（外观、服装、表情风格）和整体视觉调性（色彩、光影、画风），为后续图像/视频生成提供一致性参考。",
+              "primary_tool": "Midjourney / DALL·E 3（角色和场景概念图生成），搭配Canva做风格板。",
+              "backup_tool": "Stable Diffusion（免费开源），原因：可本地部署，无限生成，但需手动调参。",
+              "suggested_input": "脚本中每个角色的文字描述（外貌、服装、个性）、场景氛围关键词（如‘赛博朋克夜晚’、‘柔和水彩风’）。",
+              "expected_output": "每个角色至少一张正面全身概念图、一张表情参考图（喜怒哀乐）；2-3个关键场景的概念图；风格板（包含色彩色板、笔触参考、光照示例）。",
+              "execution_tip": "生成时固定角色seed或使用‘角色reference’功能；风格统一比单张精美更重要，可反复迭代直到角色跨图一致。",
+              "ready_check": "所有主要角色和场景都有明确视觉参考，且风格明显统一（如全部为‘吉卜力风格’或‘3D卡通’）。"
+            },
+            {
+              "step_name": "分镜与关键帧生成",
+              "step_goal": "将脚本转化为画面序列，确定每个镜头的构图、角色位置、动作起止和转场方式，为AI动画提供帧级指导。",
+              "primary_tool": "Runway ML / Pika Labs（文生视频）或Kaiber（故事板模式），搭配Storyboarder（免费分镜软件）。",
+              "backup_tool": "D-ID（带角色动画），原因：可快速生成面部表情驱动视频，适合对话场景。",
+              "suggested_input": "脚本分节、每个场景的角色位置和动作描述、镜头类型（近景/远景/特写）、转场提示（淡入/切）。",
+              "expected_output": "一份数字分镜图（每镜一格，带文字说明），或者AI直接生成的几秒关键帧视频片段（如每个镜头5-10秒），显示角色基本动作和镜头运动。",
+              "execution_tip": "先做‘静态分镜’再生成动态预览；如果AI视频不稳定，用关键帧拼接而非生成完整长镜头。",
+              "ready_check": "每个脚本场景至少对应一个分镜画面或短视频片段，动作逻辑连贯，整体时长约为目标的50-70%。"
+            },
+            {
+              "step_name": "AI动画生成（主体制作）",
+              "step_goal": "生成短剧所需的全部动画片段，包括角色动作、口型同步、背景运动，保持画风和角色一致性。",
+              "primary_tool": "Runway Gen-2 / Pika 2.0（文生视频、图生视频、视频风格应用），搭配CapCut做基础剪辑。",
+              "backup_tool": "Stable Video Diffusion（开源），原因：免费且可本地批量生成，但画质和一致性需手动调优。",
+              "suggested_input": "分镜中的关键帧图片、文字动作描述（如‘角色从左边走进来，然后坐下’）、角色风格参考图。",
+              "expected_output": "所有镜头对应的10-20秒短视频片段（或根据分镜要求的时长），角色动作合理，画面闪烁或变形在可接受范围，口型与台词大致同步。",
+              "execution_tip": "生成时尽可能使用同一角色seed或‘角色一致性’功能；如果口型不准，后期用Wav2Lip修正；每段视频单独生成再拼接，避免长视频质量下降。",
+              "ready_check": "所有镜头均已生成至少一个可用版本，无严重穿帮，角色面部特征稳定，整体时长累计达到目标时长±10%。"
+            },
+            {
+              "step_name": "配音与音效合成",
+              "step_goal": "为动画添加角色台词（配音）、必要音效（动作声、环境声）和背景音乐，提升观看体验。",
+              "primary_tool": "ElevenLabs（高质量AI配音，支持情感和口型调整）、Epidemic Sound（免版权音效与BGM）或Artlist。",
+              "backup_tool": "Microsoft Azure Speech Studio（免费额度配音），原因：支持多语言和SSML标记控制语调；Freesound（免费音效库）。",
+              "suggested_input": "脚本中每句台词对应的角色、情感、语速；动作类型（关门、走路、撞击）；场景氛围（紧张、浪漫、搞笑）。",
+              "expected_output": "包含配音、音效和BGM的多音轨音频文件（如WAV或MP4+音轨），配音与口型匹配度>80%，音效与动作对齐，BGM情绪符合场景。",
+              "execution_tip": "先配台词，再添加音效，最后混音；使用AI配音时注意情感标注（如‘悲伤低语’）；BGM音量以不淹没台词为准。",
+              "ready_check": "所有角色台词都已配音且与画面同步，每个场景至少有一个标志性音效，背景音乐全程覆盖但可调。"
+            },
+            {
+              "step_name": "后期剪辑与渲染输出",
+              "step_goal": "将视频片段、音频、字幕和特效合成最终成品，调整节奏、色彩和转场，导出发布格式。",
+              "primary_tool": "CapCut / DaVinci Resolve（免费版支持最高4K输出，有自动调色和字幕功能）。",
+              "backup_tool": "Premiere Rush（轻量版），原因：适合快速剪辑和直接分享到短视频平台。",
+              "suggested_input": "所有动画片段、配音音轨、音效BGM、字幕文本、视频分辨率（建议1080p 30fps）、时间线草稿（如有分镜时间估算）。",
+              "expected_output": "完成剪辑的正片（含开头标题、结尾致谢、可选的转场特效），字幕嵌入或单独SRT文件，音频平衡良好，输出为MP4（H.264编码）或适合目标平台的格式。",
+              "execution_tip": "保持节奏紧凑，每5-10秒一个小情绪点；色彩尽量统一（可用LUT）；导出前检查所有音视频同步；如果平台有竖屏要求，提前裁切。",
+              "ready_check": "完整视频时长在用户预期范围内（如1-3分钟），无画面/音频明显错误，字幕可读，渲染无崩溃。"
+            },
+            {
+              "step_name": "发布与初步反馈记录",
+              "step_goal": "将成品发布到目标平台（B站/抖音/Youtube等），记录关键数据（播放量、点赞、评论情感）作为迭代依据，但暂不做深度分析。",
+              "primary_tool": "平台自有发布工具 + Notion（记录观察项：发布标题、时间、平台、首日播放区间、评论热词）。",
+              "backup_tool": "Airtable（表格记录），原因：可设置自动化提醒和字段类型。",
+              "suggested_input": "最终视频文件、封面图（建议16:9或9:16）、标题（含关键词）、标签、简介、发布计划（时间、频率）。",
+              "expected_output": "视频成功发布至少一个平台，链接保存；在记录表中填写：发布平台、日期、标题、首日播放量区间（如100-500）、前10条评论的情感极性（正面/中性/负面）和典型内容。",
+              "execution_tip": "发布后可简单回复评论引导互动；不要急于修改下一集，先收集自然反馈；记录时只写事实区间，避免臆想具体数字。",
+              "ready_check": "视频已发布且可正常播放，记录表已填写至少三行字段（平台、发布时间、首日播放区间）。"
+            }
+          ]
+        },
+        "error_message": ""
+      },
+      "pair_valid": true,
+      "invalid_reason": "",
+      "pair_diff": {
+        "named_tool_count_delta": 5,
+        "expected_tool_hit_delta": 5,
+        "focus_keyword_hit_delta": 2,
+        "generic_phrase_delta": 0,
+        "step_focus_delta": 1,
+        "with_rag_metrics": {
+          "named_tool_count": 13,
+          "expected_tool_hits": 9,
+          "focus_keyword_hits": 6,
+          "step_focus_hits": 4,
+          "generic_phrase_count": 0
+        },
+        "without_rag_metrics": {
+          "named_tool_count": 8,
+          "expected_tool_hits": 4,
+          "focus_keyword_hits": 4,
+          "step_focus_hits": 3,
+          "generic_phrase_count": 0
+        },
+        "preliminary_winner": "with_rag"
+      }
+    },
+    {
+      "case_id": "shortdrama_direct_01",
+      "case_group": "core_ablation_cases",
+      "scenario": "AI 动漫短剧",
+      "user_goal": "做一集 60 秒 AI 动漫短剧，主角是高中生，风格热血，想发到短视频平台",
+      "followup_answer": "",
+      "notes": "信息充分的短剧 case，用于对比工具和流程细节。",
+      "with_rag_result": {
+        "ablation_mode": "with_rag",
+        "workflow_run_id": "route_20260523_123806_9e6cea",
+        "final_stage": "route_generated",
+        "route_generated": true,
+        "schema_valid": true,
+        "failure_type": "none",
+        "route_step_names": [
+          "设定与角色锁定",
+          "角色视觉锁定",
+          "分镜脚本编写",
+          "生成短镜头素材",
+          "配音与字幕准备",
+          "剪辑、BGM与成片导出",
+          "发布验证与数据记录"
+        ],
+        "step_count": 7,
+        "retrieval_count": 1,
+        "retrieval_doc_count": 9,
+        "retrieved_sources": [
+          "tools",
+          "workflows",
+          "blockages"
+        ],
+        "retrieved_snippet_preview": [
+          {
+            "source": "tools",
+            "file_name": "tools.md",
+            "section_index": "3",
+            "chunk_index": "20",
+            "excerpt": "## 常用工具组合 ### ChatGPT / 通义千问 - 常用步骤：设定、剧情大纲、分镜脚本、提示词、字幕和标题。 - 适合产出：角色设定、世界观一句话、分镜表、镜头提示词、旁白。 - 轻量替代：豆包。 - 最小用法：要求输出分镜表，字段包含镜头、时长、画面、动作、台词、提示"
+          },
+          {
+            "source": "workflows",
+            "file_name": "workflows.md",
+            "section_index": "10",
+            "chunk_index": "31",
+            "excerpt": "## 路径模式 1：AI 动漫短剧 - 适用场景：用户想做 AI / 动漫短剧，但尚未明确时长、集数、平台或风格。 - 目标产物：一条可启动的动漫短剧制作路线；具体时长、集数和发布平台应在第一步由用户确认。 - 新手建议：可以从较短版本开始试水，例如 30-60 秒短片或 1-2"
+          },
+          {
+            "source": "workflows",
+            "file_name": "workflows.md",
+            "section_index": "9",
+            "chunk_index": "30",
+            "excerpt": "## 典型最小闭环 设定/IP 方向 -> 角色视觉一致性 -> 分镜/脚本 -> 生成/剪辑 -> 首轮验证/发布 最低闭环不是\"生成几段好看的视频\"，而是完成一条可测试的短剧作品；具体集数、时长和发布平台应由用户确认。 ---"
+          }
+        ],
+        "route_context_chars": 3937,
+        "route_context_preview": "# 工具知识片段\n【片段 1】\nsource: tools\nfile_name: tools.md\nsection_index: 3\nchunk_index: 20\ncontent:\n## 常用工具组合\n\n### ChatGPT / 通义千问\n\n- 常用步骤：设定、剧情大纲、分镜脚本、提示词、字幕和标题。\n- 适合产出：角色设定、世界观一句话、分镜表、镜头提示词、旁白。\n- 轻量替代：豆包。\n- 最小用法：要求输出分镜表，字段包含镜头、时长、画面、动作、台词、提示词。\n\n### 即梦 / Midjourney / 豆包图像\n\n- 常用步骤：角色视觉、场景图、关键帧、封面图。\n- 适合产出：角色基准图、表情图、场景参考、首图。\n- 轻量替代：平台素材库、手绘草图。\n- 最小用法：先生成角色基准图，再复用角色描述和参考图，不要每个镜头重新发明角色。\n\n### 可灵 / Runway / Pika / 即梦视频\n\n- 常用步骤：图生视频、文生视频、短镜头生成。\n- 适合产出：3 到 5 秒镜头片段、动作镜头、转场素材。\n- 轻量替代：静态图 + 剪映运镜。\n- 最小用法：优先图生视频，输入明",
+        "latency_ms": 28152,
+        "model_call_count": 1,
+        "self_correction_count": 0,
+        "retrieval_trace_available": true,
+        "route_result": {
+          "task_summary": "生成一集60秒AI热血动漫短剧，主角为高中生，发布到短视频平台。",
+          "route_type": "完整路线",
+          "steps": [
+            {
+              "step_name": "设定与角色锁定",
+              "step_goal": "确定世界观、主角身份、核心冲突和视觉方向，撰写角色锁定卡。",
+              "primary_tool": "ChatGPT / 通义千问",
+              "backup_tool": "豆包（轻量替代），适合快速产出初始设定。",
+              "suggested_input": "用户已提供的条件：主角是高中生、风格热血、时长60秒、平台短视频。补充要求：输出包含主角姓名、年龄、性格关键词、世界观一句话、核心冲突、情绪钩子（例如：被欺凌后觉醒超能力）。",
+              "expected_output": "角色锁定卡（80-120字）：包括发型、脸型、服装主色、气质描述；世界观一句话；冲突和情绪钩子。",
+              "execution_tip": "不要一次性加入多角色或复杂世界观，聚焦一个主角和一个冲突。如果用户是新手，可先验证单场景短片。",
+              "ready_check": "角色锁定卡包含主角核心特征（年龄、发型、服装、气质）且能与热血风格匹配，冲突描述可引发情绪期待。"
+            },
+            {
+              "step_name": "角色视觉锁定",
+              "step_goal": "生成主角基准图，确保后续镜头角色一致性。",
+              "primary_tool": "即梦 / Midjourney 或 豆包图像",
+              "backup_tool": "手绘草图 + 图生图工具",
+              "suggested_input": "角色锁定卡中的描述作为正向提示词，添加反向约束（如：no blur, no extra limbs）。生成3-5张正面半身、全身和表情图。",
+              "expected_output": "选定1张主参考图（高清正面半身），以及2-3张表情/动作参考图。",
+              "execution_tip": "固定发型、服装颜色和主色，后续所有镜头提示词只改动作和场景，不修改角色描述。",
+              "ready_check": "连续生成3张不同动作/表情的图，旁观者能认出是同一角色（无明显漂移）。"
+            },
+            {
+              "step_name": "分镜脚本编写",
+              "step_goal": "将60秒拆解为6-10个可生成的短镜头（每个3-10秒），输出分镜表。",
+              "primary_tool": "ChatGPT / 通义千问",
+              "backup_tool": "手动表格（Excel/飞书）",
+              "suggested_input": "角色锁定卡、冲突和情绪钩子。要求输出字段：镜头编号、时长、画面描述、角色动作、台词/旁白、景别、提示词（包含固定角色描述+可变动作场景）。",
+              "expected_output": "分镜表，至少包含6个镜头，每个镜头只表述一个主要动作，总时长合计约60秒。",
+              "execution_tip": "每个镜头时长控制在3-10秒，避免超长镜头。镜头之间要有逻辑衔接（起承转合）。删除不推动剧情的镜头。",
+              "ready_check": "每个分镜都能直接变成一条图生视频或文生视频提示词，且剧情顺序清晰。"
+            },
+            {
+              "step_name": "生成短镜头素材",
+              "step_goal": "使用图生视频工具生成每个分镜对应的3-10秒视频片段。",
+              "primary_tool": "可灵 / Runway / Pika / 即梦视频",
+              "backup_tool": "静态图 + 剪映运镜（如果生成失败）",
+              "suggested_input": "每个分镜的提示词（含固定角色描述+动作/场景）+ 主参考图（保证角色一致）。",
+              "expected_output": "6-10个短视频片段，每个片段3-10秒，内容与分镜描述匹配，角色形象稳定。",
+              "execution_tip": "优先使用图生视频，每个镜头只输入单一动作（例如“挥拳”“奔跑”），避免复杂场景。如果角色漂移，重新使用主参考图。",
+              "ready_check": "所有片段能按分镜顺序连续播放，无明显断裂或角色突变。"
+            },
+            {
+              "step_name": "配音与字幕准备",
+              "step_goal": "生成旁白或角色台词音频，并制作字幕文件。",
+              "primary_tool": "ElevenLabs 或 剪映文本朗读",
+              "backup_tool": "真人临时配音",
+              "suggested_input": "分镜表中的台词/旁白文本，标明每句时长（配合镜头时长）。",
+              "expected_output": "配音音频文件（MP3/WAV）和同步字幕轨（SRT或剪映字幕格式）。",
+              "execution_tip": "首版建议使用剪映文本朗读降低成本；如果要求不同声线，可用ElevenLabs设置高中生年龄音色。",
+              "ready_check": "配音时长与镜头时长总和匹配，字幕与音频同步，能听清台词。"
+            },
+            {
+              "step_name": "剪辑、BGM与成片导出",
+              "step_goal": "将镜头、配音、字幕、BGM整合为最终60秒短剧，添加封面和片尾。",
+              "primary_tool": "剪映 / CapCut",
+              "backup_tool": "手机相册剪辑、平台内置剪辑器",
+              "suggested_input": "生成的镜头片段、配音音频、字幕文件；选择热血风格BGM（剪映曲库或免版权音乐）。",
+              "expected_output": "60秒完整视频文件（MP4），包含片头标题、正片、字幕、配音、BGM、片尾引导关注。",
+              "execution_tip": "先按剧情顺序拼合镜头（无声版本），再添加配音和字幕对齐，最后加BGM并调整音量比例。封面突出主角和热血元素。",
+              "ready_check": "静音播放也能看懂主角是谁、发生了什么冲突、结局如何；字幕和配音同步；总时长约60秒。"
+            },
+            {
+              "step_name": "发布验证与数据记录",
+              "step_goal": "将成片发布到短视频平台，记录基础数据用于评估。",
+              "primary_tool": "目标短视频平台（如抖音、快手、B站等）",
+              "backup_tool": "小红书、YouTube Shorts",
+              "suggested_input": "完成的视频文件、标题（包含关键词“热血”“高中生”）、封面图、标签。选择用户活跃时段发布。",
+              "expected_output": "已发布作品，记录发布后24小时的完播率、点赞、评论、收藏、分享数据（可量化为区间或占位）。",
+              "execution_tip": "用户需自行确认平台名称和发布设置；不要虚构数据，只记录观察项。如果完播率低于30%，下一版需调整开头钩子。",
+              "ready_check": "作品已成功发布，且能获取完播、互动至少一项有效反馈数据，用于决定下一条如何改进。"
+            }
+          ]
+        },
+        "error_message": ""
+      },
+      "without_rag_result": {
+        "ablation_mode": "without_rag",
+        "workflow_run_id": "route_20260523_123835_2405fc",
+        "final_stage": "route_generated",
+        "route_generated": true,
+        "schema_valid": true,
+        "failure_type": "none",
+        "route_step_names": [
+          "确定角色设定与世界观基调",
+          "编写60秒剧本（含关键台词与动作）",
+          "设计关键帧与画面描述（分镜清单）",
+          "生成角色与场景图像素材",
+          "动画化：将静态图转为动态视频片段",
+          "配音、配乐与音效合成",
+          "剪辑合成并导出短视频"
+        ],
+        "step_count": 7,
+        "retrieval_count": 0,
+        "retrieval_doc_count": 0,
+        "retrieved_sources": [],
+        "retrieved_snippet_preview": [],
+        "route_context_chars": 68,
+        "route_context_preview": "# 工具知识片段\n没有检索到相关片段。\n\n# Workflow 模板片段\n没有检索到相关片段。\n\n# 卡点提醒片段\n没有检索到相关片段。",
+        "latency_ms": 30817,
+        "model_call_count": 1,
+        "self_correction_count": 0,
+        "retrieval_trace_available": false,
+        "route_result": {
+          "task_summary": "制作一集60秒的AI动漫短剧，主角为高中生，风格热血，目标发布到短视频平台（如抖音、快手等）。需要从角色设定、剧本、画面生成到成片剪辑的完整工作流。",
+          "route_type": "通用起步路线",
+          "steps": [
+            {
+              "step_name": "确定角色设定与世界观基调",
+              "step_goal": "明确主角（高中生）的基本外观、性格、标志性动作，以及热血风格的世界观背景（如校园、体育、战斗等方向）",
+              "primary_tool": "ChatGPT / Claude（文本生成）——用于头脑风暴角色细节和世界观关键词",
+              "backup_tool": "Notion或笔记软件——用于记录创意，避免遗忘",
+              "suggested_input": "用户已知信息：高中生主角、热血风格、60秒时长、短视频平台。建议额外输入：主角性别、外貌特征、擅长领域（如篮球、格斗、学习）、故事冲突类型。",
+              "expected_output": "一份角色设定文档，包含：主角姓名、外貌关键词（发型、服装颜色等）、核心性格（如不服输、冲动）、标志性台词或动作；世界观背景的一句话描述（如‘普通高中里的异能战斗大赛’）。",
+              "execution_tip": "不必追求细节，重点是找到能激发画面感的2-3个关键特征，后续所有步骤围绕这些特征展开。",
+              "ready_check": "已确定主角至少3个视觉特征（发型、服装主色、标志性物品或道具），并写出一句世界观背景描述。"
+            },
+            {
+              "step_name": "编写60秒剧本（含关键台词与动作）",
+              "step_goal": "创作一个能在60秒内完整讲述的热血小故事，包含起承转合，突出主角的高光时刻",
+              "primary_tool": "AI文本生成工具（如 ChatGPT、Claude）——根据角色设定生成剧本草稿",
+              "backup_tool": "手动编写+AI润色（如 DeepSeek）——当生成内容不符合预期时人工调整",
+              "suggested_input": "上一步的角色设定文档 + 故事类型提示（如‘主角在比赛中面临强敌，最后爆发绝招获胜’）+ 篇幅约束（60秒约150-200字台词/旁白）",
+              "expected_output": "完整剧本（包含场景描述、角色动作、台词/旁白），总时长控制在50-65秒内，分3-4个场景。",
+              "execution_tip": "由于是短剧，避免复杂多线剧情；建议采用‘困境→努力→爆发→胜利’的热血公式，最后留一个悬念或回味点。",
+              "ready_check": "剧本已覆盖开始、冲突、高潮、结尾，且总台词/旁白字数在150-200字之间，无冗余情节。"
+            },
+            {
+              "step_name": "设计关键帧与画面描述（分镜清单）",
+              "step_goal": "将剧本转化为可视觉化的分镜列表，明确每个镜头的画面构成、视角、动态方向",
+              "primary_tool": "AI文本+手绘参考（如 Midjourney 或 DALL·E 用于生成画面描述）",
+              "backup_tool": "手动绘制草图或用剪映/Canva 的模板作为画面启发",
+              "suggested_input": "剧本文本 + 角色设定文档 + 热血风格参考词（如‘动态模糊’‘仰角镜头’‘爆发特效’）",
+              "expected_output": "6-8个关键分镜描述，每个分镜包含：场景位置、角色动作、摄像机角度、特效/粒子效果、过渡方式（如快速切换、缩放）；总画面数量足以支撑60秒。",
+              "execution_tip": "重点关注前3秒（吸引停留）和最后5秒（记忆点），中间动作要快节奏。可参考热门动画短剧的剪辑节奏。",
+              "ready_check": "分镜清单已列出至少6个连续镜头，每个镜头包含场景、角色姿势、镜头运动三个要素。"
+            },
+            {
+              "step_name": "生成角色与场景图像素材",
+              "step_goal": "利用AI绘图工具制作短剧所需的主角形象、关键场景背景、特效元素等静态图",
+              "primary_tool": "Midjourney 或 DALL·E 3（文生图）——根据分镜描述生成高质量动漫风格图像",
+              "backup_tool": "Stable Diffusion（本地或在线版）——可自定义更多参数，适合需要统一角色一致性的情况",
+              "suggested_input": "分镜描述文本 + 角色设定关键词（如‘高中生、红发、运动服、火焰特效’）+ 风格提示（‘热血动漫风格、高对比度、动态线条’）",
+              "expected_output": "一组与分镜对应的关键帧图像（至少6张），确保主角形象在各图像中视觉一致（服装、发色、脸型等）。同时生成若干背景素材（如教室、操场、比赛场地）。",
+              "execution_tip": "若AI无法保持角色一致性，可固定seed值或使用角色参考图（IP-Adapter）。建议先单独生成角色全身/半身图，再组合到场景中。",
+              "ready_check": "已生成主角全身/半身图1张 + 至少3个不同场景的完整画面，且每张图都能明确对应某个分镜。"
+            },
+            {
+              "step_name": "动画化：将静态图转为动态视频片段",
+              "step_goal": "利用AI视频生成工具将关键帧图像变为连续动画，实现角色动作、镜头运动、特效闪动等",
+              "primary_tool": "Runway Gen-3 或 Pika Labs（AI视频生成）——支持图像+文本驱动动画",
+              "backup_tool": "剪映/After Effects + AI补帧插件（如 Ebsynth）——当纯AI生成不够稳定时，手动补充关键帧",
+              "suggested_input": "上一步生成的关键帧图像 + 每个镜头期望的动作描述（‘拳头向前冲’‘镜头环绕’‘粒子爆炸’）",
+              "expected_output": "至少6段短视频片段（每段5-10秒），总时长约60秒。每个片段包含连贯动作，画面无严重闪烁或扭曲。",
+              "execution_tip": "由于60秒总时长较短，建议先测试1-2个镜头，确认AI工具能生成流畅动作再批量生产；若效果不佳可缩短镜头时长或使用补帧。",
+              "ready_check": "所有片段已生成，总时长在55-65秒之间，无明显画质崩坏或角色变形严重的情况。"
+            },
+            {
+              "step_name": "配音、配乐与音效合成",
+              "step_goal": "为短剧添加角色对白/旁白、背景音乐和动作音效，提升热血氛围",
+              "primary_tool": "AI语音生成（如 ElevenLabs、Azure TTS）——生成角色声音；AI音乐生成（如 Splash Pro、Soundraw）——生成背景音乐",
+              "backup_tool": "免版税音效库（如 Pixabay、Artlist）+ 人工剪辑（Audacity）——当AI音乐风格不匹配时使用",
+              "suggested_input": "剧本中的台词文本 + 情绪提示（‘激动、爆发’）+ 热血风格参考曲目（如‘J-Pop摇滚’）；动作音效关键词（如‘出拳风声’‘爆炸’‘撞击’）",
+              "expected_output": "完整音频轨道：配音（若需对白）+ 背景音乐（BGM，能与画面节奏同步）+ 关键音效（如拳、冲击波、欢呼）；总时长60秒。",
+              "execution_tip": "BGM音量不要压过配音；音效可叠加在动作开始前1帧增强冲击力。使用剪辑软件的音量关键帧做淡入淡出。",
+              "ready_check": "音频轨道已与视频片段大致对齐，配音清晰，BGM情绪符合热血风格，至少包含3个关键动作音效。"
+            },
+            {
+              "step_name": "剪辑合成并导出短视频",
+              "step_goal": "将所有视频片段、音频轨道、标题字幕、片尾信息整合为一个60秒的完整短视频，并适配短视频平台格式",
+              "primary_tool": "剪映专业版 / Adobe Premiere Pro——支持时间轴精细剪辑与字幕",
+              "backup_tool": "CapCut（海外版）或 DaVinci Resolve——免费且功能完整",
+              "suggested_input": "所有动画片段 + 配音音轨 + 背景音乐 + 音效 + 角色设定中的关键台词作为字幕；建议输出分辨率：9:16（1080×1920）；帧率30fps",
+              "expected_output": "一个完整MP4文件：时长60±2秒，分辨率1080×1920，包含开场快速钩子、正片、结尾记忆点或引导关注提示（如‘下集预告’）。",
+              "execution_tip": "剪映的自动踩点功能可帮助BGM与画面节奏对齐；添加2-3处快进/慢放效果增加节奏感。导出前反复检查角色嘴型（若有说话）是否与配音同步。",
+              "ready_check": "视频时长在58-62秒之间，画面清晰，音画同步，字幕正确，无黑帧或跳帧。可无障碍播放于目标短视频平台。"
+            }
+          ]
+        },
+        "error_message": ""
+      },
+      "pair_valid": true,
+      "invalid_reason": "",
+      "pair_diff": {
+        "named_tool_count_delta": 5,
+        "expected_tool_hit_delta": 4,
+        "focus_keyword_hit_delta": 0,
+        "generic_phrase_delta": 0,
+        "step_focus_delta": 0,
+        "with_rag_metrics": {
+          "named_tool_count": 14,
+          "expected_tool_hits": 9,
+          "focus_keyword_hits": 7,
+          "step_focus_hits": 3,
+          "generic_phrase_count": 0
+        },
+        "without_rag_metrics": {
+          "named_tool_count": 9,
+          "expected_tool_hits": 5,
+          "focus_keyword_hits": 7,
+          "step_focus_hits": 3,
+          "generic_phrase_count": 0
+        },
+        "preliminary_winner": "with_rag"
+      }
+    },
+    {
+      "case_id": "shortdrama_pilot_episode_01",
+      "case_group": "core_ablation_cases",
+      "scenario": "AI 漫剧首集",
+      "user_goal": "我想做一个 30 秒 AI 漫剧首集，需要先做角色设定、分镜脚本，再生成镜头并剪成成片。",
+      "followup_answer": "",
+      "notes": "短剧生产闭环 case，用于观察 RAG 是否让步骤贴近漫剧首集。",
+      "with_rag_result": {
+        "ablation_mode": "with_rag",
+        "workflow_run_id": "route_20260523_123905_d70159",
+        "final_stage": "route_generated",
+        "route_generated": true,
+        "schema_valid": true,
+        "failure_type": "none",
+        "route_step_names": [
+          "设定与角色设定",
+          "角色视觉锁定",
+          "分镜脚本",
+          "生成镜头素材",
+          "剪辑与配音",
+          "发布与首轮验证"
+        ],
+        "step_count": 6,
+        "retrieval_count": 1,
+        "retrieval_doc_count": 9,
+        "retrieved_sources": [
+          "tools",
+          "workflows",
+          "blockages"
+        ],
+        "retrieved_snippet_preview": [
+          {
+            "source": "tools",
+            "file_name": "tools.md",
+            "section_index": "3",
+            "chunk_index": "20",
+            "excerpt": "## 常用工具组合 ### ChatGPT / 通义千问 - 常用步骤：设定、剧情大纲、分镜脚本、提示词、字幕和标题。 - 适合产出：角色设定、世界观一句话、分镜表、镜头提示词、旁白。 - 轻量替代：豆包。 - 最小用法：要求输出分镜表，字段包含镜头、时长、画面、动作、台词、提示"
+          },
+          {
+            "source": "workflows",
+            "file_name": "workflows.md",
+            "section_index": "10",
+            "chunk_index": "31",
+            "excerpt": "## 路径模式 1：AI 动漫短剧 - 适用场景：用户想做 AI / 动漫短剧，但尚未明确时长、集数、平台或风格。 - 目标产物：一条可启动的动漫短剧制作路线；具体时长、集数和发布平台应在第一步由用户确认。 - 新手建议：可以从较短版本开始试水，例如 30-60 秒短片或 1-2"
+          },
+          {
+            "source": "workflows",
+            "file_name": "workflows.md",
+            "section_index": "9",
+            "chunk_index": "30",
+            "excerpt": "## 典型最小闭环 设定/IP 方向 -> 角色视觉一致性 -> 分镜/脚本 -> 生成/剪辑 -> 首轮验证/发布 最低闭环不是\"生成几段好看的视频\"，而是完成一条可测试的短剧作品；具体集数、时长和发布平台应由用户确认。 ---"
+          }
+        ],
+        "route_context_chars": 3937,
+        "route_context_preview": "# 工具知识片段\n【片段 1】\nsource: tools\nfile_name: tools.md\nsection_index: 3\nchunk_index: 20\ncontent:\n## 常用工具组合\n\n### ChatGPT / 通义千问\n\n- 常用步骤：设定、剧情大纲、分镜脚本、提示词、字幕和标题。\n- 适合产出：角色设定、世界观一句话、分镜表、镜头提示词、旁白。\n- 轻量替代：豆包。\n- 最小用法：要求输出分镜表，字段包含镜头、时长、画面、动作、台词、提示词。\n\n### 即梦 / Midjourney / 豆包图像\n\n- 常用步骤：角色视觉、场景图、关键帧、封面图。\n- 适合产出：角色基准图、表情图、场景参考、首图。\n- 轻量替代：平台素材库、手绘草图。\n- 最小用法：先生成角色基准图，再复用角色描述和参考图，不要每个镜头重新发明角色。\n\n### 可灵 / Runway / Pika / 即梦视频\n\n- 常用步骤：图生视频、文生视频、短镜头生成。\n- 适合产出：3 到 5 秒镜头片段、动作镜头、转场素材。\n- 轻量替代：静态图 + 剪映运镜。\n- 最小用法：优先图生视频，输入明",
+        "latency_ms": 24003,
+        "model_call_count": 1,
+        "self_correction_count": 0,
+        "retrieval_trace_available": true,
+        "route_result": {
+          "task_summary": "用户需要制作一条30秒AI漫剧首集，流程包括角色设定、分镜脚本、镜头生成和剪辑成片。利用检索到的工具组合和workflow模板，生成一条具体可执行的路线。",
+          "route_type": "完整路线",
+          "steps": [
+            {
+              "step_name": "设定与角色设定",
+              "step_goal": "明确题材、主角、冲突和情绪钩子，为后续角色视觉和分镜提供基础。同时确认时长（30秒）和风格方向（如悬疑、甜宠等，用户自行选择）。",
+              "primary_tool": "ChatGPT / 通义千问：用于生成世界观一句话、主角设定、冲突和情绪钩子。",
+              "backup_tool": "豆包：轻量替代，同样能产出设定内容。",
+              "suggested_input": "用户提供初步想法（如：一个穿越少女的复仇故事）；或者直接让工具生成一个简单设定。",
+              "expected_output": "一份包含以下内容的设定文档：题材（如：穿越/复仇）、主角（姓名、年龄、性格关键词）、冲突（一句话核心矛盾）、情绪钩子（前3秒让观众想看的内容）。",
+              "execution_tip": "不要贪多，首集只聚焦1个主角、1个核心冲突。世界观细节可以在后续集数扩展。",
+              "ready_check": "设定了1个主角、1个明确的冲突、1个能吸引观众的情绪钩子。"
+            },
+            {
+              "step_name": "角色视觉锁定",
+              "step_goal": "生成主角的基准图和角色锁定卡，确保后续所有镜头中角色形象一致。",
+              "primary_tool": "即梦 / Midjourney：生成角色正面半身、全身和表情参考图。",
+              "backup_tool": "豆包图像：如果即梦/Midjourney无法使用，豆包也能生成类似效果。",
+              "suggested_input": "角色设定文档中的外貌描述（年龄、发型、脸型、服装、主色、气质），以及参考图描述词。",
+              "expected_output": "1张主角基准图（半身或全身）+ 角色锁定卡（80-120字，包含不变特征词）+ 1张额外表情图（可选）。",
+              "execution_tip": "写角色锁定卡时，核心特征如发型、服装颜色、脸型保持不变；后续生成时只改变动作、表情或场景。",
+              "ready_check": "连续生成3张不同动作/表情的图，旁观者能判断是同一角色。"
+            },
+            {
+              "step_name": "分镜脚本",
+              "step_goal": "将30秒剧情拆解为6-10个短镜头，每个镜头时长约3-5秒，并标注画面、动作、台词、提示词。",
+              "primary_tool": "ChatGPT / 通义千问：要求输出分镜表，字段包含镜头编号、时长、画面、动作、台词、提示词。",
+              "backup_tool": "豆包：同样能生成分镜表。",
+              "suggested_input": "设定文档中的剧情梗概（如：主角获得能力→遇到反派→冲突爆发→反转→悬念）。",
+              "expected_output": "分镜表（如Excel或文本列表），包含8个镜头，每个镜头满足：时长≈3-5秒，画面只描述一个主要动作，台词（如有）明确，提示词包含角色锁定词+动作+场景。",
+              "execution_tip": "每个镜头只保留一个主要动作，避免复杂转场。如果台词较长，可拆成多个镜头。参考卡点提醒：分镜不可生成。",
+              "ready_check": "每个分镜都能直接变成一条图生视频或文生视频的提示词，且只包含一个主要动作。"
+            },
+            {
+              "step_name": "生成镜头素材",
+              "step_goal": "根据分镜脚本，使用图生视频或文生视频工具生成3-5秒的短镜头片段。",
+              "primary_tool": "可灵 / Runway / Pika：优先使用图生视频（以角色基准图为输入），输入单一动作提示词。",
+              "backup_tool": "即梦视频：如果可灵不可用，即梦视频也能生成短镜头。",
+              "suggested_input": "每个镜头的提示词（包含角色锁定词） + 角色基准图（图生视频时使用）。",
+              "expected_output": "6-8个短镜头视频片段（MP4或GIF），每个长度约3-5秒，画面内容与分镜表一致。",
+              "execution_tip": "生成时先测试1-2个镜头，确认角色一致性后再批量生成。如果角色漂移，返回调整角色锁定卡。",
+              "ready_check": "所有镜头片段能按剧情顺序连续播放，且角色形象无明显漂移。"
+            },
+            {
+              "step_name": "剪辑与配音",
+              "step_goal": "将镜头片段按剧情顺序在剪映中拼接，添加旁白/台词配音、字幕和BGM，输出30秒成片。",
+              "primary_tool": "剪映 / CapCut：剪辑、添加字幕、配音（使用文本朗读或导入音频）、BGM。",
+              "backup_tool": "手机相册剪辑：如果无法使用剪映，可用手机自带剪辑工具临时拼接。",
+              "suggested_input": "镜头片段+分镜表中的台词文本+情绪指引（BGM风格）。",
+              "expected_output": "一条30秒的完整视频（mp4），包含：对的画面顺序、字幕（与台词同步）、配音（可用剪映文本朗读或ElevenLabs生成的旁白）、BGM。",
+              "execution_tip": "先按顺序剪成无声版本，确认故事逻辑后再加字幕、配音和BGM。配音可先用剪映默认朗读降低门槛。",
+              "ready_check": "静音播放也能看懂主角、冲突和结果；配音与字幕同步；总时长≈30秒。"
+            },
+            {
+              "step_name": "发布与首轮验证",
+              "step_goal": "确定发布平台和标题封面，完成发布并记录首轮数据（完播率、互动等），为下一条改进提供依据。",
+              "primary_tool": "剪映导出后的成片 + 发布平台（如抖音、B站、小红书等，用户自行选择）。",
+              "backup_tool": "平台内置剪辑器：如果剪映无法导出，可用平台工具上传。",
+              "suggested_input": "成片+标题+封面图（可从视频中截取或单独生成）。",
+              "expected_output": "发布后的作品链接或截图，以及记录字段：发布时间、初始曝光量、完播率区间（如50-70%）、点赞/评论数占位。",
+              "execution_tip": "首版不求完美，先验证故事理解和角色吸引力。标题前3秒体现情绪钩子。",
+              "ready_check": "作品已发布，且至少能观察到第一条评论、完播率或互动数据（不用具体数值，有观察即可）。"
+            }
+          ]
+        },
+        "error_message": ""
+      },
+      "without_rag_result": {
+        "ablation_mode": "without_rag",
+        "workflow_run_id": "route_20260523_123929_9a480c",
+        "final_stage": "route_generated",
+        "route_generated": true,
+        "schema_valid": true,
+        "failure_type": "none",
+        "route_step_names": [
+          "角色与视觉风格设定",
+          "文案与叙事脚本编写",
+          "分镜脚本与镜头规划",
+          "生成关键帧/镜头画面",
+          "视频剪辑与音效合成",
+          "发布前检查与导出"
+        ],
+        "step_count": 6,
+        "retrieval_count": 0,
+        "retrieval_doc_count": 0,
+        "retrieved_sources": [],
+        "retrieved_snippet_preview": [],
+        "route_context_chars": 68,
+        "route_context_preview": "# 工具知识片段\n没有检索到相关片段。\n\n# Workflow 模板片段\n没有检索到相关片段。\n\n# 卡点提醒片段\n没有检索到相关片段。",
+        "latency_ms": 36750,
+        "model_call_count": 2,
+        "self_correction_count": 1,
+        "retrieval_trace_available": false,
+        "route_result": {
+          "task_summary": "用户希望制作一段30秒的AI漫剧首集，流程包括角色设定、分镜脚本、镜头生成和最终剪辑。由于未提供具体工具、风格或平台偏好，路线为通用起步版本，聚焦于核心步骤和常见工具建议。",
+          "route_type": "通用起步路线",
+          "steps": [
+            {
+              "step_name": "角色与视觉风格设定",
+              "step_goal": "确定主要角色的外观、服饰、表情特征以及整体的视觉风格（如黑白漫画、彩色厚涂、扁平风等），确保后续生成的角色一致性。",
+              "primary_tool": "Midjourney / DALL·E 3（通过精准提示词生成角色概念图）",
+              "backup_tool": "Stable Diffusion + ControlNet（可更精细控制角色姿势与构图）",
+              "suggested_input": "角色文字描述（性别、年龄、发型、服装、表情倾向）；参考画风图片（如有）",
+              "expected_output": "2-3张角色正面/半侧面概念图；一段记录角色核心特征（如发色、瞳色、服装关键元素）的文字备忘",
+              "execution_tip": "首集只需一个主要角色即可，先不设定配角；保存角色种子（seed）或使用角色一致性模型（如Midjourney的–cref）便于后续复用",
+              "ready_check": "已完成至少一张清晰的角色概念图，且文字备忘记下了3个以上可区分的视觉特征"
+            },
+            {
+              "step_name": "文案与叙事脚本编写",
+              "step_goal": "为30秒漫剧首集写出简洁的开场文案（包含冲突或悬念），确定旁白/台词节奏，控制总字数在80-120字内。",
+              "primary_tool": "ChatGPT / Claude（辅助生成短文案并控制时长）",
+              "backup_tool": "在线文本计时器（手动计算朗读时长）",
+              "suggested_input": "故事梗概（用户可自拟，如“一个失忆的剑客发现自己的剑上有神秘符文”）；语气风格（冷峻、幽默、悬疑等）",
+              "expected_output": "一份不超过120字的脚本，标注出每个句子的预估时长（秒），并标明哪几个句子需要配画面强调",
+              "execution_tip": "30秒漫剧通常节奏较快，建议前5秒抛出钩子；旁白不宜过满，留出2-3秒纯画面时间",
+              "ready_check": "脚本总时长经语音朗读测试在28-32秒之间，且包含至少一个悬念或情感转折点"
+            },
+            {
+              "step_name": "分镜脚本与镜头规划",
+              "step_goal": "将文案拆解为6-8个镜头，标注每个镜头的画面描述、景别（远景/中景/特写）和时长，形成分镜表。",
+              "primary_tool": "Excel / 飞书多维表格（制作结构化分镜表）",
+              "backup_tool": "手绘草稿+拍照（当无数字工具时）",
+              "suggested_input": "上一步的脚本；角色概念图；用户想要的高潮画面想象",
+              "expected_output": "分镜表包含：镜头编号、画面描述、景别、时长（秒）、关键动作/对白、参考情绪",
+              "execution_tip": "30秒内镜头数控制在6-8个，平均每个镜头3-5秒；开头用特写或大景吸引注意，结尾留悬念或情感落点",
+              "ready_check": "分镜表已完成且每个镜头时长累加为30秒±2秒；每个镜头描述清晰，可与角色和脚本对应"
+            },
+            {
+              "step_name": "生成关键帧/镜头画面",
+              "step_goal": "根据分镜表，利用AI图像生成工具逐镜头生成高质量画面，确保角色一致性与构图符合分镜要求。",
+              "primary_tool": "Midjourney（通过垫图+角色seed生成连续镜头）",
+              "backup_tool": "Stable Diffusion + IP-Adapter（更精确的角色迁移）",
+              "suggested_input": "每个镜头对应的画面描述；角色概念图；可选的构图参考图",
+              "expected_output": "每个镜头1-2张候选画面（建议16:9横屏或9:16竖屏，根据发布平台要求）",
+              "execution_tip": "先生成核心镜头（特写、高潮画面），再补充过渡镜头；若形象出现偏差，立即调整seed或重写提示词",
+              "ready_check": "所有镜头至少有一张可用画面，且主要角色在关键画面中保持了视觉一致性"
+            },
+            {
+              "step_name": "视频剪辑与音效合成",
+              "step_goal": "将生成的静态画面按分镜顺序组合成动态视频，添加旁白、背景音乐、字幕和转场效果，输出30秒完整漫剧。",
+              "primary_tool": "剪映（多轨剪辑+AI语音合成+字幕）",
+              "backup_tool": "CapCut / Premiere Rush（移动端剪辑替代）",
+              "suggested_input": "所有生成画面（按镜头编号排序）；旁白录音或AI语音脚本；背景音乐（无版权或AI生成）；字幕文本",
+              "expected_output": "一段时长28-32秒的MP4视频，包含旁白、字幕、背景音乐和基本转场",
+              "execution_tip": "旁白用AI语音（如微软Azure TTS）比真人录制更可控；转场仅用淡入淡出，避免花哨效果；最后检查字幕与旁白同步",
+              "ready_check": "视频完整播放一遍无误，时长在目标范围内，音画同步，字幕无错别字"
+            },
+            {
+              "step_name": "发布前检查与导出",
+              "step_goal": "对成片做最终质量检查，调整输出格式，确认符合目标平台规范，准备发布。",
+              "primary_tool": "视频播放器（检查画面、音质）；平台预览功能（如抖音、B站、YouTube）",
+              "backup_tool": "手机本地播放测试",
+              "suggested_input": "成片视频；目标平台（待用户确认）",
+              "expected_output": "一段符合平台格式的最终视频文件（如1080p/30fps MP4），附带标题、标签建议",
+              "execution_tip": "检查视频是否被平台压缩过度；如有闪屏、跳帧问题，重新导出逐帧模式",
+              "ready_check": "视频在本地播放无硬伤，且导出参数（分辨率、码率、格式）符合常见平台要求"
+            }
+          ]
+        },
+        "error_message": ""
+      },
+      "pair_valid": true,
+      "invalid_reason": "",
+      "pair_diff": {
+        "named_tool_count_delta": 7,
+        "expected_tool_hit_delta": 6,
+        "focus_keyword_hit_delta": 0,
+        "generic_phrase_delta": 0,
+        "step_focus_delta": 1,
+        "with_rag_metrics": {
+          "named_tool_count": 13,
+          "expected_tool_hits": 9,
+          "focus_keyword_hits": 6,
+          "step_focus_hits": 3,
+          "generic_phrase_count": 0
+        },
+        "without_rag_metrics": {
+          "named_tool_count": 6,
+          "expected_tool_hits": 3,
+          "focus_keyword_hits": 6,
+          "step_focus_hits": 2,
+          "generic_phrase_count": 0
+        },
+        "preliminary_winner": "with_rag"
+      }
+    },
+    {
+      "case_id": "shortdrama_character_consistency_01",
+      "case_group": "core_ablation_cases",
+      "scenario": "AI 动漫短剧角色一致性",
+      "user_goal": "我想做 AI 动漫短剧，最怕角色每个镜头长得不一样，想要一条角色一致性更稳的制作路线。",
+      "followup_answer": "",
+      "notes": "角色一致性 case，用于观察 RAG 是否引入角色锁定和参考图思路。",
+      "with_rag_result": {
+        "ablation_mode": "with_rag",
+        "workflow_run_id": "route_20260523_124006_c0d47f",
+        "final_stage": "route_generated",
+        "route_generated": true,
+        "schema_valid": true,
+        "failure_type": "none",
+        "route_step_names": [
+          "定义故事核心与角色锁定卡",
+          "生成角色基准图与参考集",
+          "编写分镜脚本与镜头拆解",
+          "生成镜头片段（图生视频）",
+          "剪辑、配音与字幕合成",
+          "发布验证与迭代记录"
+        ],
+        "step_count": 6,
+        "retrieval_count": 1,
+        "retrieval_doc_count": 9,
+        "retrieved_sources": [
+          "tools",
+          "workflows",
+          "blockages"
+        ],
+        "retrieved_snippet_preview": [
+          {
+            "source": "tools",
+            "file_name": "tools.md",
+            "section_index": "3",
+            "chunk_index": "20",
+            "excerpt": "## 常用工具组合 ### ChatGPT / 通义千问 - 常用步骤：设定、剧情大纲、分镜脚本、提示词、字幕和标题。 - 适合产出：角色设定、世界观一句话、分镜表、镜头提示词、旁白。 - 轻量替代：豆包。 - 最小用法：要求输出分镜表，字段包含镜头、时长、画面、动作、台词、提示"
+          },
+          {
+            "source": "workflows",
+            "file_name": "workflows.md",
+            "section_index": "10",
+            "chunk_index": "31",
+            "excerpt": "## 路径模式 1：AI 动漫短剧 - 适用场景：用户想做 AI / 动漫短剧，但尚未明确时长、集数、平台或风格。 - 目标产物：一条可启动的动漫短剧制作路线；具体时长、集数和发布平台应在第一步由用户确认。 - 新手建议：可以从较短版本开始试水，例如 30-60 秒短片或 1-2"
+          },
+          {
+            "source": "workflows",
+            "file_name": "workflows.md",
+            "section_index": "11",
+            "chunk_index": "32",
+            "excerpt": "## 路径模式 2：角色一致性工作流 - 适用场景：用户卡在角色漂移、每张图不像同一个人。 - 目标产物：一套可复用的角色视觉规范。 - 关键中间产物：角色锁定词、参考图、表情/动作扩展、禁用词。 ### 推荐阶段 1. 写角色锁定卡 - 产出：年龄、发型、脸型、服装、主色、气质"
+          }
+        ],
+        "route_context_chars": 3937,
+        "route_context_preview": "# 工具知识片段\n【片段 1】\nsource: tools\nfile_name: tools.md\nsection_index: 3\nchunk_index: 20\ncontent:\n## 常用工具组合\n\n### ChatGPT / 通义千问\n\n- 常用步骤：设定、剧情大纲、分镜脚本、提示词、字幕和标题。\n- 适合产出：角色设定、世界观一句话、分镜表、镜头提示词、旁白。\n- 轻量替代：豆包。\n- 最小用法：要求输出分镜表，字段包含镜头、时长、画面、动作、台词、提示词。\n\n### 即梦 / Midjourney / 豆包图像\n\n- 常用步骤：角色视觉、场景图、关键帧、封面图。\n- 适合产出：角色基准图、表情图、场景参考、首图。\n- 轻量替代：平台素材库、手绘草图。\n- 最小用法：先生成角色基准图，再复用角色描述和参考图，不要每个镜头重新发明角色。\n\n### 可灵 / Runway / Pika / 即梦视频\n\n- 常用步骤：图生视频、文生视频、短镜头生成。\n- 适合产出：3 到 5 秒镜头片段、动作镜头、转场素材。\n- 轻量替代：静态图 + 剪映运镜。\n- 最小用法：优先图生视频，输入明",
+        "latency_ms": 25037,
+        "model_call_count": 1,
+        "self_correction_count": 0,
+        "retrieval_trace_available": true,
+        "route_result": {
+          "task_summary": "用户想做AI动漫短剧，核心痛点是角色一致性不稳定，需要一条从角色锁定到成片发布的完整制作路线，确保每个镜头角色不漂移。",
+          "route_type": "完整路线",
+          "steps": [
+            {
+              "step_name": "定义故事核心与角色锁定卡",
+              "step_goal": "确定短剧的题材、主角、核心冲突和情绪钩子，并写出80-120字的角色锁定描述（年龄、发型、脸型、服装、主色、气质），固定角色视觉锚点。",
+              "primary_tool": "ChatGPT / 通义千问 - 写作角色锁定卡与故事概要",
+              "backup_tool": "豆包 - 轻量替代，同样可输出角色描述",
+              "suggested_input": "用户的想法：题材偏好（如奇幻、校园）、主角性格、初步冲突想法。如果无明确想法，可输入‘一个穿越到异世界的现代程序员，要在一个月内学会魔法否则被困’作为示例。",
+              "expected_output": "一段100字左右的角色锁定卡（主角色姓名、特征、服装色彩、气质）+ 一句世界观/冲突描述",
+              "execution_tip": "描述要具体，避免模糊词（如‘好看’‘酷’），用颜色、发型、脸型、体态等可视觉化的词；锁定卡后续在提示词中作为固定前缀使用。",
+              "ready_check": "角色锁定卡描述清晰，旁人能根据文字画出一个大致形象；故事有主角、一个冲突、一个情绪钩子（如悬念、搞笑、反转）。"
+            },
+            {
+              "step_name": "生成角色基准图与参考集",
+              "step_goal": "基于角色锁定卡，生成正面、半身、全身至少3张基准图，选定1张作为主参考图，确保后续所有镜头复用该图。",
+              "primary_tool": "即梦 / Midjourney - 文生图，输入角色锁定卡+负面提示词",
+              "backup_tool": "豆包图像 - 免费轻量替代，但一致性稍弱",
+              "suggested_input": "角色锁定卡文本 + 风格参考词（如‘动画风格’‘吉卜力风格’） + 统一负面提示词（如‘不对称、多手指、模糊’）",
+              "expected_output": "3张以上同一角色的不同角度/表情图，选出1张主参考图（最好正面半身，清晰展示脸型、服装、发型）",
+              "execution_tip": "生成后立即标记主参考图文件名（如‘主角_基准_正面_v1’）；不要混用不同风格模型生成的图，以免漂移。",
+              "ready_check": "连续生成3张图，旁观者能认出是同一角色（发型、脸型、服装主色基本一致）；选定1张主参考图备用。"
+            },
+            {
+              "step_name": "编写分镜脚本与镜头拆解",
+              "step_goal": "将故事拆分为3-8个短镜头，每个镜头只表达一个主要动作，标注时长、景别、画面、动作、台词和提示词（固定角色描述+可变动作/场景）。",
+              "primary_tool": "ChatGPT / 通义千问 - 输出分镜表（字段：镜头编号、时长、画面、动作、台词、提示词）",
+              "backup_tool": "纸笔或Excel手动填写",
+              "suggested_input": "故事大纲 + 角色锁定卡 + 主参考图描述 + 用户希望的分镜数量（如5个镜头）",
+              "expected_output": "分镜表，每个镜头包含：镜头编号、建议时长（3-5秒）、画面描述、角色动作、台词（如有）、图生视频提示词（固定角色描述+动作+场景+负面提示）",
+              "execution_tip": "每个镜头只写一个主要动作（如‘主角推门进入’），不要写‘回忆+转身+对话’；时长建议3-5秒，总长控制在30-60秒可先试水。",
+              "ready_check": "每个分镜都能直接变成一条图生视频或文生视频提示词（即提示词不含多动作、长时间复杂描述）。"
+            },
+            {
+              "step_name": "生成镜头片段（图生视频）",
+              "step_goal": "使用主参考图+分镜提示词，通过图生视频生成每个镜头的3-5秒短片，确保角色在连续镜头中不明显漂移。",
+              "primary_tool": "可灵 / Runway / Pika - 图生视频，输入主参考图+动作提示词",
+              "backup_tool": "即梦视频 - 国内可用，轻量替代",
+              "suggested_input": "每个镜头：主参考图 + 分镜提示词（不变角色描述+当前动作+场景） + 负面提示词（如‘抖动、变形’）",
+              "expected_output": "3-8个短镜头视频片段，每个片段内角色脸部、服装稳定，无明显畸变",
+              "execution_tip": "优先使用图生视频，输入图必须为主参考图或基于主参考图微调的图；每次只改变动作描述和场景描述，角色固定词不变。",
+              "ready_check": "所有镜头片段按剧情顺序排列后，视觉上主角连续、没有突然变脸或换装。"
+            },
+            {
+              "step_name": "剪辑、配音与字幕合成",
+              "step_goal": "按分镜顺序将镜头片段剪成完整短剧，添加旁白/台词配音、背景音乐、字幕，输出可发布版本。",
+              "primary_tool": "剪映 / CapCut - 剪辑、字幕、配音、BGM",
+              "backup_tool": "手机相册剪辑（轻量替代，但功能少）",
+              "suggested_input": "所有镜头片段 + 分镜表的台词文本 + 角色配音需求（如男声、女声、旁白）",
+              "expected_output": "一条完整的短剧视频（时长约为镜头总时长之和），包含字幕、配音、BGM、开头/结尾",
+              "execution_tip": "先按剧情顺序剪成无声版本，确认节奏后再加配音和字幕；配音首版可用剪映文本朗读降低制作成本。",
+              "ready_check": "静音播放也能看懂主角是谁、发生了什么、后续内容期待点是什么；声音、字幕、画面节奏基本对齐。"
+            },
+            {
+              "step_name": "发布验证与迭代记录",
+              "step_goal": "发布短剧到目标平台，记录关键数据（完播、互动、评论），为下一条改进提供依据。",
+              "primary_tool": "目标平台（如抖音、B站、YouTube）+ 剪映导出设置",
+              "backup_tool": "平台内置剪辑器（轻量发布）",
+              "suggested_input": "成片 + 标题（建议包含悬念/情绪钩子） + 封面图（用角色基准图生成）",
+              "expected_output": "一条已发布的短剧视频，附带数据记录（播放量、完播率、点赞、评论数等观察项）",
+              "execution_tip": "发布时记录时间、标题、封面、数据区间（如播放量区间），不要虚构具体数字；如果用户是新手，可以先发到私密或小范围群收集反馈再公开。",
+              "ready_check": "成功发布并至少收集到一轮观看反馈（评论、私信或数据后台截图）；用户能根据反馈判断是否要继续做下一集或调整风格。"
+            }
+          ]
+        },
+        "error_message": ""
+      },
+      "without_rag_result": {
+        "ablation_mode": "without_rag",
+        "workflow_run_id": "route_20260523_124031_063220",
+        "final_stage": "route_generated",
+        "route_generated": true,
+        "schema_valid": true,
+        "failure_type": "none",
+        "route_step_names": [
+          "角色视觉定义与一致性锚点构建",
+          "分镜脚本与关键帧设计",
+          "角色-场景一致性生成（逐镜头输出）",
+          "帧序列动画化与运动一致性控制",
+          "音频与字幕合成",
+          "最终剪辑与发布验证"
+        ],
+        "step_count": 6,
+        "retrieval_count": 0,
+        "retrieval_doc_count": 0,
+        "retrieved_sources": [],
+        "retrieved_snippet_preview": [],
+        "route_context_chars": 68,
+        "route_context_preview": "# 工具知识片段\n没有检索到相关片段。\n\n# Workflow 模板片段\n没有检索到相关片段。\n\n# 卡点提醒片段\n没有检索到相关片段。",
+        "latency_ms": 38568,
+        "model_call_count": 2,
+        "self_correction_count": 1,
+        "retrieval_trace_available": false,
+        "route_result": {
+          "task_summary": "用户想做AI动漫短剧，核心痛点是角色一致性，需要一条围绕角色稳定生成的工作流路线。",
+          "route_type": "通用起步路线",
+          "steps": [
+            {
+              "step_name": "角色视觉定义与一致性锚点构建",
+              "step_goal": "为每个主要角色创建统一的视觉锚点（角色卡），确保后续所有生成都基于同一参考。",
+              "primary_tool": "Midjourney + 角色参考图功能（cref 或 --sref）或 DALL·E 3 + 角色种子锁定",
+              "backup_tool": "Stable Diffusion + ControlNet（使用 IP-Adapter 或 Reference Only），适合需要更精细控制面部特征时使用。",
+              "suggested_input": "角色文字描述（外貌、服装、发型、关键特征）+ 可选的1-2张参考图（可由AI生成第一版后选定最佳版本）。",
+              "expected_output": "每个角色至少1张标准正面照、1张侧面照、1张三视图或表情变化图（共3-5张），并记录生成时的种子 seed 或 cref 图片链接。",
+              "execution_tip": "优先使用 Midjourney 的 cref 功能（垫角色图）或 SD 的 ReActor 插件，确保每一帧都复用同一角色锚点。角色卡要保存为独立文件夹，命名清晰。",
+              "ready_check": "已为每个主要角色生成至少1张高辨识度的正面角色卡，并记录了可复用的角色锚点（seed 或 cref 图片）。"
+            },
+            {
+              "step_name": "分镜脚本与关键帧设计",
+              "step_goal": "将剧情拆解为镜头列表，标注每个镜头出现的角色、动作、背景，为后续生成做准备。",
+              "primary_tool": "Notion / Excel + 手绘草图或 AI 分镜工具（如 Vizcom、Storyboarder）",
+              "backup_tool": "ChatGPT（用于生成文字分镜）+ Canva（快速拼贴构图）",
+              "suggested_input": "剧情大纲（用户自己的故事文本）、角色卡、场景列表（用户确认）。",
+              "expected_output": "一个包含镜头编号、角色列表、动作描述、背景说明、情绪/灯光标注的分镜表（至少10个镜头作为起步）。",
+              "execution_tip": "每个镜头必须标注使用的角色（如主角A、配角B），避免后期混淆。镜头越具体，AI生成越稳定。",
+              "ready_check": "分镜表已产出，每个镜头明确了角色和场景，没有遗漏关键叙事点。"
+            },
+            {
+              "step_name": "角色-场景一致性生成（逐镜头输出）",
+              "step_goal": "锚定角色卡和场景风格，逐镜头生成统一风格的图像帧，确保角色长相、服装、光线一致。",
+              "primary_tool": "Midjourney（使用角色 cref + 场景描述 + 种子锁定）或 Stable Diffusion（Embedding + LoRA）",
+              "backup_tool": "Leonardo.ai（有角色参考功能）或 Kling（图生视频前先固定角色帧）",
+              "suggested_input": "分镜表每个镜头的文本描述 + 对应角色卡图片 + 场景风格参考图（可选）。",
+              "expected_output": "每个镜头的关键帧图像（至少1张），角色面部、服装、发型与角色卡一致，场景风格统一。",
+              "execution_tip": "如果生成角色出现偏差，立即调整 cref 权重或重新生成该镜头，不遗留不一致帧。优先使用图生图模式而非纯文生图。",
+              "ready_check": "所有关键帧已生成，随机抽查3个镜头，角色可辨认且与角色卡匹配，无明显变异。"
+            },
+            {
+              "step_name": "帧序列动画化与运动一致性控制",
+              "step_goal": "将关键帧转化为连贯的动画片段，同时保持角色在运动中的面貌稳定。",
+              "primary_tool": "Runway Gen-3 或 Pika Labs（图生视频，运动一致性模式）",
+              "backup_tool": "Kling（对角色一致性支持较好）或 Haiper（免费备选）",
+              "suggested_input": "上一步生成的关键帧图片 + 动作提示词（如“角色转身走路”）。",
+              "expected_output": "每个关键帧对应的一段2-5秒视频片段，角色面部在运动中无明显变形。",
+              "execution_tip": "选择一个场景先测试，调整运动提示词强度，确保角色特征稳定后再批量生成。如果变形严重，回退到关键帧生成步骤调整。",
+              "ready_check": "每个视频片段中角色可被识别，无严重扭曲或融合，运动连贯。"
+            },
+            {
+              "step_name": "音频与字幕合成",
+              "step_goal": "为动画片段添加配音、音效、背景音乐及字幕，完成视听组合。",
+              "primary_tool": "ElevenLabs（配音）+ Suno AI（背景音乐）+ CapCut（剪辑与字幕）",
+              "backup_tool": "Descript（一站式音频剪辑）+ Murf（配音）",
+              "suggested_input": "剧本台词文本 + 角色配音风格设定 + 情绪描述（如紧张、欢快） + 动画片段。",
+              "expected_output": "每个片段有同步配音和字幕，背景音乐与画面情绪匹配，音频干净无杂音。",
+              "execution_tip": "先录制所有配音，再批量匹配到视频时间轴，使用脚本对齐工具（如 Auto-Subtitle）。注意人声与背景音乐的音量平衡。",
+              "ready_check": "至少一个完整片段（包含配音、字幕、背景音乐）试播放无误，声画同步，角色语音清晰。"
+            },
+            {
+              "step_name": "最终剪辑与发布验证",
+              "step_goal": "将各片段串联成完整短剧，添加片头片尾，输出发布格式并记录观察数据。",
+              "primary_tool": "CapCut 或 DaVinci Resolve（专业调色）",
+              "backup_tool": "Premiere Pro（已有工作流时使用）",
+              "suggested_input": "所有视频片段、音频轨道、字幕文件、片头片尾模板。",
+              "expected_output": "一个完整的短剧成片（1080p，mp4格式），包含片头、片尾，无跳帧或黑场。附带一份观察记录表（包含字段：发布平台、发布日期、播放量区间、点赞数区间、收藏数区间、完播率区间）。",
+              "execution_tip": "导出前逐镜头检查转场是否流畅，字幕是否完整；如出现角色不一致的镜头，替换为备选关键帧。记录表只填写观察字段占位，不虚构数据。",
+              "ready_check": "成片可正常播放，时长与分镜表一致，无明显编辑错误；观察记录表已创建并填写初始占位信息（平台、日期待填，其余字段留空或写“待统计”）。"
+            }
+          ]
+        },
+        "error_message": ""
+      },
+      "pair_valid": true,
+      "invalid_reason": "",
+      "pair_diff": {
+        "named_tool_count_delta": 2,
+        "expected_tool_hit_delta": 4,
+        "focus_keyword_hit_delta": -1,
+        "generic_phrase_delta": -2,
+        "step_focus_delta": -1,
+        "with_rag_metrics": {
+          "named_tool_count": 11,
+          "expected_tool_hits": 8,
+          "focus_keyword_hits": 5,
+          "step_focus_hits": 2,
+          "generic_phrase_count": 2
+        },
+        "without_rag_metrics": {
+          "named_tool_count": 9,
+          "expected_tool_hits": 4,
+          "focus_keyword_hits": 6,
+          "step_focus_hits": 3,
+          "generic_phrase_count": 0
+        },
+        "preliminary_winner": "tie"
+      }
+    },
+    {
+      "case_id": "content_xhs_series_01",
+      "case_group": "core_ablation_cases",
+      "scenario": "小红书图文系列",
+      "user_goal": "我想用 AI 做一组小红书图文选题，主题是大学生如何用 AI 提高学习效率，需要标题、正文和封面文案。",
+      "followup_answer": "",
+      "notes": "内容图文 case，用于观察 RAG 是否支撑平台化内容生产。",
+      "with_rag_result": {
+        "ablation_mode": "with_rag",
+        "workflow_run_id": "route_20260523_124110_f199ca",
+        "final_stage": "route_generated",
+        "route_generated": true,
+        "schema_valid": true,
+        "failure_type": "none",
+        "route_step_names": [
+          "锁定选题与受众",
+          "规划正文结构",
+          "生成配图/素材清单",
+          "包装标题与封面文案",
+          "正文草稿与文案润色",
+          "发布与复盘计划"
+        ],
+        "step_count": 6,
+        "retrieval_count": 1,
+        "retrieval_doc_count": 9,
+        "retrieved_sources": [
+          "tools",
+          "workflows",
+          "blockages"
+        ],
+        "retrieved_snippet_preview": [
+          {
+            "source": "tools",
+            "file_name": "tools.md",
+            "section_index": "2",
+            "chunk_index": "19",
+            "excerpt": "## 常用工具组合 ### ChatGPT / 通义千问 - 常用步骤：选题、标题、正文草稿、文案改写、发布复盘。 - 适合产出：选题池、图文大纲、口播稿、标题版本、复盘分析。 - 轻量替代：豆包、Kimi。 - 最小用法：输入受众、平台、内容目标和参考风格，要求多版本对比。 #"
+          },
+          {
+            "source": "workflows",
+            "file_name": "workflows.md",
+            "section_index": "6",
+            "chunk_index": "27",
+            "excerpt": "## 路径模式 1：小红书图文笔记 - 适用场景：用户想用 AI 做小红书图文、经验帖、工具推荐、学习笔记。 - 目标产物：一篇可发布的小红书图文笔记。 - 关键中间产物：选题卡、正文草稿、首图标题、配图清单、标签和发布复盘。 ### 推荐阶段 1. 选题和受众 - 产出：目标人"
+          },
+          {
+            "source": "workflows",
+            "file_name": "workflows.md",
+            "section_index": "7",
+            "chunk_index": "28",
+            "excerpt": "## 路径模式 2：文案生成/改写 - 适用场景：用户需要广告文案、产品介绍、社群文案、短视频口播稿。 - 目标产物：一组可测试的文案版本。 - 关键中间产物：目标人群、卖点清单、语气样例、版本对比表。 ### 推荐阶段 1. 明确文案任务 - 产出：使用场景、目标动作、受众、限"
+          }
+        ],
+        "route_context_chars": 3704,
+        "route_context_preview": "# 工具知识片段\n【片段 1】\nsource: tools\nfile_name: tools.md\nsection_index: 2\nchunk_index: 19\ncontent:\n## 常用工具组合\n\n### ChatGPT / 通义千问\n\n- 常用步骤：选题、标题、正文草稿、文案改写、发布复盘。\n- 适合产出：选题池、图文大纲、口播稿、标题版本、复盘分析。\n- 轻量替代：豆包、Kimi。\n- 最小用法：输入受众、平台、内容目标和参考风格，要求多版本对比。\n\n### Kimi\n\n- 常用步骤：参考资料整理、竞品内容分析、长文压缩。\n- 适合产出：素材摘要、观点清单、可引用资料、内容结构。\n- 轻量替代：ChatGPT 文件阅读。\n- 最小用法：把参考内容整理为“可用观点、案例、禁用表达”。\n\n### Canva / 稿定设计\n\n- 常用步骤：封面、长图、信息图、发布素材包装。\n- 适合产出：小红书首图、步骤图、对比图、海报。\n- 轻量替代：小红书内置编辑器、PPT。\n- 最小用法：用模板先确定层级，再替换标题和素材。\n\n### 即梦 / 豆包图像 / Midjourney\n\n- 常",
+        "latency_ms": 36685,
+        "model_call_count": 1,
+        "self_correction_count": 0,
+        "retrieval_trace_available": true,
+        "route_result": {
+          "task_summary": "用户希望借用 AI 工具，为小红书平台创作一组面向大学生的图文内容，主题是‘大学生如何用 AI 提高学习效率’，需要产出标题、正文和封面文案。参考上下文提供了完整的小红书图文 workflow 和常用工具组合，可以生成一条从选题到复盘的可执行路线。",
+          "route_type": "完整路线",
+          "steps": [
+            {
+              "step_name": "锁定选题与受众",
+              "step_goal": "明确笔记写给谁、解决什么具体问题，避免选题过大、泛泛而谈。",
+              "primary_tool": "ChatGPT / 通义千问（选题生成）",
+              "backup_tool": "Kimi（参考资料整理）——如果你已收藏过大学生学习效率类的文章，可让 Kimi 提炼常见痛点。",
+              "suggested_input": "目标人群：大学生；主题：用 AI 提高学习效率；要求：输出 5 个具体选题，每个选题需包含‘谁看、解决什么问题、看完收益’。参考卡点：选题要能回答‘谁为什么要点开’。",
+              "expected_output": "一份包含 3~5 个具体选题的清单，每个选题用一句话描述目标人群、痛点与承诺。例如：‘大二学生 → 期末论文写不完 → 用 AI 辅助写作框架，3 小时完成初稿’。",
+              "execution_tip": "不要只写‘AI 工具推荐’，一定要绑定具体场景（如备考、论文、时间管理）。如果 AI 一次性给得太宽泛，追问‘这个选题在什么场景下最痛？’",
+              "ready_check": "至少有一个选题能直接回答‘谁为什么要点开’（具体人群 + 具体问题 + 可感知收益）。"
+            },
+            {
+              "step_name": "规划正文结构",
+              "step_goal": "搭建可操作的正文骨架，包含开头钩子、步骤正文、避坑提醒和结尾引导，避免写成泛泛介绍。",
+              "primary_tool": "ChatGPT / 通义千问（大纲生成）",
+              "backup_tool": "Kimi（长文压缩）——如果参考文章太长，让 Kimi 提取关键步骤。",
+              "suggested_input": "选定的选题（例如‘大学生用 AI 写论文，3 步从零到初稿’）；要求输出：1 个开头钩子（能引发共鸣的问题或场景）、3~4 个可操作步骤（每步包含做什么、用什么工具、怎么做）、1 个避坑点（常见错误或失败经验）、1 个结尾引导（关注/收藏/讨论）。",
+              "expected_output": "一段结构清晰的正文大纲，包含钩子、步骤、避坑、引导。例如：‘开头：你是不是也在写论文时对着空白文档发呆？…… 步骤1：用 AI 生成大纲，工具推荐…… 步骤2：分段填充正文，注意不要直接复制…… 避坑：AI 语言太正式，一定要用自己的话改一遍…… 结尾：你还有什么 AI 学习技巧？评论区聊聊’。",
+              "execution_tip": "提醒 AI 加入真实案例或假设的对比（如‘我朋友试了之后…’），否则正文容易空洞。如果大纲像百科，要求 AI 重写，加入步骤中的具体操作细节。",
+              "ready_check": "正文大纲里至少有 1 个具体例子、1 个步骤（包含工具名称或操作动作）和 1 个避坑提醒。"
+            },
+            {
+              "step_name": "生成配图/素材清单",
+              "step_goal": "为笔记准备视觉素材（首图、步骤图、对比图等），每张图对应正文中的信息点。",
+              "primary_tool": "Canva / 稿定设计（模板排版）",
+              "backup_tool": "即梦 / 豆包图像（生成主视觉）——如果你需要原创风格的封面背景；Canva 自带素材库也可替代。",
+              "suggested_input": "正文大纲（步骤2产出）；要求：列出需要配图的点位（至少首图 + 1 张步骤图或对比图），描述每张图的主题、文字和风格参考（如‘左图是乱糟糟的论文草稿，右图是 AI 辅助后的整洁大纲’）。",
+              "expected_output": "配图清单：首图（标题+主视觉，如‘3 小时搞定论文初稿’）、步骤图（3 张，每张对应一个步骤的关键词）、对比图（可选）。每张图注明尺寸（小红书推荐 3:4）和文字要点。",
+              "execution_tip": "首图标题控制在 8~14 个字，手机列表尺寸下 2 秒可读。不要直接生成整张封面图，先定主视觉再进排版工具加标题。",
+              "ready_check": "每张配图都至少对应正文中的一个信息点，且首图能马上传达收益。"
+            },
+            {
+              "step_name": "包装标题与封面文案",
+              "step_goal": "生成 3 个以上标题版本，并确定首图文案和版式方向，提升列表页点击率。",
+              "primary_tool": "ChatGPT / 通义千问（标题多版本生成）",
+              "backup_tool": "Kimi（竞品标题分析）——如果已有同领域爆款标题，可让 Kimi 提取结构。",
+              "suggested_input": "正文主题和受众；要求输出：3 个不同角度的标题（痛点型、结果型、数字型），每个标题控制在 20 字以内；然后根据选定的标题，生成 1 组首图文案（主标题 + 副标题或引导语）。参考卡点：标题要能回答‘谁为什么要点开’。",
+              "expected_output": "标题池（至少 3 个）：如‘别再手动写论文了！AI 保姆级教程来了’、‘期末论文靠 AI 拿 A，我只用了 3 小时’、‘95% 的大学生不知道的 AI 论文技巧’。首图文案：主标题 + 副标题（可选），与配图设计协调。",
+              "execution_tip": "标题不要过于夸张或流于‘震惊体’，要结合真实体验感。可以尝试‘你 + 动词 + 结果’结构。如果 AI 生成的标题相似，要求换角度（比如从‘干货’换成‘故事’）。",
+              "ready_check": "至少有 1 个标题在手机列表尺寸下能直接传达主题和收益，且 3 个标题角度不同（不是同义改写）。"
+            },
+            {
+              "step_name": "正文草稿与文案润色",
+              "step_goal": "将大纲扩展为完整正文，并人工检查 AI 痕迹，补充真实感、口语化和避坑点。",
+              "primary_tool": "ChatGPT / 通义千问（正文扩展）",
+              "backup_tool": "Kimi（语感检查）——可让 Kimi 标出‘疑似 AI 生成’的句子，提供修改建议。",
+              "suggested_input": "正文大纲（步骤2） + 标题（步骤4选一个）；要求：将大纲扩展为 500~800 字的完整正文，保持口语化，每步加入具体操作细节。然后人工检查：删除空泛形容词（如‘非常’‘超级’），替换为具体动作或结果；加入 1~2 句‘大学生会说的话’（如‘我当时也踩了这个坑’）。",
+              "expected_output": "最终版正文，包含标题、开头、步骤、避坑、结尾引导。全文至少有一个真实场景或前后对比，没有明显‘AI 味’（如句式工整、缺乏情绪）。",
+              "execution_tip": "如果正文读起来像说明书，要求 AI 重写第二轮，加入‘我’或‘你’的人称，模拟像朋友分享的语气。也可以手动加入表情符号、换行分割，增强可读性。",
+              "ready_check": "正文里至少有 1 个具体例子（可以是假设但要有细节）、1 个步骤（包含工具或动作）、1 个避坑点（失败经验或常见错误）。"
+            },
+            {
+              "step_name": "发布与复盘计划",
+              "step_goal": "确定发布设置（时间、标签）并建立数据记录表，为下一篇内容提供依据，避免凭感觉迭代。",
+              "primary_tool": "小红书内置发布面板（发布） + 手工记录表（复盘）",
+              "backup_tool": "平台数据面板（如需复盘）——但发布前需要先准备好记录字段。",
+              "suggested_input": "最终版笔记（标题 + 正文 + 配图）；要求：确定最佳发布时间（建议参考大学生作息，如晚上 8-10 点）、选择 5~10 个相关标签（如 #大学生 #AI学习 #效率工具 #论文）。然后准备一张记录表，字段包括：标题、封面、发布时间、曝光量、点击量、收藏数、评论数、下一篇调整方向。",
+              "expected_output": "发布就绪状态（时间、标签已填） + 空白记录表模板。记录表不填入数据，只占位。后续发布后手动填写至少 2 个指标（如曝光、收藏）。",
+              "execution_tip": "不要默认发布后一定会爆，记录表的作用是观察趋势。如果第一篇数据低，不要立刻改方向，至少发 3 篇再对比。发布后 1 小时记录初始数据，24 小时记录稳定数据。",
+              "ready_check": "已设置发布时间和标签，且记录表字段包含标题、封面、发布时间和至少 2 个数据指标（如曝光、点击）。下一篇选题或标题将引用这篇数据作为依据。"
+            }
+          ]
+        },
+        "error_message": ""
+      },
+      "without_rag_result": {
+        "ablation_mode": "without_rag",
+        "workflow_run_id": "route_20260523_124146_7e906c",
+        "final_stage": "route_generated",
+        "route_generated": true,
+        "schema_valid": true,
+        "failure_type": "none",
+        "route_step_names": [
+          "选题方向与内容框架规划",
+          "单篇标题与正文生成",
+          "封面文案与视觉提示生成",
+          "内容排版与细节优化",
+          "多篇批量生产与待发布清单整理",
+          "发布前检查与风险规避"
+        ],
+        "step_count": 6,
+        "retrieval_count": 0,
+        "retrieval_doc_count": 0,
+        "retrieved_sources": [],
+        "retrieved_snippet_preview": [],
+        "route_context_chars": 68,
+        "route_context_preview": "# 工具知识片段\n没有检索到相关片段。\n\n# Workflow 模板片段\n没有检索到相关片段。\n\n# 卡点提醒片段\n没有检索到相关片段。",
+        "latency_ms": 55463,
+        "model_call_count": 1,
+        "self_correction_count": 0,
+        "retrieval_trace_available": false,
+        "route_result": {
+          "task_summary": "用户希望利用 AI 为小红书平台生成一组图文选题，主题为“大学生如何用 AI 提高学习效率”，需要产出标题、正文和封面文案。未提供具体工具偏好、风格、发布频率等细节，属于方向明确的起步需求。",
+          "route_type": "通用起步路线",
+          "steps": [
+            {
+              "step_name": "选题方向与内容框架规划",
+              "step_goal": "确定图文系列的整体选题方向、目标人群和内容结构，为后续生成打基础。",
+              "primary_tool": "ChatGPT / Claude（通用大模型）",
+              "backup_tool": "Kimi（擅长长文本理解与中文表达）",
+              "suggested_input": "请以小红书图文风格，为“大学生如何用AI提高学习效率”主题规划3-5个具体选题方向，每个方向包含核心观点和内容框架（标题、正文分段、封面文案要点）。重点考虑：学习笔记整理、论文写作辅助、时间管理、外语学习、考试复习等场景。",
+              "expected_output": "一份选题清单，包含3-5个选题方向，每个方向有标题建议、正文分段逻辑、封面文案关键词。",
+              "execution_tip": "先给AI明确小红书受众（大学生）和平台调性（实用、干货、年轻化），要求输出带emoji和口语化风格的标题建议。",
+              "ready_check": "已产出至少3个可执行的选题方向，每个方向都有清晰的核心观点和至少3段正文逻辑。"
+            },
+            {
+              "step_name": "单篇标题与正文生成",
+              "step_goal": "根据选定的第一个选题方向，生成一组符合小红书写法的标题（3-5个备选）和完整的正文内容。",
+              "primary_tool": "ChatGPT / Claude",
+              "backup_tool": "通义千问（中文写作风格更贴近小红书）",
+              "suggested_input": "选题方向：[上一步确定的第一个选题]。请生成3-5个小红书风格的标题，要求：有数字、有痛点、有好奇心，例如“7个AI学习神器，让期末复习效率翻倍”。然后根据最佳标题写一篇正文，包含：开头痛点引入 + 干货分点（每个点配简短解释） + 结尾鼓励/总结。字数400-600字，适当使用emoji。",
+              "expected_output": "一个标题列表（3-5个） + 一篇完整的正文文本（含emoji、分段）。",
+              "execution_tip": "要求AI在正文中每点用数字序号或小标题，并加入“原来AI还可以这样用”的惊喜感；可以要求AI生成后自行检查是否符合小红书平均阅读时长。",
+              "ready_check": "至少产出1个合格的标题和1篇可用的正文（无重大事实错误，语言流畅，符合小红书风格）。"
+            },
+            {
+              "step_name": "封面文案与视觉提示生成",
+              "step_goal": "生成封面上的文字文案（如大标题、副标题）以及给AI绘图工具使用的画面描述提示词。",
+              "primary_tool": "ChatGPT / Claude（文案部分） + Midjourney / DALL·E（提示词生成）",
+              "backup_tool": "文心一言（可同时输出文案和绘图提示）",
+              "suggested_input": "基于刚才生成的标题和正文，请设计小红书封面文案：主标题（6-10字，突出核心利益）、副标题（一句话补充）。同时，为AI绘图工具（如Midjourney）生成一段画面描述提示词，要求：展现大学生使用AI学习的场景，风格清新、明亮、简约，适合小红书封面。",
+              "expected_output": "封面文案（主标题+副标题） + 一段英文/中文绘图提示词（可含画幅比例、风格参考）。",
+              "execution_tip": "封面文案要醒目、有营销力，绘图提示词要具体：包括人物动作（如坐在电脑前、手机屏幕显示AI工具）、环境（图书馆/书桌）、配色（蓝色/白色/绿色）、光影（自然光）。",
+              "ready_check": "封面文案已生成，绘图提示词可被主流AI绘图工具直接使用（如包含主体、场景、风格、光线等要素）。"
+            },
+            {
+              "step_name": "内容排版与细节优化",
+              "step_goal": "将生成的正文进行排版优化，适配小红书图文规范（短句、换行、emoji、话题标签）。",
+              "primary_tool": "ChatGPT / 火山写作（可调整文案节奏）",
+              "backup_tool": "WPS AI（直接对文案进行段落重组）",
+              "suggested_input": "请将以下正文按照小红书图文排版规范进行优化：每段不超过3行，加入空行分隔，适当使用emoji和表情符号，在文末添加3-5个相关话题标签（#大学生 #AI学习 #效率提升等）。同时检查是否有敏感词或过度营销词汇，调整为真诚分享语气。原文：[上一步生成的正文]",
+              "expected_output": "一份排版完成的小红书图文正文（含标签），可直接复制使用。",
+              "execution_tip": "注意小红书最多1000字，确保正文不超限；标签数量控制在5个以内，放在最后一行。",
+              "ready_check": "优化后的正文段落清晰、阅读舒适，无冗余空行，话题标签合理。"
+            },
+            {
+              "step_name": "多篇批量生产与待发布清单整理",
+              "step_goal": "利用已有选题方向，批量生成后续篇目的标题、正文、封面文案，形成一组可排期发布的素材包。",
+              "primary_tool": "ChatGPT / Claude（通过更换选题方向重复步骤2-4）",
+              "backup_tool": "Notion AI（可在同一个文档内批量生成和管理）",
+              "suggested_input": "使用剩余的选题方向（2-4个），分别重复“标题+正文生成”和“封面文案+绘图提示”步骤，输出每个选题的完整素材。要求每个选题风格统一但内容不重复，避免套话。",
+              "expected_output": "一个结构化文档，包含每个选题的标题、正文、封面文案、绘图提示、话题标签，总计3-5篇完整图文素材。",
+              "execution_tip": "可以给AI设定“写作人格”：一个热心学姐/学长的口吻，增加亲切感。批量生成后人工快速审核，确保每篇核心观点不同。",
+              "ready_check": "至少完成3篇完整可发布的图文素材（每篇含标题、正文、封面文案、绘图提示、标签）。"
+            },
+            {
+              "step_name": "发布前检查与风险规避",
+              "step_goal": "对整组内容进行合规性、真实性和可读性检查，避免夸大宣传或误导。",
+              "primary_tool": "人工审核 + AI辅助（如Grammarly检查语法，微信公众平台内容安全助手）",
+              "backup_tool": "使用AI（如ChatGPT）扮演“内容审核员”进行模拟检查",
+              "suggested_input": "请扮演小红书内容审核员，检查以下素材中是否存在以下问题：1）虚假或夸大效果（如“保证拿高分”）；2）诱导互动（如“转发就送”）违反平台规则；3）未明确标注AI使用边界（如“使用ChatGPT完成作业是否合规”）。给出修改建议。素材：[粘贴所有图文素材]",
+              "expected_output": "每篇素材的合规性评估报告，标注风险点及修改建议。",
+              "execution_tip": "特别注意AI工具使用场景不要涉及学术不端（如代写论文），要强调“辅助学习”而非“替代思考”。封面不要使用夸张的“震惊体”。",
+              "ready_check": "所有风险点已识别并修改，内容符合小红书社区规范，无违规表述。"
+            }
+          ]
+        },
+        "error_message": ""
+      },
+      "pair_valid": true,
+      "invalid_reason": "",
+      "pair_diff": {
+        "named_tool_count_delta": 2,
+        "expected_tool_hit_delta": 2,
+        "focus_keyword_hit_delta": 0,
+        "generic_phrase_delta": 0,
+        "step_focus_delta": 0,
+        "with_rag_metrics": {
+          "named_tool_count": 8,
+          "expected_tool_hits": 6,
+          "focus_keyword_hits": 7,
+          "step_focus_hits": 5,
+          "generic_phrase_count": 0
+        },
+        "without_rag_metrics": {
+          "named_tool_count": 6,
+          "expected_tool_hits": 4,
+          "focus_keyword_hits": 7,
+          "step_focus_hits": 5,
+          "generic_phrase_count": 0
+        },
+        "preliminary_winner": "with_rag"
+      }
+    },
+    {
+      "case_id": "content_public_account_article_01",
+      "case_group": "core_ablation_cases",
+      "scenario": "公众号文章",
+      "user_goal": "我想用 AI 写一篇公众号文章，主题是大学生找实习前如何准备项目和面试。",
+      "followup_answer": "",
+      "notes": "公众号文章 case，用于观察内容知识是否从小红书泛化到长文结构。",
+      "with_rag_result": {
+        "ablation_mode": "with_rag",
+        "workflow_run_id": "route_20260523_124242_572327",
+        "final_stage": "route_generated",
+        "route_generated": true,
+        "schema_valid": true,
+        "failure_type": "none",
+        "route_step_names": [
+          "明确受众与选题",
+          "收集素材与案例",
+          "搭建正文结构",
+          "生成正文草稿",
+          "修改与优化（去除AI感）",
+          "包装标题与封面",
+          "发布与复盘"
+        ],
+        "step_count": 7,
+        "retrieval_count": 1,
+        "retrieval_doc_count": 9,
+        "retrieved_sources": [
+          "tools",
+          "workflows",
+          "blockages"
+        ],
+        "retrieved_snippet_preview": [
+          {
+            "source": "tools",
+            "file_name": "tools.md",
+            "section_index": "2",
+            "chunk_index": "19",
+            "excerpt": "## 常用工具组合 ### ChatGPT / 通义千问 - 常用步骤：选题、标题、正文草稿、文案改写、发布复盘。 - 适合产出：选题池、图文大纲、口播稿、标题版本、复盘分析。 - 轻量替代：豆包、Kimi。 - 最小用法：输入受众、平台、内容目标和参考风格，要求多版本对比。 #"
+          },
+          {
+            "source": "workflows",
+            "file_name": "workflows.md",
+            "section_index": "6",
+            "chunk_index": "27",
+            "excerpt": "## 路径模式 1：小红书图文笔记 - 适用场景：用户想用 AI 做小红书图文、经验帖、工具推荐、学习笔记。 - 目标产物：一篇可发布的小红书图文笔记。 - 关键中间产物：选题卡、正文草稿、首图标题、配图清单、标签和发布复盘。 ### 推荐阶段 1. 选题和受众 - 产出：目标人"
+          },
+          {
+            "source": "workflows",
+            "file_name": "workflows.md",
+            "section_index": "7",
+            "chunk_index": "28",
+            "excerpt": "## 路径模式 2：文案生成/改写 - 适用场景：用户需要广告文案、产品介绍、社群文案、短视频口播稿。 - 目标产物：一组可测试的文案版本。 - 关键中间产物：目标人群、卖点清单、语气样例、版本对比表。 ### 推荐阶段 1. 明确文案任务 - 产出：使用场景、目标动作、受众、限"
+          }
+        ],
+        "route_context_chars": 3704,
+        "route_context_preview": "# 工具知识片段\n【片段 1】\nsource: tools\nfile_name: tools.md\nsection_index: 2\nchunk_index: 19\ncontent:\n## 常用工具组合\n\n### ChatGPT / 通义千问\n\n- 常用步骤：选题、标题、正文草稿、文案改写、发布复盘。\n- 适合产出：选题池、图文大纲、口播稿、标题版本、复盘分析。\n- 轻量替代：豆包、Kimi。\n- 最小用法：输入受众、平台、内容目标和参考风格，要求多版本对比。\n\n### Kimi\n\n- 常用步骤：参考资料整理、竞品内容分析、长文压缩。\n- 适合产出：素材摘要、观点清单、可引用资料、内容结构。\n- 轻量替代：ChatGPT 文件阅读。\n- 最小用法：把参考内容整理为“可用观点、案例、禁用表达”。\n\n### Canva / 稿定设计\n\n- 常用步骤：封面、长图、信息图、发布素材包装。\n- 适合产出：小红书首图、步骤图、对比图、海报。\n- 轻量替代：小红书内置编辑器、PPT。\n- 最小用法：用模板先确定层级，再替换标题和素材。\n\n### 即梦 / 豆包图像 / Midjourney\n\n- 常",
+        "latency_ms": 34932,
+        "model_call_count": 1,
+        "self_correction_count": 0,
+        "retrieval_trace_available": true,
+        "route_result": {
+          "task_summary": "用户希望使用AI生成一篇面向大学生的公众号文章，主题为找实习前如何准备项目和面试。需要一条从选题到发布复盘的可执行工作流路线。",
+          "route_type": "完整路线",
+          "steps": [
+            {
+              "step_name": "明确受众与选题",
+              "step_goal": "确定目标人群、核心痛点以及文章的阅读收益，防止选题过大或泛泛而谈。",
+              "primary_tool": "ChatGPT / 通义千问",
+              "backup_tool": "Kimi（用于分析同类文章选题）",
+              "suggested_input": "提供背景：大学生找实习前准备项目和面试的常见困惑、失败经历、成功案例。",
+              "expected_output": "一句清晰的定位：谁看、解决什么问题。3～5个候选标题（痛点型或结果型）。",
+              "execution_tip": "使用提示词如 '列出大学生找实习前在项目和面试准备方面的3个最典型痛点' 来聚焦选题。",
+              "ready_check": "选题能回答『谁因为什么点开这篇文章』，而不是一个宽泛话题。"
+            },
+            {
+              "step_name": "收集素材与案例",
+              "step_goal": "积累真实的具体例子、可操作步骤和避坑点，避免AI生成的文案空洞。",
+              "primary_tool": "Kimi（整理参考资料或搜索的案例）",
+              "backup_tool": "ChatGPT 文件阅读（若有PDF/网页素材）",
+              "suggested_input": "可输入：3个真实的项目准备案例、5个常见的面试问题、2个面试翻车教训。",
+              "expected_output": "至少3个具体例子、3个可操作步骤、2个避坑点，以清单或卡片形式呈现。",
+              "execution_tip": "回头翻看自己或身边人的真实经历，或搜索知乎/小红书上的经验帖摘要。",
+              "ready_check": "至少包含1个具体例子和1个避坑点。"
+            },
+            {
+              "step_name": "搭建正文结构",
+              "step_goal": "设计清晰的文章逻辑框架：开头钩子+分步骤正文+结尾引导。",
+              "primary_tool": "ChatGPT / 通义千问",
+              "backup_tool": "豆包（轻量生成大纲）",
+              "suggested_input": "输入选题定位、素材案例，并指定平台为『公众号长文』。",
+              "expected_output": "文章大纲，包含：开头（激发共鸣）、3～5个小标题段落（每个有步骤和案例）、结尾（互动引导）。",
+              "execution_tip": "要求AI用『开头→第一部分→第二部分→…→结尾』写出每个部分的目的。",
+              "ready_check": "正文大纲不是泛泛介绍，每个小标题都对应一个可操作的动作或观点。"
+            },
+            {
+              "step_name": "生成正文草稿",
+              "step_goal": "根据大纲生成完整初稿，注意控制AI感，加入真实案例。",
+              "primary_tool": "ChatGPT / 通义千问（分段落生成）",
+              "backup_tool": "豆包",
+              "suggested_input": "输入大纲和素材，要求『用口语化风格，每段包含一个具体例子』。",
+              "expected_output": "一篇完整的公众号文章草稿（约1500～2000字），有开头、正文、结尾。",
+              "execution_tip": "生成后立即标记所有空泛形容词（如『很』『非常』），改为具体动作或数据。",
+              "ready_check": "正文中至少有1个具体例子、1个操作步骤和1个避坑点。"
+            },
+            {
+              "step_name": "修改与优化（去除AI感）",
+              "step_goal": "针对文案像AI写的、选题过大等卡点进行人工+AI辅助润色，增加真实经验感。",
+              "primary_tool": "人工编辑 + ChatGPT改写特定段落",
+              "backup_tool": "Kimi（检查语气和敏感词）",
+              "suggested_input": "现有草稿，以及『卡点修正动作』：补充真实场景、删除泛泛形容词、加入用户口语。",
+              "expected_output": "优化后的正文，读起来像有经验的学长学姐在分享，而非百科介绍。",
+              "execution_tip": "让AI把『建议…』改成『我当时做了…』；删除『首先/其次/最后』这类结构词。",
+              "ready_check": "正文里至少有1个带有个人经历的句子（如『我曾用这个方法拿到XX公司offer』）。"
+            },
+            {
+              "step_name": "包装标题与封面",
+              "step_goal": "生成多个标题版本，并制作公众号封面图，确保手机端可读。",
+              "primary_tool": "ChatGPT（生成标题）+ Canva/稿定设计（制作封面）",
+              "backup_tool": "即梦（生成主视觉）+ Canva排版",
+              "suggested_input": "文章核心主题、目标受众（大学生）。",
+              "expected_output": "3个标题（痛点型、结果型、数字型各1个），1张封面图（含8～14字的标题文案）。",
+              "execution_tip": "封面图缩小到手机列表尺寸预览，确保2秒内能看清主题和收益。",
+              "ready_check": "手机列表尺寸下，2秒内能看清封面上的标题和视觉焦点。"
+            },
+            {
+              "step_name": "发布与复盘",
+              "step_goal": "发布后记录关键数据，为下一篇内容迭代提供依据。",
+              "primary_tool": "公众号数据面板或手工记录表（Excel/Notion）",
+              "backup_tool": "无",
+              "suggested_input": "发布时间、标题、封面、标签（如有）。",
+              "expected_output": "记录至少2项指标（曝光、点击、收藏、评论），并写下1～2句观察和下一篇调整方向。",
+              "execution_tip": "发布后1小时和24小时分别记录数据；重点对比标题和封面表现。",
+              "ready_check": "下一篇选题或标题能引用本次数据的观察作为修改依据。"
+            }
+          ]
+        },
+        "error_message": ""
+      },
+      "without_rag_result": {
+        "ablation_mode": "without_rag",
+        "workflow_run_id": "route_20260523_124317_65b5a0",
+        "final_stage": "route_generated",
+        "route_generated": true,
+        "schema_valid": true,
+        "failure_type": "none",
+        "route_step_names": [
+          "选题与读者痛点定位",
+          "生成文章大纲与结构",
+          "逐段生成正文内容",
+          "优化标题、金句与排版",
+          "撰写开头与结尾引导互动",
+          "最终检查与发布准备"
+        ],
+        "step_count": 6,
+        "retrieval_count": 0,
+        "retrieval_doc_count": 0,
+        "retrieved_sources": [],
+        "retrieved_snippet_preview": [],
+        "route_context_chars": 68,
+        "route_context_preview": "# 工具知识片段\n没有检索到相关片段。\n\n# Workflow 模板片段\n没有检索到相关片段。\n\n# 卡点提醒片段\n没有检索到相关片段。",
+        "latency_ms": 21984,
+        "model_call_count": 1,
+        "self_correction_count": 0,
+        "retrieval_trace_available": false,
+        "route_result": {
+          "task_summary": "用AI生成一篇面向大学生的公众号文章，主题为实习前如何准备项目和面试，帮助用户从选题到成文的全流程工作流。",
+          "route_type": "通用起步路线",
+          "steps": [
+            {
+              "step_name": "选题与读者痛点定位",
+              "step_goal": "明确文章的核心切入点和目标读者的具体痛点，避免泛泛而谈。",
+              "primary_tool": "ChatGPT / Claude（生成3-5个选题方向，每个附带一句话价值主张）",
+              "backup_tool": "Kimi（可拉取公众号热文关键词辅助选题）",
+              "suggested_input": "输入提示词举例：“你是大学生就业领域的公众号主笔。针对大学生找实习前准备项目和面试，请列出3-5个最能抓住在校生痛点的选题方向，每个方向一句话说明为什么读者想点开。”",
+              "expected_output": "一个选定的具体选题（例如：“项目经验空白？用3步从零攒出面试官认可的项目”），附带目标读者画像（如大三/大四、计算机/商科等通用专业）。",
+              "execution_tip": "如果用户没有指定读者细分，默认写最广的“泛大学生群体”，可后续调整。",
+              "ready_check": "已明确文章的核心卖点（能解决什么具体问题）和至少一个可执行的标题方向。"
+            },
+            {
+              "step_name": "生成文章大纲与结构",
+              "step_goal": "根据选题规划逻辑清晰、层层递进的文章骨架。",
+              "primary_tool": "ChatGPT / Claude（按“问题-方法-案例”结构生成大纲）",
+              "backup_tool": "Notion AI（可配合手动调整）",
+              "suggested_input": "输入已选选题，并附上提示词：“请为上述选题生成一篇公众号文章的大纲，包含引言、主体（至少3个分论点，每个分论点下含2个实操方法或案例）、结尾行动引导。每个分论点用一句话概括核心。”",
+              "expected_output": "一个完整的文章大纲（例如：引言：为什么项目经验比简历更重要；分论点1：用课程作业包装项目；分论点2：用开源或比赛刷经验；分论点3：面试时如何讲项目故事；结尾：列出3天行动清单）。",
+              "execution_tip": "要求AI在每个分论点后标注一个新手常见错误，增强代入感。",
+              "ready_check": "大纲覆盖了“项目准备”和“面试呈现”两个核心，且每个分论点有明确的实操点。"
+            },
+            {
+              "step_name": "逐段生成正文内容",
+              "step_goal": "按照大纲逐段撰写文章正文，确保语言符合公众号口语化、接地气风格。",
+              "primary_tool": "ChatGPT / Claude（分段生成，每段单独调优）",
+              "backup_tool": "WPS AI（可配合本地写作）",
+              "suggested_input": "输入每个分论点的详细指令，例如：“请用大学生口吻写一段关于‘如何用课程作业包装项目’的内容，包含一个真实可改写的例子，200-300字，语气像学长/学姐分享。”",
+              "expected_output": "3-5段正文草稿，每段有具体案例或步骤，不含空洞说教。",
+              "execution_tip": "每段生成后人工检查是否出现AI味过重的套话，必要时增加“我当年……”这类个人化叙事。",
+              "ready_check": "正文内容覆盖了至少一个项目准备方法和一个面试回答技巧，且整体字数在1500-2500字区间。"
+            },
+            {
+              "step_name": "优化标题、金句与排版",
+              "step_goal": "提升公众号文章的点击率和阅读体验，包括吸睛标题、金句加粗、分段小标题。",
+              "primary_tool": "ChatGPT / Claude（生成3个备选标题，提炼3-5句可做加粗金句）",
+              "backup_tool": "头条易（标题评分工具）",
+              "suggested_input": "输入全文，要求：“请为这篇文章生成3个不同风格的公众号标题（悬念型、干货型、情感型），并标出文中适合加粗/设为小标题的句子。”",
+              "expected_output": "一个最终标题（如：“实习面试一问项目就卡壳？这3个方法让你从0攒出面试官想要的经历”），以及文中3-5处金句标记。",
+              "execution_tip": "标题字数控制在20字左右，避免过长导致公众号折叠；金句放在每段开头或结尾。",
+              "ready_check": "标题经人工判断能引发点击欲望，且金句标记已插入文中对应位置。"
+            },
+            {
+              "step_name": "撰写开头与结尾引导互动",
+              "step_goal": "增强文章开头吸引力，并设计结尾行动点（关注、评论、转发）。",
+              "primary_tool": "ChatGPT / Claude（优化开头和结尾）",
+              "backup_tool": "人工手动改写",
+              "suggested_input": "输入当前正文，要求：“请重写文章开头，用‘你是否有过这样的经历？’引发共鸣，并在结尾加上一段引导互动：呼吁关注、收藏、评论你的困惑。字数100字以内。”",
+              "expected_output": "一个新开头（如“你是否有过这样的经历？简历投了30份，面试却一个都没过？其实问题不在学历，而在于你压根没准备过能说的项目……”）和一个互动结尾（如“你在准备项目时遇到的最大困难是什么？评论区聊聊，点赞最高的送一份项目清单PDF。”）。",
+              "execution_tip": "结尾的互动引导要具体，比如“送资料”比“欢迎留言”效果更好。",
+              "ready_check": "开头能在3秒内抓住读者注意力，结尾包含明确的行动号召。"
+            },
+            {
+              "step_name": "最终检查与发布准备",
+              "step_goal": "检查文章逻辑、事实准确性（避坑）、错别字，并生成公众号排版物料（封面图、摘要）。",
+              "primary_tool": "Grammarly / 秘塔写作猫（错别字检查） + Canva（封面图制作）",
+              "backup_tool": "微信公众号自带排版（先手动复制检查）",
+              "suggested_input": "将全文粘贴到检查工具；封面图提示词：“设计一张公众号封面，主题是大学生实习准备项目，风格简约明亮，包含文字‘项目准备·面试技巧’。”",
+              "expected_output": "一篇无错别字、逻辑流畅的文章（字数2000左右），一张封面图（尺寸900x383px），一个公众号摘要（小于200字）。",
+              "execution_tip": "重点检查AI生成的案例是否真实（如“某同学通过XX方式拿到offer”不要出现具体人名），防止事实错误。",
+              "ready_check": "文章已通过错别字检查，封面图生成完毕，摘要能概括文章核心价值。"
+            }
+          ]
+        },
+        "error_message": ""
+      },
+      "pair_valid": true,
+      "invalid_reason": "",
+      "pair_diff": {
+        "named_tool_count_delta": 6,
+        "expected_tool_hit_delta": 1,
+        "focus_keyword_hit_delta": 1,
+        "generic_phrase_delta": 0,
+        "step_focus_delta": 0,
+        "with_rag_metrics": {
+          "named_tool_count": 11,
+          "expected_tool_hits": 4,
+          "focus_keyword_hits": 7,
+          "step_focus_hits": 3,
+          "generic_phrase_count": 0
+        },
+        "without_rag_metrics": {
+          "named_tool_count": 5,
+          "expected_tool_hits": 3,
+          "focus_keyword_hits": 6,
+          "step_focus_hits": 3,
+          "generic_phrase_count": 0
+        },
+        "preliminary_winner": "with_rag"
+      }
+    },
+    {
+      "case_id": "learning_exam_review_01",
+      "case_group": "core_ablation_cases",
+      "scenario": "概率论复习计划",
+      "user_goal": "我想用 AI 做一个 10 天概率论复习计划，包含知识点梳理、题型训练和错题复盘。",
+      "followup_answer": "",
+      "notes": "学科学习计划 case，用于观察 RAG 是否减少泛学习建议。",
+      "with_rag_result": {
+        "ablation_mode": "with_rag",
+        "workflow_run_id": "route_20260523_124339_b0a2db",
+        "final_stage": "route_generated",
+        "route_generated": true,
+        "schema_valid": true,
+        "failure_type": "none",
+        "route_step_names": [
+          "目标诊断与学习画像",
+          "拆解概率论知识模块",
+          "生成每日任务表（10天）",
+          "题型训练与即时反馈",
+          "错题整理与隔日复习",
+          "复盘迭代与最终总结"
+        ],
+        "step_count": 6,
+        "retrieval_count": 1,
+        "retrieval_doc_count": 9,
+        "retrieved_sources": [
+          "tools",
+          "workflows",
+          "blockages"
+        ],
+        "retrieved_snippet_preview": [
+          {
+            "source": "tools",
+            "file_name": "tools.md",
+            "section_index": "1",
+            "chunk_index": "18",
+            "excerpt": "## 常用工具组合 ### ChatGPT / 通义千问 - 常用步骤：目标诊断、学习计划、练习生成、即时反馈、错题解释。 - 适合产出：学习画像、每日任务、练习题、答题反馈、复盘建议。 - 轻量替代：豆包、Kimi。 - 最小用法：让模型按“目标、当前水平、每日时间、练习、验收"
+          },
+          {
+            "source": "workflows",
+            "file_name": "workflows.md",
+            "section_index": "2",
+            "chunk_index": "23",
+            "excerpt": "## 路径模式 1：AI 学习计划 - 适用场景：用户想学习 AI、英语、考试科目、技能课程，但不知道如何安排。 - 目标产物：一份可执行的 7 天或 14 天学习计划。 - 关键中间产物：当前水平诊断、学习目标、每日任务表、练习清单、复盘模板。 ### 推荐阶段 1. 目标诊断"
+          },
+          {
+            "source": "workflows",
+            "file_name": "workflows.md",
+            "section_index": "3",
+            "chunk_index": "24",
+            "excerpt": "## 路径模式 2：AI 背单词工具 - 适用场景：用户想做背单词、词汇复习、错词回顾类小工具。 - 目标产物：一个能跑通“导入词汇 -> 练习 -> 反馈 -> 复习”的 MVP。 - 关键中间产物：词库字段、练习题样例、记忆反馈模板、错词复习规则。 ### 推荐阶段 1. 定"
+          }
+        ],
+        "route_context_chars": 3845,
+        "route_context_preview": "# 工具知识片段\n【片段 1】\nsource: tools\nfile_name: tools.md\nsection_index: 1\nchunk_index: 18\ncontent:\n## 常用工具组合\n\n### ChatGPT / 通义千问\n\n- 常用步骤：目标诊断、学习计划、练习生成、即时反馈、错题解释。\n- 适合产出：学习画像、每日任务、练习题、答题反馈、复盘建议。\n- 轻量替代：豆包、Kimi。\n- 最小用法：让模型按“目标、当前水平、每日时间、练习、验收”输出，不只生成鼓励性计划。\n\n### Kimi\n\n- 常用步骤：资料阅读、课程笔记整理、长文总结、错题归纳。\n- 适合产出：知识框架、重点摘要、易错点、复习清单。\n- 轻量替代：ChatGPT 文件阅读、通义千问文档理解。\n- 最小用法：先上传或粘贴资料，再要求按考试、任务或章节重组。\n\n### Notion / 飞书表格 / Excel\n\n- 常用步骤：学习打卡、词库管理、复盘记录。\n- 适合产出：打卡表、错词本、复习计划表、完成率统计。\n- 轻量替代：普通表格、纸质记录。\n- 最小用法：先做可手动维护的表，再考虑自动化。",
+        "latency_ms": 32953,
+        "model_call_count": 1,
+        "self_correction_count": 0,
+        "retrieval_trace_available": true,
+        "route_result": {
+          "task_summary": "用户希望用AI辅助制定一个10天概率论复习计划，覆盖知识点梳理、题型训练和错题复盘，需要具体可执行的步骤和工具建议。",
+          "route_type": "完整路线",
+          "steps": [
+            {
+              "step_name": "目标诊断与学习画像",
+              "step_goal": "明确学习目标、当前水平、每日可用时间及10天后的验收标准，避免计划空洞或无法执行。",
+              "primary_tool": "ChatGPT / 通义千问（目标诊断功能）",
+              "backup_tool": "豆包或Kimi（轻量替代，也能完成对话式诊断）",
+              "suggested_input": "用户当前的概率论基础描述、考试或学习目的（如期末考试、考研、自学）、每天能投入的时长（建议30-90分钟）、截止日期（10天后）",
+              "expected_output": "一份学习画像：包含当前水平（如“学过一半但忘了”）、具体目标（如“掌握常见分布及其性质”）、每日可用时间、10天后要能完成的验收标准（如“做对80%的课后题”）。",
+              "execution_tip": "询问用户时使用具体问题，如“你目前能说出概率论哪三个核心概念？”，而不是泛泛问“你了解多少？”。",
+              "ready_check": "用户能清楚说出“我现在水平、10天后要达成什么、每天有多少时间”三个要素。"
+            },
+            {
+              "step_name": "拆解概率论知识模块",
+              "step_goal": "将10天复习内容分解为3-5个可练习的知识模块，并排列优先级，便于每日分配。",
+              "primary_tool": "Kimi（资料阅读与长文总结）或 ChatGPT 知识梳理",
+              "backup_tool": "通义千问文档理解（上传教材目录或大纲）",
+              "suggested_input": "概率论教材或复习资料的目录、前一步产出的学习画像（目标范围）",
+              "expected_output": "模块清单及优先级：例如模块1-概率基本概念与事件运算、模块2-随机变量及分布（离散/连续）、模块3-多维随机变量与条件分布、模块4-数字特征（期望方差协方差）、模块5-大数定律与中心极限定理（如有）。每个模块标注重点和常见题型。",
+              "execution_tip": "如果用户只有10天，建议最多分5个模块，每天1-2个模块，避免贪多。",
+              "ready_check": "每个模块都能对应一个可执行的学习任务（如“做5道关于离散随机变量分布的习题”），且总模块数不超过5个。"
+            },
+            {
+              "step_name": "生成每日任务表（10天）",
+              "step_goal": "按天安排知识点学习、题型训练和错题回顾，确保每天任务量在用户可用时间内完成。",
+              "primary_tool": "ChatGPT（生成每日任务表，可带占位字段）或 Notion/飞书表格（手动录入）",
+              "backup_tool": "Excel + ChatGPT 提示词生成表格内容",
+              "suggested_input": "知识模块清单、每日可用时长、用户偏好的学习顺序（如先学后练或边学边练）",
+              "expected_output": "一张10天每日任务表：每天包含1个主任务（如“模块1知识点梳理”）、1个练习任务（如“10道选择题”）、预计时长（分必做30分钟和选做15分钟）、完成状态（待填）、错题记录（待填）。示例：第1天-概率事件运算与条件概率；第2天-一维离散随机变量分布列；等等。",
+              "execution_tip": "每天只保留1个主任务+1个练习，并设置低配完成版（如“只做3道题也算完成”），防止用户因任务量过大而放弃。",
+              "ready_check": "用户每天能在其可用时间内（建议30-90分钟）至少完成主任务和练习任务的最低配版本。"
+            },
+            {
+              "step_name": "题型训练与即时反馈",
+              "step_goal": "针对每天的知识点生成练习题，并在用户作答后给出错因分析和正确解答，形成学习闭环。",
+              "primary_tool": "ChatGPT（生成选择题、填空题、计算题，并给出反馈）",
+              "backup_tool": "Quizlet或Anki（若用户习惯卡片式练习，可导入题目）",
+              "suggested_input": "当日知识点模块、用户答题记录（正确/错误/不会）、用户上传的草稿或解答照片（若需）",
+              "expected_output": "一套3-5道练习题（含答案和解析），用户作答后收到结构化反馈：事实总结（“你答对了2题，错了3题”）、错因判断（“第2题混淆了全概率公式与贝叶斯公式”）、具体改法（“建议回看教材X页，再做3道类似题”）。",
+              "execution_tip": "要求反馈必须引用用户作答内容，避免只说“继续加油”；每次只给1-2个明日调整建议。",
+              "ready_check": "用户至少完成了当日练习，并收到一份能指出具体错因的反馈（不是只有鼓励话术）。"
+            },
+            {
+              "step_name": "错题整理与隔日复习",
+              "step_goal": "将每天做错的题目记录到错题本，并安排第二天或后续隔天复习，形成记忆闭环。",
+              "primary_tool": "Notion/飞书表格（错题记录表，含字段：日期、错题内容、错因、正确解法、复习状态）",
+              "backup_tool": "Anki（若用户偏好间隔重复卡片）或 ChatGPT 生成错题摘要",
+              "suggested_input": "每日练习中答错的题目及反馈中的错因描述",
+              "expected_output": "一个持续更新的错题本，每道错题至少包含：原始题目、用户错误答案、错因分类（概念混淆/计算粗心/公式记错）、正确解法。第二天自动生成“需复习错题清单”（例如第3天复习第1、2天的错题）。",
+              "execution_tip": "错题本只需3个字段即可启动（题面、错因、正解），避免过度设计。建议用户每天花5分钟填写。",
+              "ready_check": "至少记录了前3天的错题，并且第4天时用户能拿到一份包含需要复习的错题清单。"
+            },
+            {
+              "step_name": "复盘迭代与最终总结",
+              "step_goal": "每2-3天复盘一次完成率、卡点和错题趋势，并在第10天产出整体复习总结，调整最后几天的计划。",
+              "primary_tool": "ChatGPT（根据打卡记录生成复盘总结）+ Notion/飞书表格（打卡记录）",
+              "backup_tool": "Excel + 简单统计公式",
+              "suggested_input": "前几天的完成记录（日期、任务是否完成、错题数量、耗时）、用户自评（如“感觉随机变量那章很吃力”）",
+              "expected_output": "每3天生成一次小复盘：完成率（如“第1-3天完成率90%”）、卡点（“全概率公式错误率高”）、调整建议（“第4天增加30分钟专门练习全概率公式”）。第10天生成最终总结：10天整体完成率、错题集中模块、薄弱点分析、后续进阶建议。",
+              "execution_tip": "复盘反馈必须引用当天记录，不能凭空建议；每天只给1个调整动作（如“明天减少新知识，多复习错题”）。",
+              "ready_check": "用户在第3天和第6天分别完成一次小复盘，并有记录（完成率、卡点、调整项），第10天的最终总结能给出一个具体的后续学习方向。"
+            }
+          ]
+        },
+        "error_message": ""
+      },
+      "without_rag_result": {
+        "ablation_mode": "without_rag",
+        "workflow_run_id": "route_20260523_124412_4a0178",
+        "final_stage": "route_generated",
+        "route_generated": true,
+        "schema_valid": true,
+        "failure_type": "none",
+        "route_step_names": [
+          "制定10天复习大纲",
+          "生成每日知识点梳理笔记",
+          "生成题型训练与解答",
+          "错题复盘与薄弱点分析",
+          "综合模拟测试与冲刺"
+        ],
+        "step_count": 5,
+        "retrieval_count": 0,
+        "retrieval_doc_count": 0,
+        "retrieved_sources": [],
+        "retrieved_snippet_preview": [],
+        "route_context_chars": 68,
+        "route_context_preview": "# 工具知识片段\n没有检索到相关片段。\n\n# Workflow 模板片段\n没有检索到相关片段。\n\n# 卡点提醒片段\n没有检索到相关片段。",
+        "latency_ms": 32956,
+        "model_call_count": 2,
+        "self_correction_count": 1,
+        "retrieval_trace_available": false,
+        "route_result": {
+          "task_summary": "用户希望在10天内使用AI辅助完成概率论复习，涵盖知识点梳理、题型训练和错题复盘。",
+          "route_type": "通用起步路线",
+          "steps": [
+            {
+              "step_name": "制定10天复习大纲",
+              "step_goal": "利用AI生成一份结构化的10天概率论复习计划，明确每日主题、知识点模块和训练任务。",
+              "primary_tool": "ChatGPT或Claude，提示词要求生成每日复习主题与子内容。",
+              "backup_tool": "Kimi或文心一言，如果主工具不可用，同样支持长文本生成。",
+              "suggested_input": "请AI输出一份10天概率论复习大纲，包含：第1天基础概念（样本空间、事件、概率公理），第2天条件概率与贝叶斯定理...直到第10天综合复盘。每天包含知识点梳理、3-5道练习题、1道综合题。",
+              "expected_output": "一份10天复习日程表，每天包含知识点标题、学习目标、练习题数量建议。",
+              "execution_tip": "提示AI明确每天的学习时长（如2-3小时），并请它根据用户水平（如零基础/有基础）调整难度。",
+              "ready_check": "生成了至少7天以上的每日主题，且每个主题包含具体知识点名称和训练类型（如选择题、计算题）。"
+            },
+            {
+              "step_name": "生成每日知识点梳理笔记",
+              "step_goal": "针对当天主题，让AI生成结构化的知识点笔记（公式、定义、例子），用于快速复习。",
+              "primary_tool": "ChatGPT或Claude，要求输出Markdown格式的笔记。",
+              "backup_tool": "Notion AI，如果用户使用Notion，可直接生成笔记并保存。",
+              "suggested_input": "请生成【条件概率与贝叶斯定理】的知识点笔记，包含：定义、公式、经典例题（彩票问题、疾病检测），附带关键技巧。",
+              "expected_output": "当天知识点笔记，包含核心公式、推导要点、2-3个典型例子。",
+              "execution_tip": "让AI分块输出：公式部分用LaTeX格式，后续可复制到Obsidian或Notion。",
+              "ready_check": "笔记包含至少3个核心知识点、2个公式和2个例子。"
+            },
+            {
+              "step_name": "生成题型训练与解答",
+              "step_goal": "让AI为当天知识点生成练习题（选择题、计算题、证明题）并提供详细解答。",
+              "primary_tool": "ChatGPT或Claude，要求输出题目、答案和解析。",
+              "backup_tool": "Wolfram Alpha（用于验证计算题答案），如果主工具不准确。",
+              "suggested_input": "针对【全概率公式与贝叶斯公式】，生成5道不同难度的练习题，包含2道基础计算、2道应用题、1道综合题，并附详细解题步骤。",
+              "expected_output": "5道题目（每题含题干、答案、步骤解析）。",
+              "execution_tip": "要求AI明确标记每个题目的考点，并在解析中写出所用公式。",
+              "ready_check": "生成了至少3道题目且有完整的解析过程。"
+            },
+            {
+              "step_name": "错题复盘与薄弱点分析",
+              "step_goal": "将用户做错的题目输入AI，让AI分析错误原因、归纳同类题型，并推荐针对性练习。",
+              "primary_tool": "ChatGPT，提示词要求指出错误类型（计算失误、概念混淆、思路缺失）并给出改进建议。",
+              "backup_tool": "MathGPT（专门数学辅导AI），如果主工具数学推理不足。",
+              "suggested_input": "我做了以下题目：...我的答案是...正确答案是...请分析我的错误原因，并给出3道类似变式题。",
+              "expected_output": "错误分析报告（原因、分类）+ 3道变式练习题。",
+              "execution_tip": "尽量让AI输出具体的纠正步骤，如重写错误步骤，并对比正确解法。",
+              "ready_check": "输出了至少一个错误原因分类和3道变式题。"
+            },
+            {
+              "step_name": "综合模拟测试与冲刺",
+              "step_goal": "用AI生成一份综合模拟试卷，覆盖全部10天内容，并进行限时模拟和答案批改。",
+              "primary_tool": "ChatGPT或Claude，要求生成试卷和评分标准。",
+              "backup_tool": "数学公式校验可用Wolfram Alpha，选择题批改可用Quizlet。",
+              "suggested_input": "请根据以下10天复习内容（列出知识点清单）生成一份60分钟的综合试卷，包含10道选择、5道计算、2道证明，并附答案和评分细则。",
+              "expected_output": "一份模拟试卷（含答案和评分标准），以及用户完成后AI的批改反馈。",
+              "execution_tip": "建议先自己闭卷完成，再将答案输入AI进行批改，并让AI指出最薄弱的2-3个知识点。",
+              "ready_check": "生成了完整的试卷和答案，且覆盖了至少80%的复习内容。"
+            }
+          ]
+        },
+        "error_message": ""
+      },
+      "pair_valid": true,
+      "invalid_reason": "",
+      "pair_diff": {
+        "named_tool_count_delta": 4,
+        "expected_tool_hit_delta": 3,
+        "focus_keyword_hit_delta": 0,
+        "generic_phrase_delta": -1,
+        "step_focus_delta": 0,
+        "with_rag_metrics": {
+          "named_tool_count": 7,
+          "expected_tool_hits": 6,
+          "focus_keyword_hits": 6,
+          "step_focus_hits": 5,
+          "generic_phrase_count": 1
+        },
+        "without_rag_metrics": {
+          "named_tool_count": 3,
+          "expected_tool_hits": 3,
+          "focus_keyword_hits": 6,
+          "step_focus_hits": 5,
+          "generic_phrase_count": 0
+        },
+        "preliminary_winner": "with_rag"
+      }
+    },
+    {
+      "case_id": "learning_vocab_memory_01",
+      "case_group": "core_ablation_cases",
+      "scenario": "英语单词复习流程",
+      "user_goal": "我想用 AI 做英语单词复习流程，希望能生成例句、测验和错词回顾。",
+      "followup_answer": "",
+      "notes": "背单词流程 case，用于观察 RAG 是否强调测验和错词闭环。",
+      "with_rag_result": {
+        "ablation_mode": "with_rag",
+        "workflow_run_id": "route_20260523_124445_8c15fa",
+        "final_stage": "route_generated",
+        "route_generated": true,
+        "schema_valid": true,
+        "failure_type": "none",
+        "route_step_names": [
+          "1. 定义词库与用户画像",
+          "2. 设计学习卡片模板",
+          "3. 生成练习任务（例句+测验）",
+          "4. 实现即时反馈与错因分析",
+          "5. 设置错词复习规则",
+          "6. 闭环验证与迭代"
+        ],
+        "step_count": 6,
+        "retrieval_count": 1,
+        "retrieval_doc_count": 9,
+        "retrieved_sources": [
+          "tools",
+          "workflows",
+          "blockages"
+        ],
+        "retrieved_snippet_preview": [
+          {
+            "source": "tools",
+            "file_name": "tools.md",
+            "section_index": "1",
+            "chunk_index": "18",
+            "excerpt": "## 常用工具组合 ### ChatGPT / 通义千问 - 常用步骤：目标诊断、学习计划、练习生成、即时反馈、错题解释。 - 适合产出：学习画像、每日任务、练习题、答题反馈、复盘建议。 - 轻量替代：豆包、Kimi。 - 最小用法：让模型按“目标、当前水平、每日时间、练习、验收"
+          },
+          {
+            "source": "workflows",
+            "file_name": "workflows.md",
+            "section_index": "3",
+            "chunk_index": "24",
+            "excerpt": "## 路径模式 2：AI 背单词工具 - 适用场景：用户想做背单词、词汇复习、错词回顾类小工具。 - 目标产物：一个能跑通“导入词汇 -> 练习 -> 反馈 -> 复习”的 MVP。 - 关键中间产物：词库字段、练习题样例、记忆反馈模板、错词复习规则。 ### 推荐阶段 1. 定"
+          },
+          {
+            "source": "workflows",
+            "file_name": "workflows.md",
+            "section_index": "2",
+            "chunk_index": "23",
+            "excerpt": "## 路径模式 1：AI 学习计划 - 适用场景：用户想学习 AI、英语、考试科目、技能课程，但不知道如何安排。 - 目标产物：一份可执行的 7 天或 14 天学习计划。 - 关键中间产物：当前水平诊断、学习目标、每日任务表、练习清单、复盘模板。 ### 推荐阶段 1. 目标诊断"
+          }
+        ],
+        "route_context_chars": 3845,
+        "route_context_preview": "# 工具知识片段\n【片段 1】\nsource: tools\nfile_name: tools.md\nsection_index: 1\nchunk_index: 18\ncontent:\n## 常用工具组合\n\n### ChatGPT / 通义千问\n\n- 常用步骤：目标诊断、学习计划、练习生成、即时反馈、错题解释。\n- 适合产出：学习画像、每日任务、练习题、答题反馈、复盘建议。\n- 轻量替代：豆包、Kimi。\n- 最小用法：让模型按“目标、当前水平、每日时间、练习、验收”输出，不只生成鼓励性计划。\n\n### Kimi\n\n- 常用步骤：资料阅读、课程笔记整理、长文总结、错题归纳。\n- 适合产出：知识框架、重点摘要、易错点、复习清单。\n- 轻量替代：ChatGPT 文件阅读、通义千问文档理解。\n- 最小用法：先上传或粘贴资料，再要求按考试、任务或章节重组。\n\n### Notion / 飞书表格 / Excel\n\n- 常用步骤：学习打卡、词库管理、复盘记录。\n- 适合产出：打卡表、错词本、复习计划表、完成率统计。\n- 轻量替代：普通表格、纸质记录。\n- 最小用法：先做可手动维护的表，再考虑自动化。",
+        "latency_ms": 19978,
+        "model_call_count": 1,
+        "self_correction_count": 0,
+        "retrieval_trace_available": true,
+        "route_result": {
+          "task_summary": "用户希望用AI搭建一个英语单词复习流程，核心功能包括自动生成例句、测验题目以及错词回顾，形成一个闭环学习工具。",
+          "route_type": "完整路线",
+          "steps": [
+            {
+              "step_name": "1. 定义词库与用户画像",
+              "step_goal": "明确复习的单词范围、用户当前水平、每日可投入时间，避免目标泛化。",
+              "primary_tool": "ChatGPT / 通义千问（目标诊断）",
+              "backup_tool": "豆包、Kimi（轻量替代）",
+              "suggested_input": "用户提供的单词列表、考试名称（如四级、考研）、当前水平描述、每日可用时间。",
+              "expected_output": "一份包含词库范围（如考研核心词前500个）、用户水平（如能认读但不会拼写）、每日学习量（如15个新词）的文本记录。",
+              "execution_tip": "如果用户没有明确词库，先要求其指定一本教材或考试范围，不要替用户假定。",
+              "ready_check": "词库不是泛泛的“英语单词”，而是明确到具体来源（如《新概念2》第1-10课）或考试名称。"
+            },
+            {
+              "step_name": "2. 设计学习卡片模板",
+              "step_goal": "创建每个单词的标准卡片结构，确保后续可生成例句、测验和复习。",
+              "primary_tool": "Notion / 飞书表格 / Excel（结构化存储）",
+              "backup_tool": "普通表格、纸质记录（轻量替代）",
+              "suggested_input": "上一步定义的词库字段：单词、释义、例句、助记、难度等级（新手建议1-3级）。",
+              "expected_output": "一个包含至少10个单词的卡片表格，每行有单词、音标（可选）、解释、例句、助记提示。",
+              "execution_tip": "例句最好由ChatGPT生成，确保准确和地道；难度等级可先统一设为中级。",
+              "ready_check": "每张卡片支持一次学习和一次复习（即包含释义和可理解的例句）。"
+            },
+            {
+              "step_name": "3. 生成练习任务（例句+测验）",
+              "step_goal": "基于卡片自动生成选择题、填空题或例句理解题，支持即时练习。",
+              "primary_tool": "ChatGPT / 通义千问（练习生成）",
+              "backup_tool": "豆包、Kimi（轻量替代）",
+              "suggested_input": "卡片中的单词、释义、例句；用户偏好的题型（如中译英、选词填空）。",
+              "expected_output": "至少10道可直接使用的练习题样例（如选择题选项、填空题上下句），每道题关联一个单词。",
+              "execution_tip": "要求模型生成时附带答案和简短的解析，避免只有题目。",
+              "ready_check": "至少10个单词能生成可直接使用的练习样例，且包含答案。"
+            },
+            {
+              "step_name": "4. 实现即时反馈与错因分析",
+              "step_goal": "用户答错后，给出具体错因和助记建议，而不是模糊鼓励。",
+              "primary_tool": "ChatGPT / 通义千问（答题反馈）",
+              "backup_tool": "豆包、Kimi（轻量替代）",
+              "suggested_input": "用户提交的答案、正确答案、单词卡片中的助记信息。",
+              "expected_output": "对每个错题的反馈：错因（如混淆近义词）、助记提示、下次如何避免。",
+              "execution_tip": "限制每次反馈只指出1-2个关键问题，不要堆砌信息。",
+              "ready_check": "反馈能指出具体错因（例如“你把‘affect’和‘effect’搞混了”），而不是只说“答错了”。"
+            },
+            {
+              "step_name": "5. 设置错词复习规则",
+              "step_goal": "建立错词本和间隔复习机制，确保第二天自动出现需要复习的词。",
+              "primary_tool": "Quizlet / Anki（间隔重复）或飞书表格手动标记",
+              "backup_tool": "Notion表格 + ChatGPT生成的复习清单（轻量替代）",
+              "suggested_input": "前一步记录的错词列表、每词错误次数、复习时间间隔（1天、3天、7天）。",
+              "expected_output": "一个错词本（可简单记录单词、错误时间、复习状态）和每日复习队列清单。",
+              "execution_tip": "新手建议先手动标记，后续用Anki插件自动排期；每天复习上限不超过5个词。",
+              "ready_check": "用户第二天能看到需要复习的词（至少3个错词被列出）"
+            },
+            {
+              "step_name": "6. 闭环验证与迭代",
+              "step_goal": "通过一次完整的学习-测验-复习闭环，确认流程可跑通，并记录调整点。",
+              "primary_tool": "Notion / 飞书表格（复盘记录）",
+              "backup_tool": "普通文档、纸质记录（轻量替代）",
+              "suggested_input": "一次实际学习记录：学习了哪些词、答对/错几题、复习了哪些错词、用时多少。",
+              "expected_output": "一份简单的复盘记录：完成情况、卡点（如例句太难）、下轮调整（如减少每日新词量）。",
+              "execution_tip": "只保留1个主任务（学习+测验+复习），务必在用户可用时间内完成。",
+              "ready_check": "至少10个词完成了“学习→测验→错词复习”全流程，并留下一份可读的复盘记录。"
+            }
+          ]
+        },
+        "error_message": ""
+      },
+      "without_rag_result": {
+        "ablation_mode": "without_rag",
+        "workflow_run_id": "route_20260523_124505_fddf91",
+        "final_stage": "route_generated",
+        "route_generated": true,
+        "schema_valid": true,
+        "failure_type": "none",
+        "route_step_names": [
+          "导入待复习单词列表",
+          "为每个单词生成例句",
+          "生成测验题目（选择题/填空题）",
+          "用户作答并记录结果",
+          "识别并收集错题"
+        ],
+        "step_count": 5,
+        "retrieval_count": 0,
+        "retrieval_doc_count": 0,
+        "retrieved_sources": [],
+        "retrieved_snippet_preview": [],
+        "route_context_chars": 68,
+        "route_context_preview": "# 工具知识片段\n没有检索到相关片段。\n\n# Workflow 模板片段\n没有检索到相关片段。\n\n# 卡点提醒片段\n没有检索到相关片段。",
+        "latency_ms": 30698,
+        "model_call_count": 2,
+        "self_correction_count": 1,
+        "retrieval_trace_available": false,
+        "route_result": {
+          "task_summary": "用户希望利用 AI 构建英语单词复习流程，核心需求包括自动生成例句、测验题目和错词回顾功能。",
+          "route_type": "通用起步路线",
+          "steps": [
+            {
+              "step_name": "导入待复习单词列表",
+              "step_goal": "将用户需要复习的英语单词整理成结构化列表，作为后续生成的输入基础。",
+              "primary_tool": "AI 对话工具（如 ChatGPT、Claude）配合文本输入",
+              "backup_tool": "本地 CSV/Excel 文件 + AI 解析（如上传文件让 AI 提取词条）",
+              "suggested_input": "用户直接粘贴单词列表，每行一个单词；或上传含单词的表格文件。",
+              "expected_output": "输出一个包含单词、词性、中文释义的结构化词表（JSON/表格格式）。",
+              "execution_tip": "建议先筛选 10-20 个单词作为最小可运行单元，后续可分批扩展。",
+              "ready_check": "至少 5 个单词已成功提取，且每个单词有对应的中文释义。"
+            },
+            {
+              "step_name": "为每个单词生成例句",
+              "step_goal": "利用 AI 为每个单词生成至少 1-2 个典型例句，帮助理解语境。",
+              "primary_tool": "AI 文本生成模型（GPT-4o、Gemini Pro 等）",
+              "backup_tool": "单词 API（如 Merriam-Webster API）结合 AI 改写",
+              "suggested_input": "上一步输出的词表，以及例句生成要求（比如难度、长度、场景）。",
+              "expected_output": "每个单词对应 1-2 条英文例句，附带中文翻译（可选）。",
+              "execution_tip": "让 AI 优先生成学习型例句（常用搭配、真实语境），避免生僻或学术化句子。",
+              "ready_check": "每个单词至少包含一条语法正确、语境清晰的例句。"
+            },
+            {
+              "step_name": "生成测验题目（选择题/填空题）",
+              "step_goal": "基于单词和例句，自动生成多种题型供用户练习。",
+              "primary_tool": "AI 问答生成（使用 prompt 指定题型模板）",
+              "backup_tool": "Quizlet API 或 Anki 插件 + AI 辅助生成",
+              "suggested_input": "单词列表 + 例句 + 题目数量（如每个单词 2 题）。",
+              "expected_output": "输出一组题目，包含题干、选项（选择题）或填空句、正确答案。",
+              "execution_tip": "建议混合题型：一半选择题（选词填空/选释义），一半拼写填空题。",
+              "ready_check": "至少 5 个题目已生成，且每个题目有明确的正确答案。"
+            },
+            {
+              "step_name": "用户作答并记录结果",
+              "step_goal": "用户完成题目后，记录每道题的正确/错误状态，形成个性化学习记录。",
+              "primary_tool": "交互式笔记工具（Notion、Obsidian）或简单表单（Google Forms）",
+              "backup_tool": "AI 对话内直接作答（复制题目 -> 输入答案 -> 让 AI 批改）",
+              "suggested_input": "用户逐题作答；AI 或工具记录每一题的答案对错。",
+              "expected_output": "生成一份作答记录，包含题目、用户答案、正确答案、是否正确。",
+              "execution_tip": "建议用户自己创建一个简单表格，手动记录或让 AI 在对话中标记。初期可人工管理。",
+              "ready_check": "至少完成了 5 个题目的作答，并标记了正确/错误。"
+            },
+            {
+              "step_name": "识别并收集错题",
+              "step_goal": "从作答记录中筛选出所有错误题目，整理成错词列表，以便后续重点复习。",
+              "primary_tool": "AI 数据筛选（如用 AI 分析作答记录表格）",
+              "backup_tool": "手动筛选结合 Notion 筛选视图",
+              "suggested_input": "上一步生成的作答记录（表格或结构化文本）。",
+              "expected_output": "一份错题列表，包含错误单词、题目、正确答案和用户错误答案。",
+              "execution_tip": "建议将错题列表单独保存，并设计间隔重复回顾计划（如每日复习错词）。",
+              "ready_check": "至少识别出 1 个错题，且错题信息完整（单词、题目、正确答案）。"
+            }
+          ]
+        },
+        "error_message": ""
+      },
+      "pair_valid": true,
+      "invalid_reason": "",
+      "pair_diff": {
+        "named_tool_count_delta": 4,
+        "expected_tool_hit_delta": 3,
+        "focus_keyword_hit_delta": 0,
+        "generic_phrase_delta": 0,
+        "step_focus_delta": 0,
+        "with_rag_metrics": {
+          "named_tool_count": 7,
+          "expected_tool_hits": 6,
+          "focus_keyword_hits": 6,
+          "step_focus_hits": 4,
+          "generic_phrase_count": 0
+        },
+        "without_rag_metrics": {
+          "named_tool_count": 3,
+          "expected_tool_hits": 3,
+          "focus_keyword_hits": 6,
+          "step_focus_hits": 4,
+          "generic_phrase_count": 0
+        },
+        "preliminary_winner": "with_rag"
+      }
+    },
+    {
+      "case_id": "shortdrama_close_success_01",
+      "case_group": "diagnostic_cases",
+      "scenario": "AI 漫剧首集",
+      "user_goal": "我想做 AI 视频",
+      "followup_answer": "做一个 30 秒漫剧首集，需要角色设定、分镜脚本和首集成片流程",
+      "notes": "已知弱点观察 case，只作为 diagnostic，不参与 RAG 整体有效性主结论。",
+      "with_rag_result": {
+        "ablation_mode": "with_rag",
+        "workflow_run_id": "route_20260523_124536_634c55",
+        "final_stage": "route_generated",
+        "route_generated": true,
+        "schema_valid": true,
+        "failure_type": "none",
+        "route_step_names": [
+          "设定首集方向与主角",
+          "角色视觉锁定",
+          "分镜脚本制作",
+          "生成镜头素材",
+          "剪辑与配音",
+          "首集发布验证"
+        ],
+        "step_count": 6,
+        "retrieval_count": 1,
+        "retrieval_doc_count": 9,
+        "retrieved_sources": [
+          "tools",
+          "workflows",
+          "blockages"
+        ],
+        "retrieved_snippet_preview": [
+          {
+            "source": "tools",
+            "file_name": "tools.md",
+            "section_index": "3",
+            "chunk_index": "20",
+            "excerpt": "## 常用工具组合 ### ChatGPT / 通义千问 - 常用步骤：设定、剧情大纲、分镜脚本、提示词、字幕和标题。 - 适合产出：角色设定、世界观一句话、分镜表、镜头提示词、旁白。 - 轻量替代：豆包。 - 最小用法：要求输出分镜表，字段包含镜头、时长、画面、动作、台词、提示"
+          },
+          {
+            "source": "workflows",
+            "file_name": "workflows.md",
+            "section_index": "10",
+            "chunk_index": "31",
+            "excerpt": "## 路径模式 1：AI 动漫短剧 - 适用场景：用户想做 AI / 动漫短剧，但尚未明确时长、集数、平台或风格。 - 目标产物：一条可启动的动漫短剧制作路线；具体时长、集数和发布平台应在第一步由用户确认。 - 新手建议：可以从较短版本开始试水，例如 30-60 秒短片或 1-2"
+          },
+          {
+            "source": "workflows",
+            "file_name": "workflows.md",
+            "section_index": "9",
+            "chunk_index": "30",
+            "excerpt": "## 典型最小闭环 设定/IP 方向 -> 角色视觉一致性 -> 分镜/脚本 -> 生成/剪辑 -> 首轮验证/发布 最低闭环不是\"生成几段好看的视频\"，而是完成一条可测试的短剧作品；具体集数、时长和发布平台应由用户确认。 ---"
+          }
+        ],
+        "route_context_chars": 3937,
+        "route_context_preview": "# 工具知识片段\n【片段 1】\nsource: tools\nfile_name: tools.md\nsection_index: 3\nchunk_index: 20\ncontent:\n## 常用工具组合\n\n### ChatGPT / 通义千问\n\n- 常用步骤：设定、剧情大纲、分镜脚本、提示词、字幕和标题。\n- 适合产出：角色设定、世界观一句话、分镜表、镜头提示词、旁白。\n- 轻量替代：豆包。\n- 最小用法：要求输出分镜表，字段包含镜头、时长、画面、动作、台词、提示词。\n\n### 即梦 / Midjourney / 豆包图像\n\n- 常用步骤：角色视觉、场景图、关键帧、封面图。\n- 适合产出：角色基准图、表情图、场景参考、首图。\n- 轻量替代：平台素材库、手绘草图。\n- 最小用法：先生成角色基准图，再复用角色描述和参考图，不要每个镜头重新发明角色。\n\n### 可灵 / Runway / Pika / 即梦视频\n\n- 常用步骤：图生视频、文生视频、短镜头生成。\n- 适合产出：3 到 5 秒镜头片段、动作镜头、转场素材。\n- 轻量替代：静态图 + 剪映运镜。\n- 最小用法：优先图生视频，输入明",
+        "latency_ms": 24174,
+        "model_call_count": 1,
+        "self_correction_count": 0,
+        "retrieval_trace_available": true,
+        "route_result": {
+          "task_summary": "用户需要一条从角色设定、分镜脚本到完成30秒漫剧首集成片的可执行工作流，目标明确但需要拆解为具体步骤和工具组合。",
+          "route_type": "完整路线",
+          "steps": [
+            {
+              "step_name": "设定首集方向与主角",
+              "step_goal": "确定首集的题材、主角、核心冲突和风格，产出可用于后续步骤的世界观一句话和主角设定卡。",
+              "primary_tool": "ChatGPT / 通义千问",
+              "backup_tool": "豆包（轻量替代，适合快速头脑风暴）",
+              "suggested_input": "用户提供的创意方向（如题材偏好、主角性格、冲突场景等）",
+              "expected_output": "世界观一句话（10-15字）、主角设定卡（包含年龄、发型、脸型、服装主色、气质、核心冲突）",
+              "execution_tip": "集中精力只为首集设定，不要拓展多集世界观；主角设定卡控制在80-120字以内。",
+              "ready_check": "输出内容包含一个明确的主角、一个具体冲突、一个情绪钩子（如悬念或危机）。"
+            },
+            {
+              "step_name": "角色视觉锁定",
+              "step_goal": "生成主角基准图，确保后续所有镜头中角色视觉一致性。",
+              "primary_tool": "即梦 / Midjourney / 豆包图像",
+              "backup_tool": "平台素材库手绘草图（无生成工具时）",
+              "suggested_input": "主角设定卡中的描述词，配合正面半身、全身、表情参考的提示词模板",
+              "expected_output": "1张选定主角基准图（正面半身或全身），附带服装、发型、主色描述备注",
+              "execution_tip": "先生成3张候选图，选最符合设定的一张作为主参考；后续所有镜头提示词复用该角色的固定描述词。",
+              "ready_check": "用同一描述再生成2张图，旁观者能判断是同一个角色（即连续3张图角色特征一致）。"
+            },
+            {
+              "step_name": "分镜脚本制作",
+              "step_goal": "将30秒首集拆分为5-7个短镜头，每个镜头只包含一个主要动作，并标注时长、画面、动作、台词和提示词。",
+              "primary_tool": "ChatGPT / 通义千问（产出分镜表）",
+              "backup_tool": "Excel / 备忘录手动填写（无AI工具时）",
+              "suggested_input": "主角设定、世界观一句话、首集剧情梗概（用户提供或AI生成）",
+              "expected_output": "分镜表：镜头编号、时长（3-5秒）、画面描述、角色动作、台词/旁白、图生视频提示词（固定角色描述+当前动作+场景）",
+              "execution_tip": "每个镜头限一个动作，避免复杂转场或闪回；镜头总时长之和约为30秒。",
+              "ready_check": "每个镜头提示词可以直接作为图生视频输入，无需再拆分；静音播放分镜文字也能看懂主角、冲突和结果。"
+            },
+            {
+              "step_name": "生成镜头素材",
+              "step_goal": "根据分镜表中每个镜头的提示词，生成3-5秒的视频片段。",
+              "primary_tool": "可灵 / Runway / 即梦视频（图生视频，使用主参考图+动作提示词）",
+              "backup_tool": "静态图+剪映运镜动画（无视频生成工具时）",
+              "suggested_input": "分镜表中每个镜头的图生视频提示词及主参考图",
+              "expected_output": "5-7个短视频片段，分辨率一致，每个片段对应一个分镜镜头",
+              "execution_tip": "优先使用图生视频模式输入主参考图；每个镜头只生成3-5秒，避免生成过长导致动作混乱。",
+              "ready_check": "所有镜头按剧情顺序排列，能自然衔接（可先初步拼接检查顺序）。"
+            },
+            {
+              "step_name": "剪辑与配音",
+              "step_goal": "将生成片段按分镜顺序剪辑，添加字幕、配音（旁白/台词）和BGM，输出首集成片。",
+              "primary_tool": "剪映 / CapCut",
+              "backup_tool": "手机相册剪辑+平台内置剪辑器",
+              "suggested_input": "所有视频片段、分镜表中的台词/旁白文本、BGM参考（用户自选或免费曲库）",
+              "expected_output": "30秒完整成片：包含字幕轨、配音音轨、背景音乐、封面标题（标题占位即可）",
+              "execution_tip": "先按顺序排列无声版本，确认镜头切换节奏后再加字幕和配音；配音可先用剪映文本朗读，不必追求高成本声线。",
+              "ready_check": "成片播放后用户能看懂主角是谁、发生了什么、结局暗示；字幕与配音同步。"
+            },
+            {
+              "step_name": "首集发布验证",
+              "step_goal": "为成片添加标题和封面，选择发布渠道，记录基础数据以评估效果。",
+              "primary_tool": "剪映导出+目标平台发布页（如B站、抖音、YouTube）",
+              "backup_tool": "本地存储+社交群组手动分发",
+              "suggested_input": "成片文件、封面图（可为第一帧或独立生成的封面）、标题文案（含悬念或钩子）",
+              "expected_output": "发布后的作品链接，以及记录字段：发布时间、初始播放量、评论数、完播率观察（区间记录）",
+              "execution_tip": "首版不求爆款，重点验证画风、故事能否被看懂；标题和封面在前3秒传递冲突。",
+              "ready_check": "作品已成功发布，且记录字段已填写（可空缺具体数据但需标注观察区间）。"
+            }
+          ]
+        },
+        "error_message": ""
+      },
+      "without_rag_result": {
+        "ablation_mode": "without_rag",
+        "workflow_run_id": "route_20260523_124600_431101",
+        "final_stage": "route_generated",
+        "route_generated": true,
+        "schema_valid": true,
+        "failure_type": "none",
+        "route_step_names": [
+          "角色设定与角色卡生成",
+          "30秒剧本/对白草稿",
+          "分镜脚本制作",
+          "视觉素材生成（角色、背景、道具）",
+          "动画/剪辑合成（首集成片）",
+          "音效与配音制作",
+          "输出与发布准备"
+        ],
+        "step_count": 7,
+        "retrieval_count": 0,
+        "retrieval_doc_count": 0,
+        "retrieved_sources": [],
+        "retrieved_snippet_preview": [],
+        "route_context_chars": 68,
+        "route_context_preview": "# 工具知识片段\n没有检索到相关片段。\n\n# Workflow 模板片段\n没有检索到相关片段。\n\n# 卡点提醒片段\n没有检索到相关片段。",
+        "latency_ms": 30041,
+        "model_call_count": 1,
+        "self_correction_count": 0,
+        "retrieval_trace_available": false,
+        "route_result": {
+          "task_summary": "根据用户目标制作一个30秒漫剧首集，涵盖角色设定、分镜脚本和首集成片流程。由于缺少工具和模板上下文，输出通用起步路线，引导用户逐步完成从角色到成片的核心环节。",
+          "route_type": "通用起步路线",
+          "steps": [
+            {
+              "step_name": "角色设定与角色卡生成",
+              "step_goal": "确定主角的基本设定，生成可用于后续视觉制作的标准化角色卡。",
+              "primary_tool": "ChatGPT + Midjourney / DALL·E （组合描述角色外形与气质，利用AI绘图工具生成角色视觉参考）",
+              "backup_tool": "Leonardo.ai （免费额度多，适合快速迭代角色设计）",
+              "suggested_input": "用户提供的角色设定文字（如名字、年龄、性格、外貌关键词），或一段即兴描述。若无，则建议先写一段100字以内的角色小传。",
+              "expected_output": "一张角色正面/半身概念图（或2-3张风格探索图），以及一份角色卡（含名称、性格关键词、视觉特征清单）。",
+              "execution_tip": "多用表情细节描述（例如“眼角微垂、嘴角上翘”），便于后续分镜保持角色一致性。角色卡需保存为可复用的文本+图片。",
+              "ready_check": "至少有一个可辨识的静态角色视觉设计，且角色卡关键特征描述完整（名称、主要外貌特征、性格关键词）。"
+            },
+            {
+              "step_name": "30秒剧本/对白草稿",
+              "step_goal": "编写符合30秒时长的短剧本，包含起承转合或钩子。",
+              "primary_tool": "Claude / ChatGPT （用于生成和压缩对白，控制字数在80-120字左右）",
+              "backup_tool": "Notion AI （结构化写作，便于分镜时引用）",
+              "suggested_input": "角色设定卡 + 用户想要的剧情方向（如“穿越”、“复仇”或“日常搞笑”）。若方向不明确，建议使用“经典三幕式：悬念→冲突→反转”结构。",
+              "expected_output": "一份30秒剧本，包含场景提示、对白（或旁白）、关键动作提示。总时长估算匹配30秒（每字约0.2-0.3秒）。",
+              "execution_tip": "先写150字版本，再压缩到100字以内，确保每个词都有叙事作用。留出2-3秒静默用于转场音效。",
+              "ready_check": "剧本有明确开头、冲突点（或反转）和收尾，朗读一遍时长在28-32秒之间。"
+            },
+            {
+              "step_name": "分镜脚本制作",
+              "step_goal": "将剧本视觉化，规划每个镜头的画面、景别、动作和转场。",
+              "primary_tool": "Storyboarder （免费开源，可手绘或导入AI生成图） 或 ChatGPT + Canva （利用AI生成分镜表格）",
+              "backup_tool": "Boords （在线分镜工具，支持自动排版，有免费试用）",
+              "suggested_input": "30秒剧本 + 角色概念图。建议用户先手绘或用文字描述6-8个关键镜头（每个镜头3-5秒）。",
+              "expected_output": "一份分镜脚本，包含镜头编号、景别、画面描述、动作/对白、转场类型、预计时长。可以是表格或图文混排。",
+              "execution_tip": "30秒漫剧建议保持6-8个镜头，避免过快切换。重要表情或动作镜头可延长时间。标记出需要配音/音效的节点。",
+              "ready_check": "所有镜头总时长之和约30秒（允许±2秒），每个镜头都有画面描述和景别标注。"
+            },
+            {
+              "step_name": "视觉素材生成（角色、背景、道具）",
+              "step_goal": "根据分镜需求，生成每个镜头所需的背景图和角色表情/动作图。",
+              "primary_tool": "Midjourney / Stable Diffusion （使用一致性提示工程，确保角色在不同镜头中外观统一）",
+              "backup_tool": "Clipdrop by Stability AI （快速生成背景变化，无需复杂提示）",
+              "suggested_input": "分镜脚本中的画面描述 + 角色卡视觉特征。建议分批次生成：背景图一批，角色表情/动作图一批。",
+              "expected_output": "一套与分镜对应的图像素材：每镜头至少一张背景图（若使用纯色背景可省略），主要角色在关键姿势/表情下的图片4-6张，及其他道具/特效元素（如有）。",
+              "execution_tip": "使用相同的种子（seed）或参考图（image reference）来保持一致性。若角色穿帮，后期用PS或AI修复。优先准备前3个镜头的素材，测试风格是否符合预期。",
+              "ready_check": "首镜头的背景图和角色图已生成且视觉风格匹配，角色可辨识。"
+            },
+            {
+              "step_name": "动画/剪辑合成（首集成片）",
+              "step_goal": "将静态图片按分镜编排成动态漫剧，加入镜头运动和字幕。",
+              "primary_tool": "剪映 / CapCut （内置“关键帧”、“画中画”、“动画-缩放”功能，非常适合漫剧制作）",
+              "backup_tool": "DaVinci Resolve （免费版，支持更精细的镜头运动但学习曲线较陡）",
+              "suggested_input": "分镜脚本 + 已生成的图片素材。按镜头顺序导入轨道，设置每张图片的时长（参考分镜时长）。添加基础关键帧：缓慢推拉或平移。",
+              "expected_output": "一个30秒动态漫剧初版视频：包含各镜头图片、基础推拉/摇移动画、字幕（如有对白）。无音效。",
+              "execution_tip": "先做无配音版本，确认镜头节奏是否流畅。每张图片停留时间至少1秒，避免抽风式快闪。使用“缩放至背景”制造呼吸感。",
+              "ready_check": "视频总时长28-32秒；所有镜头均按分镜顺序出现；图像无突兀跳变或比例错误。"
+            },
+            {
+              "step_name": "音效与配音制作",
+              "step_goal": "为成片添加配音（如有）、背景音乐和音效，提升沉浸感。",
+              "primary_tool": "ElevenLabs / Fish Audio （AI配音，支持情感调节，可生成角色声音）",
+              "backup_tool": "剪映内置文本朗读 （免费，音色较有限但稳定）",
+              "suggested_input": "剧本对白文本 + 角色性格关键词（用于选择声音风格）。背景音乐可使用Pixabay免费BGM。",
+              "expected_output": "一条配音音频文件（如有旁白/对白），一条背景音乐音频（建议长度30秒，淡入淡出），以及2-3个环境音效（如开门、脚步、风声）。",
+              "execution_tip": "配音先导出干音，再在剪辑软件中与视频对齐。背景音乐音量压到-24dB左右，不压过对白。音效配合画面动作添加，精确到帧。",
+              "ready_check": "配音与口型（画面动作）基本同步；背景音乐贯穿且不突兀；至少有一处关键音效（如场景切换或动作点）已加上。"
+            },
+            {
+              "step_name": "输出与发布准备",
+              "step_goal": "导出最终视频，并根据主流平台规格准备封面、标题和标签。",
+              "primary_tool": "剪映导出设置（H.264，1080p，30fps） + Canva / 稿定设计（制作封面）",
+              "backup_tool": "HandBrake （压缩体积用，保持画质）",
+              "suggested_input": "成片视频 + 剧本核心钩子（用于封面文字）。建议导出MP4格式，码率8-12Mbps。",
+              "expected_output": "一个30秒MP4视频文件（内嵌配音、BGM、音效），一张16:9封面图（带标题和角色），以及一份发布文案（含3-5个标签，一个吸引人的简介）。",
+              "execution_tip": "保存两个版本：高清版（用于本地存档）和压缩版（用于上传，100MB以内）。封面使用角色大脸+大字号标题。标签组合建议：#漫剧 #原创动漫 #短剧。",
+              "ready_check": "视频可正常播放，音画同步，封面图分辨率不低于1920×1080，发布文案已写。"
+            }
+          ]
+        },
+        "error_message": ""
+      },
+      "pair_valid": true,
+      "invalid_reason": "",
+      "pair_diff": {
+        "named_tool_count_delta": 2,
+        "expected_tool_hit_delta": 5,
+        "focus_keyword_hit_delta": 0,
+        "generic_phrase_delta": 0,
+        "step_focus_delta": -2,
+        "with_rag_metrics": {
+          "named_tool_count": 10,
+          "expected_tool_hits": 8,
+          "focus_keyword_hits": 5,
+          "step_focus_hits": 2,
+          "generic_phrase_count": 0
+        },
+        "without_rag_metrics": {
+          "named_tool_count": 8,
+          "expected_tool_hits": 3,
+          "focus_keyword_hits": 5,
+          "step_focus_hits": 4,
+          "generic_phrase_count": 0
+        },
+        "preliminary_winner": "with_rag"
+      }
+    }
+  ]
+}

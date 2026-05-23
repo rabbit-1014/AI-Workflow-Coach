@@ -1,0 +1,1069 @@
+{
+  "generated_at": "2026-05-22T17:34:40",
+  "git_commit": "8282cec",
+  "mode": "real manual eval",
+  "limit": 10,
+  "case_id": "",
+  "total_cases": 10,
+  "route_generated_count": 7,
+  "schema_valid_count": 7,
+  "average_latency_ms": 28460.7,
+  "failure_type_distribution": {
+    "none": 7,
+    "route_not_generated": 2,
+    "followup_required": 1
+  },
+  "manual_scoring_scale": {
+    "0": "明显失败",
+    "1": "可用但有明显问题",
+    "2": "质量好，可作为展示样例",
+    "null": "尚未人工复盘"
+  },
+  "results": [
+    {
+      "case_id": "shortdrama_core_01",
+      "scenario": "AI 动漫短剧",
+      "user_goal": "AI 动漫短剧",
+      "followup_answer": "",
+      "expected_behavior": "核心极简输入，验证不擅自假设时长/平台且能生成路线。",
+      "should_generate_route": true,
+      "final_stage": "route_generated",
+      "route_generated": true,
+      "schema_valid": true,
+      "json_parse_success": true,
+      "step_count": 5,
+      "required_fields_complete": true,
+      "route_step_names": [
+        "设定/IP方向确认",
+        "角色视觉锁定",
+        "分镜脚本编写",
+        "生成镜头片段",
+        "剪辑配音与发布验证"
+      ],
+      "retrieval_count": 1,
+      "retrieval_doc_count": 9,
+      "retrieved_sources": [
+        "tools",
+        "workflows",
+        "blockages"
+      ],
+      "retrieved_snippet_preview": [
+        {
+          "source": "tools",
+          "file_name": "tools.md",
+          "section_index": "3",
+          "chunk_index": "20",
+          "excerpt": "## 常用工具组合 ### ChatGPT / 通义千问 - 常用步骤：设定、剧情大纲、分镜脚本、提示词、字幕和标题。 - 适合产出：角色设定、世界观一句话、分镜表、镜头提示词、旁白。 - 轻量替代：豆包。 - 最小用法：要求输出分镜表，字"
+        },
+        {
+          "source": "workflows",
+          "file_name": "workflows.md",
+          "section_index": "10",
+          "chunk_index": "31",
+          "excerpt": "## 路径模式 1：AI 动漫短剧 - 适用场景：用户想做 AI / 动漫短剧，但尚未明确时长、集数、平台或风格。 - 目标产物：一条可启动的动漫短剧制作路线；具体时长、集数和发布平台应在第一步由用户确认。 - 新手建议：可以从较短版本开始"
+        },
+        {
+          "source": "workflows",
+          "file_name": "workflows.md",
+          "section_index": "9",
+          "chunk_index": "30",
+          "excerpt": "## 典型最小闭环 设定/IP 方向 -> 角色视觉一致性 -> 分镜/脚本 -> 生成/剪辑 -> 首轮验证/发布 最低闭环不是\"生成几段好看的视频\"，而是完成一条可测试的短剧作品；具体集数、时长和发布平台应由用户确认。 ---"
+        }
+      ],
+      "route_context_chars": 3937,
+      "route_context_preview": "# 工具知识片段\n【片段 1】\nsource: tools\nfile_name: tools.md\nsection_index: 3\nchunk_index: 20\ncontent:\n## 常用工具组合\n\n### ChatGPT / 通义千问\n\n- 常用步骤：设定、剧情大纲、分镜脚本、提示词、字幕和标题。\n- 适合产出：角色设定、世界观一句话、分镜表、镜头提示词、旁白。\n- 轻量替代：豆包。\n- 最小用法：要求输出分镜表，字段包含镜头、时长、画面、动作、台词、提示词。\n\n### 即梦 / Midjourney / 豆包图像\n\n- 常用步骤：角色视觉、场景图、关键帧、封面图。\n- 适合产出：角色",
+      "model_call_count": 1,
+      "chroma_db_exists": true,
+      "vector_store_dir": "D:\\ai_projects\\AI-Workflow-Coach\\vector_store\\chroma_db",
+      "retrieval_trace_available": true,
+      "latency_ms": 38656,
+      "failure_type": "none",
+      "self_correction_count": 0,
+      "manual_tool_fit_score": null,
+      "manual_actionability_score": null,
+      "manual_specificity_score": null,
+      "manual_assumption_control_score": null,
+      "manual_overall_quality_score": null,
+      "notes": "质量复盘重点看 anti-assumption、角色/分镜/成片路线是否具体。",
+      "workflow_run_id": "route_20260522_172955_2cd7b5",
+      "error_message": "",
+      "route_result": {
+        "task_summary": "用户想做AI动漫短剧，需要一条从设定到发布的完整可执行工作流路线。用户尚未明确时长、集数、平台、风格等具体参数，路线以可启动的最小闭环为目标。",
+        "route_type": "完整路线",
+        "steps": [
+          {
+            "step_name": "设定/IP方向确认",
+            "step_goal": "确定短剧的题材、主角、核心冲突、情绪钩子和目标平台，为后续所有视觉与脚本提供方向锚点。",
+            "primary_tool": "ChatGPT / 通义千问（对话生成）",
+            "backup_tool": "豆包（轻量替代，支持基础设定生成）",
+            "suggested_input": "用户自行决定：题材（如奇幻、科幻、古风）、主角一句话描述、核心冲突（如“主角被误解但必须拯救世界”）、情绪钩子（如“前三秒让观众好奇”）、目标平台（如抖音、B站、YouTube，待确认）",
+            "expected_output": "一份简明的设定文档，包含：题材、主角设定（名字、性格、目标）、世界观一句话、核心冲突、情绪钩子、目标平台（若未确定则标记为待确认）",
+            "execution_tip": "不要贪多，一个主角+一个冲突+一个情绪钩子即可启动。如果用户是新手，建议先做1个主角、1个场景的短片试水（可选建议，非强制）。",
+            "ready_check": "至少明确一个主角、一个冲突、一个情绪钩子，并且对目标平台有初步意向（哪怕只是待确认）。"
+          },
+          {
+            "step_name": "角色视觉锁定",
+            "step_goal": "生成并锁定主角的基准视觉，确保后续所有镜头中角色保持一致性。",
+            "primary_tool": "即梦 / Midjourney（图像生成+角色基准图）",
+            "backup_tool": "豆包图像（轻量替代，生成速度更快）",
+            "suggested_input": "第一步产出中的主角设定（性格、服饰关键词、主色调），加上一个30-80字的角色锁定描述（如“年轻女性，黑长直，红色围巾，冷色调背景，眼神坚定”）",
+            "expected_output": "主角正面半身基准图1张、全身图1张、表情参考图1-2张，以及可用于后续提示词的角色锁定词模板（不变部分+可变部分）",
+            "execution_tip": "先生成多张对比，选1张作为主参考图；后续每次提示词只改变动作、表情或场景，固定角色词不变。连续生成3张图应能认出同一角色。",
+            "ready_check": "选出1张主参考图，并且用同一角色锁定描述连续生成3张图，旁观者能判断是同一个角色。"
+          },
+          {
+            "step_name": "分镜脚本编写",
+            "step_goal": "将短剧剧情拆解为可生成的单一动作镜头，每个镜头包含时长、画面、动作、台词和提示词。",
+            "primary_tool": "ChatGPT / 通义千问（分镜表生成）",
+            "backup_tool": "记事本/Excel（手动编写分镜表）",
+            "suggested_input": "第一步的剧情（冲突+情绪钩子），第二步的角色参考图及锁定词，以及用户希望的总时长（如30-60秒，待确认）",
+            "expected_output": "一份分镜表，每行包含：镜头编号、时长（建议3-5秒）、景别、画面描述、角色动作、台词/旁白（可选）、生成提示词（含角色锁定+单一动作）",
+            "execution_tip": "每个镜头只写一个主要动作，不要包含多个动作、回忆、转场。复杂剧情拆成3-5个短镜头。确保每个分镜能直接转换成图生视频或文生视频提示词。",
+            "ready_check": "每个镜头只有一个主要动作；将任意一个分镜的提示词输入图像生成工具，能产生符合描述的单一画面。"
+          },
+          {
+            "step_name": "生成镜头片段",
+            "step_goal": "根据分镜表生成3-8个短镜头视频素材，为后续剪辑提供可用片段。",
+            "primary_tool": "可灵 / Runway / Pika / 即梦视频（图生视频）",
+            "backup_tool": "静态图+剪映运镜（若生成工具不可用，用静态图配合缩放/平移模拟）",
+            "suggested_input": "分镜表中每个镜头的提示词，以及第二步锁定的角色参考图（作为图生视频的输入图）",
+            "expected_output": "每个镜头3-5秒的视频片段，数量等于分镜列表长度；片段之间视觉风格一致，角色可辨认。",
+            "execution_tip": "优先用图生视频（输入角色基准图+动作提示词），避免文生视频导致角色漂移。每个镜头只生成一遍，如果失败则微调提示词，不要反复生成大量废片。",
+            "ready_check": "所有镜头片段能按剧情顺序粗略拼接，并且静音播放也能看出主角、冲突和大致情节。"
+          },
+          {
+            "step_name": "剪辑配音与发布验证",
+            "step_goal": "将镜头片段剪辑成完整短剧，添加字幕、配音、BGM和封面，并发布到目标平台以收集首轮反馈。",
+            "primary_tool": "剪映/CapCut（剪辑+字幕+配音+BGM+封面）",
+            "backup_tool": "手机相册剪辑+平台内置剪辑器（轻量替代）",
+            "suggested_input": "生成的镜头片段（按分镜顺序排列）、分镜中的台词或旁白文本、角色参考图（用于封面）、目标平台封面尺寸规范（如9:16）",
+            "expected_output": "一条完整的短剧视频（含字幕、配音、BGM、封面标题），以及发布后的数据记录（如播放量、完播率、互动评论，仅为记录字段，不假设具体数值）",
+            "execution_tip": "首版先用剪映文本朗读配音，降低起步成本。剪辑时先按剧情顺序拼接无声版本，确认逻辑通畅后再加字幕、配音和音乐。发布后记录观察项（如完播区间、观众评论关键词），用以决定下一条改进方向。",
+            "ready_check": "静音播放视频，旁观者能看懂主角是谁、发生了什么、后续期待点是什么；视频已导出到可发布格式，并设定了标题和封面。"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "shortdrama_direct_01",
+      "scenario": "AI 动漫短剧",
+      "user_goal": "做一集 60 秒 AI 动漫短剧，主角是高中生，风格热血，想发到短视频平台",
+      "followup_answer": "",
+      "expected_behavior": "信息充分，适合看工具、分镜、角色一致性、发布闭环。",
+      "should_generate_route": true,
+      "final_stage": "route_generated",
+      "route_generated": true,
+      "schema_valid": true,
+      "json_parse_success": true,
+      "step_count": 6,
+      "required_fields_complete": true,
+      "route_step_names": [
+        "设定与IP方向确认",
+        "角色视觉锁定",
+        "分镜脚本编写",
+        "生成镜头素材",
+        "配音与字幕制作",
+        "剪辑与发布验证"
+      ],
+      "retrieval_count": 1,
+      "retrieval_doc_count": 9,
+      "retrieved_sources": [
+        "tools",
+        "workflows",
+        "blockages"
+      ],
+      "retrieved_snippet_preview": [
+        {
+          "source": "tools",
+          "file_name": "tools.md",
+          "section_index": "3",
+          "chunk_index": "20",
+          "excerpt": "## 常用工具组合 ### ChatGPT / 通义千问 - 常用步骤：设定、剧情大纲、分镜脚本、提示词、字幕和标题。 - 适合产出：角色设定、世界观一句话、分镜表、镜头提示词、旁白。 - 轻量替代：豆包。 - 最小用法：要求输出分镜表，字"
+        },
+        {
+          "source": "workflows",
+          "file_name": "workflows.md",
+          "section_index": "10",
+          "chunk_index": "31",
+          "excerpt": "## 路径模式 1：AI 动漫短剧 - 适用场景：用户想做 AI / 动漫短剧，但尚未明确时长、集数、平台或风格。 - 目标产物：一条可启动的动漫短剧制作路线；具体时长、集数和发布平台应在第一步由用户确认。 - 新手建议：可以从较短版本开始"
+        },
+        {
+          "source": "workflows",
+          "file_name": "workflows.md",
+          "section_index": "9",
+          "chunk_index": "30",
+          "excerpt": "## 典型最小闭环 设定/IP 方向 -> 角色视觉一致性 -> 分镜/脚本 -> 生成/剪辑 -> 首轮验证/发布 最低闭环不是\"生成几段好看的视频\"，而是完成一条可测试的短剧作品；具体集数、时长和发布平台应由用户确认。 ---"
+        }
+      ],
+      "route_context_chars": 3937,
+      "route_context_preview": "# 工具知识片段\n【片段 1】\nsource: tools\nfile_name: tools.md\nsection_index: 3\nchunk_index: 20\ncontent:\n## 常用工具组合\n\n### ChatGPT / 通义千问\n\n- 常用步骤：设定、剧情大纲、分镜脚本、提示词、字幕和标题。\n- 适合产出：角色设定、世界观一句话、分镜表、镜头提示词、旁白。\n- 轻量替代：豆包。\n- 最小用法：要求输出分镜表，字段包含镜头、时长、画面、动作、台词、提示词。\n\n### 即梦 / Midjourney / 豆包图像\n\n- 常用步骤：角色视觉、场景图、关键帧、封面图。\n- 适合产出：角色",
+      "model_call_count": 1,
+      "chroma_db_exists": true,
+      "vector_store_dir": "D:\\ai_projects\\AI-Workflow-Coach\\vector_store\\chroma_db",
+      "retrieval_trace_available": true,
+      "latency_ms": 38991,
+      "failure_type": "none",
+      "self_correction_count": 0,
+      "manual_tool_fit_score": null,
+      "manual_actionability_score": null,
+      "manual_specificity_score": null,
+      "manual_assumption_control_score": null,
+      "manual_overall_quality_score": null,
+      "notes": "用户已明确 60 秒，不能误判为模型擅自假设。",
+      "workflow_run_id": "route_20260522_173034_e499bb",
+      "error_message": "",
+      "route_result": {
+        "task_summary": "用户需要制作一集60秒热血风格AI动漫短剧，主角为高中生，目标发布到短视频平台。需要从设定到成片的完整可执行路线。",
+        "route_type": "完整路线",
+        "steps": [
+          {
+            "step_name": "设定与IP方向确认",
+            "step_goal": "确定主角设定、核心冲突、热血风格基调，以及目标短视频平台的适配策略。",
+            "primary_tool": "ChatGPT / 通义千问",
+            "backup_tool": "豆包（轻量替代）",
+            "suggested_input": "主角高中生（性格、背景待确认）、热血冲突起点（如校园对抗、比赛、友情危机等）、目标平台（可选建议：抖音、快手、B站等，用户需自行确认）",
+            "expected_output": "一句话世界观、主角设定描述（80-120字）、冲突钩子（前3秒看点）、目标平台确认记录",
+            "execution_tip": "重点设计前3秒钩子——短视频完播关键；平台特性影响节奏和画幅（如竖屏/横屏）",
+            "ready_check": "已有一个明确的主角设定和一个冲突钩子，能回答「主角是谁、发生了什么、为什么值得看」"
+          },
+          {
+            "step_name": "角色视觉锁定",
+            "step_goal": "生成主角基准图，确保后续镜头中角色视觉一致性。",
+            "primary_tool": "即梦 / Midjourney / 豆包图像",
+            "backup_tool": "手绘草图 + 平台素材库（零成本替代）",
+            "suggested_input": "第一步输出的主角描述（年龄、发型、服装、主色、气质），加上「热血风格」视觉关键词（如运动服、火焰特效、锐利线条）",
+            "expected_output": "1张主角基准图（正面半身或全身），附带角色锁定卡（80-120字固定描述）",
+            "execution_tip": "生成时添加反向约束（如「不得改变发型、服装颜色」）；保存一张主参考图，后续所有镜头复用此图",
+            "ready_check": "连续生成3张不同动作/表情的图，旁观者能认出是同一角色"
+          },
+          {
+            "step_name": "分镜脚本编写",
+            "step_goal": "将60秒剧情拆成5-8个单一动作的短镜头，每镜头时长3-10秒，输出可生成的分镜表。",
+            "primary_tool": "ChatGPT / 通义千问",
+            "backup_tool": "豆包（轻量替代）",
+            "suggested_input": "第一步的剧情设定，要求输出分镜表（字段：镜头编号、时长、画面、动作、台词/旁白、景别、提示词）",
+            "expected_output": "分镜表，总计时长约60秒，每个镜头只包含一个主要动作",
+            "execution_tip": "每个镜头提示词必须包含角色锁定描述 + 动作 + 场景，避免镜头内多个动作或回忆",
+            "ready_check": "每个分镜可直接作为图生视频或文生视频的提示词，无歧义"
+          },
+          {
+            "step_name": "生成镜头素材",
+            "step_goal": "使用图生视频工具生成3-8个短镜头素材，确保角色一致、动作流畅。",
+            "primary_tool": "可灵 / Runway / Pika / 即梦视频",
+            "backup_tool": "静态图 + 剪映运镜（低配替代）",
+            "suggested_input": "每个镜头的角色参考图（第二步产出）和该镜头的提示词（第三步产出）",
+            "expected_output": "3-8个3-5秒视频片段，角色视觉一致，动作清晰",
+            "execution_tip": "优先图生视频，输入明确单一动作；如遇角色漂移，返回第二步调整锁定卡",
+            "ready_check": "所有镜头能按剧情顺序剪在一起，静音播放也能看懂主角、冲突和结果"
+          },
+          {
+            "step_name": "配音与字幕制作",
+            "step_goal": "生成旁白/台词配音，制作字幕，确保音画匹配。",
+            "primary_tool": "ElevenLabs / 剪映文本朗读",
+            "backup_tool": "剪映默认朗读、真人临时配音（零成本替代）",
+            "suggested_input": "从分镜表中提取台词/旁白文本，标注角色声线（少年热血音）",
+            "expected_output": "配音音频文件（或剪映内配好），字幕文件（.srt或剪映字幕轨）",
+            "execution_tip": "首版用剪映文本朗读降低成本；配音节奏需符合热血风格（语速稍快、情绪激昂）",
+            "ready_check": "配音时长与镜头时长匹配，字幕无错别字，朗读节奏符合热血风格"
+          },
+          {
+            "step_name": "剪辑与发布验证",
+            "step_goal": "将镜头、配音、字幕、BGM、封面剪辑成完整成片，准备发布并记录首轮数据。",
+            "primary_tool": "剪映 / CapCut",
+            "backup_tool": "手机相册剪辑、平台内置剪辑器（轻量替代）",
+            "suggested_input": "所有视频片段、配音、字幕、BGM（热血激昂风格）、封面图（可从角色基准图截取）",
+            "expected_output": "一条60秒成片（竖屏适配短视频平台），包含标题、封面、发布文案（含话题标签），以及数据记录字段（完播率、互动数、评论内容等待填充）",
+            "execution_tip": "先按剧情顺序拼好无声版，再加字幕、配音、BGM；前3秒必须有视觉+听觉钩子；保存发布后的数据用于后续迭代",
+            "ready_check": "播放一次，能回答「主角是谁、发生了什么、结尾期待点」；发布后记录至少一条观看反馈（如完播、互动、评论）"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "shortdrama_close_success_01",
+      "scenario": "AI 漫剧首集",
+      "user_goal": "我想做 AI 视频",
+      "followup_answer": "做一个 30 秒漫剧首集，需要角色设定、分镜脚本和首集成片流程",
+      "expected_behavior": "覆盖补问收口后的真实 route。",
+      "should_generate_route": true,
+      "final_stage": "route_generated",
+      "route_generated": true,
+      "schema_valid": true,
+      "json_parse_success": true,
+      "step_count": 7,
+      "required_fields_complete": true,
+      "route_step_names": [
+        "明确内容定位与观众画像",
+        "策划视频选题与脚本框架",
+        "生成语音与字幕初稿",
+        "生成匹配视觉素材",
+        "合成与剪辑初版视频",
+        "发布前检查与平台适配",
+        "发布并记录基础数据"
+      ],
+      "retrieval_count": 1,
+      "retrieval_doc_count": 9,
+      "retrieved_sources": [
+        "tools",
+        "workflows",
+        "blockages"
+      ],
+      "retrieved_snippet_preview": [
+        {
+          "source": "tools",
+          "file_name": "tools.md",
+          "section_index": "3",
+          "chunk_index": "20",
+          "excerpt": "## 常用工具组合 ### ChatGPT / 通义千问 - 常用步骤：设定、剧情大纲、分镜脚本、提示词、字幕和标题。 - 适合产出：角色设定、世界观一句话、分镜表、镜头提示词、旁白。 - 轻量替代：豆包。 - 最小用法：要求输出分镜表，字"
+        },
+        {
+          "source": "workflows",
+          "file_name": "workflows.md",
+          "section_index": "10",
+          "chunk_index": "31",
+          "excerpt": "## 路径模式 1：AI 动漫短剧 - 适用场景：用户想做 AI / 动漫短剧，但尚未明确时长、集数、平台或风格。 - 目标产物：一条可启动的动漫短剧制作路线；具体时长、集数和发布平台应在第一步由用户确认。 - 新手建议：可以从较短版本开始"
+        },
+        {
+          "source": "workflows",
+          "file_name": "workflows.md",
+          "section_index": "9",
+          "chunk_index": "30",
+          "excerpt": "## 典型最小闭环 设定/IP 方向 -> 角色视觉一致性 -> 分镜/脚本 -> 生成/剪辑 -> 首轮验证/发布 最低闭环不是\"生成几段好看的视频\"，而是完成一条可测试的短剧作品；具体集数、时长和发布平台应由用户确认。 ---"
+        }
+      ],
+      "route_context_chars": 3937,
+      "route_context_preview": "# 工具知识片段\n【片段 1】\nsource: tools\nfile_name: tools.md\nsection_index: 3\nchunk_index: 20\ncontent:\n## 常用工具组合\n\n### ChatGPT / 通义千问\n\n- 常用步骤：设定、剧情大纲、分镜脚本、提示词、字幕和标题。\n- 适合产出：角色设定、世界观一句话、分镜表、镜头提示词、旁白。\n- 轻量替代：豆包。\n- 最小用法：要求输出分镜表，字段包含镜头、时长、画面、动作、台词、提示词。\n\n### 即梦 / Midjourney / 豆包图像\n\n- 常用步骤：角色视觉、场景图、关键帧、封面图。\n- 适合产出：角色",
+      "model_call_count": 2,
+      "chroma_db_exists": true,
+      "vector_store_dir": "D:\\ai_projects\\AI-Workflow-Coach\\vector_store\\chroma_db",
+      "retrieval_trace_available": true,
+      "latency_ms": 58495,
+      "failure_type": "none",
+      "self_correction_count": 1,
+      "manual_tool_fit_score": null,
+      "manual_actionability_score": null,
+      "manual_specificity_score": null,
+      "manual_assumption_control_score": null,
+      "manual_overall_quality_score": null,
+      "notes": "检查补问收口后是否保留短剧制作阶段感和中间产物。",
+      "workflow_run_id": "route_20260522_173113_ad8ff7",
+      "error_message": "",
+      "route_result": {
+        "task_summary": "用户想要学习如何利用AI工具高效制作短视频内容，但缺乏系统化的workflow拆解。",
+        "route_type": "通用起步路线",
+        "steps": [
+          {
+            "step_name": "明确内容定位与观众画像",
+            "step_goal": "确定账号主题、目标人群和视频风格，为后续AI生成提供方向。",
+            "primary_tool": "ChatGPT（对话式调研）或Notion AI（结构化分析）",
+            "backup_tool": "Xmind（思维导图工具），手动梳理定位逻辑。",
+            "suggested_input": "请列出3个你感兴趣的知识领域，并说明希望吸引哪类观众。",
+            "expected_output": "一份100字以内的内容定位声明，包含领域、核心价值、目标观众特征。",
+            "execution_tip": "先不要纠结完美，最好选择一个你最熟悉或最热爱的领域。",
+            "ready_check": "定位声明中至少包含一个明确的主题和一个目标人群关键词（如‘职场新人’‘宝妈’）。"
+          },
+          {
+            "step_name": "策划视频选题与脚本框架",
+            "step_goal": "使用AI头脑风暴生成10个选题，并写出第一个脚本的提纲。",
+            "primary_tool": "ChatGPT（选题生成）+ Claude（脚本优化）",
+            "backup_tool": "Copy.ai（内容生成）",
+            "suggested_input": "基于定位声明，生成10个‘怎么办/为什么/是什么’型短视频选题，每个选题20字内。",
+            "expected_output": "10个选题列表 + 1个选定选题的脚本提纲（含开头、主体3点、结尾行动引导）。",
+            "execution_tip": "脚本开头前3秒必须抓住注意力，可用‘反常识提问’或‘数据冲击’。",
+            "ready_check": "脚本提纲包含至少3个分论点，结尾有明确引导话术（如‘关注我了解更多’）。"
+          },
+          {
+            "step_name": "生成语音与字幕初稿",
+            "step_goal": "利用AI语音合成工具生成旁白，同时用字幕工具生成基础字幕。",
+            "primary_tool": "ElevenLabs（语音克隆/多音色）+ CapCut（自动字幕）",
+            "backup_tool": "Murf.ai（语音生成），剪映（字幕），原因：成本低、新手友好。",
+            "suggested_input": "将脚本粘贴至ElevenLabs，选择‘专业播音员’音色，导出MP3。",
+            "expected_output": "一个时长约30-60秒的旁白音频文件+包含时间戳的SRT字幕文件。",
+            "execution_tip": "语音语速建议1.3-1.5倍速，避免听众觉得拖沓。字幕每行不超过15字。",
+            "ready_check": "音频文件可正常播放，字幕无错别字且时间轴与音频对齐。"
+          },
+          {
+            "step_name": "生成匹配视觉素材",
+            "step_goal": "使用AI图像/视频生成工具创建与旁白匹配的背景画面或动画。",
+            "primary_tool": "Runway Gen-2（文生视频）或Canva AI（图像生成+动画）",
+            "backup_tool": "Midjourney（静态插图）+ Premiere Pro（手动合成）。",
+            "suggested_input": "将脚本每一段的关键词提取，生成3-5个描述性提示词（如‘简约办公室，年轻人用笔记本电脑’）。",
+            "expected_output": "一段10-20秒的匹配视频片段（或一组图片幻灯片），分辨率至少1080p。",
+            "execution_tip": "素材风格要统一，可指定‘扁平化’‘3D写实’等关键词。尽量选择16:9比例。",
+            "ready_check": "所有素材色调和风格一致，无明显AI痕迹（如手指畸形、文字扭曲）。"
+          },
+          {
+            "step_name": "合成与剪辑初版视频",
+            "step_goal": "将语音、字幕、视觉素材在时间线上对齐，输出初版视频。",
+            "primary_tool": "CapCut（一站式剪辑，自动字幕、音频对齐）",
+            "backup_tool": "DaVinci Resolve（免费专业版，适合精细化调色）。",
+            "suggested_input": "导入音频、字幕、视觉素材，按脚本时间轴排列，添加转场和背景音乐。",
+            "expected_output": "一个包含完整旁白、字幕、画面（+背景音乐）的mp4文件，总时长40-120秒。",
+            "execution_tip": "背景音乐音量降至-25dB以下，保证旁白清晰。转场使用‘交叉溶解’或‘闪白’即可。",
+            "ready_check": "视频可流畅播放，无黑屏段，字幕与语音同步误差小于0.5秒。"
+          },
+          {
+            "step_name": "发布前检查与平台适配",
+            "step_goal": "按目标平台要求调整格式，并做最终内容审核。",
+            "primary_tool": "Canva（缩略图设计）+ 社交媒体自带预览功能",
+            "backup_tool": "VLLO（移动端快速调整）。",
+            "suggested_input": "打开发布平台（如抖音、视频号），查看视频规格（横竖屏、时长限制、封面尺寸）。",
+            "expected_output": "适配平台的版本：横屏16:9或竖屏9:16，封面图1200×675px，视频时长符合平台上限。",
+            "execution_tip": "竖屏视频字幕要居中偏下，避免被平台界面遮挡。不要放置平台禁止的引流词。",
+            "ready_check": "视频在目标平台预览窗口中完整显示，缩略图清晰文字可读，标题和描述无违规词。"
+          },
+          {
+            "step_name": "发布并记录基础数据",
+            "step_goal": "正式发布第一条视频，并记录初始数据以供后续迭代。",
+            "primary_tool": "平台创作者中心（如抖音数据看板）",
+            "backup_tool": "Google Sheets（手动记录），用于后续对比。",
+            "suggested_input": "上传视频至目标平台，填写标题（包含1-2个关键词）、标签（3-5个）、简介（含行动引导）。",
+            "expected_output": "视频已发布并可见，记录下发布时间、播放量、点赞、评论数（发布后1小时）。",
+            "execution_tip": "发布后1小时内自己不要频繁刷新，让系统自然推荐。同时回复前3条评论。",
+            "ready_check": "视频状态为‘公开’，基础数据可查看（至少播放数＞0）。"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "short_video_script_01",
+      "scenario": "AI 短视频",
+      "user_goal": "用AI做点东西",
+      "followup_answer": "做短视频脚本生成器",
+      "expected_behavior": "覆盖从泛目标收口到短视频工具/流程。",
+      "should_generate_route": true,
+      "final_stage": "direction_choice_required",
+      "route_generated": false,
+      "schema_valid": false,
+      "json_parse_success": false,
+      "step_count": 0,
+      "required_fields_complete": false,
+      "route_step_names": [],
+      "retrieval_count": 0,
+      "retrieval_doc_count": 0,
+      "retrieved_sources": [],
+      "retrieved_snippet_preview": [],
+      "route_context_chars": 0,
+      "route_context_preview": "",
+      "model_call_count": 0,
+      "chroma_db_exists": true,
+      "vector_store_dir": "D:\\ai_projects\\AI-Workflow-Coach\\vector_store\\chroma_db",
+      "retrieval_trace_available": false,
+      "latency_ms": 30,
+      "failure_type": "route_not_generated",
+      "self_correction_count": 0,
+      "manual_tool_fit_score": null,
+      "manual_actionability_score": null,
+      "manual_specificity_score": null,
+      "manual_assumption_control_score": null,
+      "manual_overall_quality_score": null,
+      "notes": "检查是否从泛 AI 项目收敛到脚本生成器的可执行路线。",
+      "workflow_run_id": "route_20260522_173211_a69488",
+      "error_message": "",
+      "route_result": null
+    },
+    {
+      "case_id": "shortdrama_fallback_01",
+      "scenario": "AI 短剧 fallback",
+      "user_goal": "AI 短剧项目",
+      "followup_answer": "都可以，先给我一个方向",
+      "expected_behavior": "检查信息不足时的保底路线是否可执行。",
+      "should_generate_route": true,
+      "final_stage": "direction_choice_required",
+      "route_generated": false,
+      "schema_valid": false,
+      "json_parse_success": false,
+      "step_count": 0,
+      "required_fields_complete": false,
+      "route_step_names": [],
+      "retrieval_count": 0,
+      "retrieval_doc_count": 0,
+      "retrieved_sources": [],
+      "retrieved_snippet_preview": [],
+      "route_context_chars": 0,
+      "route_context_preview": "",
+      "model_call_count": 0,
+      "chroma_db_exists": true,
+      "vector_store_dir": "D:\\ai_projects\\AI-Workflow-Coach\\vector_store\\chroma_db",
+      "retrieval_trace_available": false,
+      "latency_ms": 31,
+      "failure_type": "route_not_generated",
+      "self_correction_count": 0,
+      "manual_tool_fit_score": null,
+      "manual_actionability_score": null,
+      "manual_specificity_score": null,
+      "manual_assumption_control_score": null,
+      "manual_overall_quality_score": null,
+      "notes": "人工评分应区分保底合理和路线泛化。",
+      "workflow_run_id": "route_20260522_173211_8fd8d7",
+      "error_message": "",
+      "route_result": null
+    },
+    {
+      "case_id": "content_direct_01",
+      "scenario": "小红书内容",
+      "user_goal": "用 AI 做小红书图文内容创作，主题是新手如何开始用 AI 提高学习效率",
+      "followup_answer": "",
+      "expected_behavior": "内容创作完整直通 case。",
+      "should_generate_route": true,
+      "final_stage": "route_generated",
+      "route_generated": true,
+      "schema_valid": true,
+      "json_parse_success": true,
+      "step_count": 5,
+      "required_fields_complete": true,
+      "route_step_names": [
+        "1. 选题与受众定位",
+        "2. 搭建正文结构",
+        "3. 生成配图与素材",
+        "4. 包装标题与封面",
+        "5. 发布与数据记录"
+      ],
+      "retrieval_count": 1,
+      "retrieval_doc_count": 9,
+      "retrieved_sources": [
+        "tools",
+        "workflows",
+        "blockages"
+      ],
+      "retrieved_snippet_preview": [
+        {
+          "source": "tools",
+          "file_name": "tools.md",
+          "section_index": "2",
+          "chunk_index": "19",
+          "excerpt": "## 常用工具组合 ### ChatGPT / 通义千问 - 常用步骤：选题、标题、正文草稿、文案改写、发布复盘。 - 适合产出：选题池、图文大纲、口播稿、标题版本、复盘分析。 - 轻量替代：豆包、Kimi。 - 最小用法：输入受众、平台、"
+        },
+        {
+          "source": "workflows",
+          "file_name": "workflows.md",
+          "section_index": "6",
+          "chunk_index": "27",
+          "excerpt": "## 路径模式 1：小红书图文笔记 - 适用场景：用户想用 AI 做小红书图文、经验帖、工具推荐、学习笔记。 - 目标产物：一篇可发布的小红书图文笔记。 - 关键中间产物：选题卡、正文草稿、首图标题、配图清单、标签和发布复盘。 ### 推荐"
+        },
+        {
+          "source": "workflows",
+          "file_name": "workflows.md",
+          "section_index": "7",
+          "chunk_index": "28",
+          "excerpt": "## 路径模式 2：文案生成/改写 - 适用场景：用户需要广告文案、产品介绍、社群文案、短视频口播稿。 - 目标产物：一组可测试的文案版本。 - 关键中间产物：目标人群、卖点清单、语气样例、版本对比表。 ### 推荐阶段 1. 明确文案任务"
+        }
+      ],
+      "route_context_chars": 3704,
+      "route_context_preview": "# 工具知识片段\n【片段 1】\nsource: tools\nfile_name: tools.md\nsection_index: 2\nchunk_index: 19\ncontent:\n## 常用工具组合\n\n### ChatGPT / 通义千问\n\n- 常用步骤：选题、标题、正文草稿、文案改写、发布复盘。\n- 适合产出：选题池、图文大纲、口播稿、标题版本、复盘分析。\n- 轻量替代：豆包、Kimi。\n- 最小用法：输入受众、平台、内容目标和参考风格，要求多版本对比。\n\n### Kimi\n\n- 常用步骤：参考资料整理、竞品内容分析、长文压缩。\n- 适合产出：素材摘要、观点清单、可引用资料、内容结构。\n",
+      "model_call_count": 1,
+      "chroma_db_exists": true,
+      "vector_store_dir": "D:\\ai_projects\\AI-Workflow-Coach\\vector_store\\chroma_db",
+      "retrieval_trace_available": true,
+      "latency_ms": 31045,
+      "failure_type": "none",
+      "self_correction_count": 0,
+      "manual_tool_fit_score": null,
+      "manual_actionability_score": null,
+      "manual_specificity_score": null,
+      "manual_assumption_control_score": null,
+      "manual_overall_quality_score": null,
+      "notes": "检查是否覆盖选题、草稿、封面包装、发布和复盘。",
+      "workflow_run_id": "route_20260522_173212_073ee2",
+      "error_message": "",
+      "route_result": {
+        "task_summary": "为想要创作小红书图文的用户设计一条完整工作流，主题为‘新手如何开始用 AI 提高学习效率’，内容包括选题、正文、配图、封面标题、发布和复盘，利用AI工具提升效率并避免常见卡点。",
+        "route_type": "完整路线",
+        "steps": [
+          {
+            "step_name": "1. 选题与受众定位",
+            "step_goal": "明确内容的目标人群、核心痛点和笔记承诺，避免选题过大或泛泛而谈。",
+            "primary_tool": "ChatGPT / 通义千问（选题生成功能）",
+            "backup_tool": "Kimi（从参考资料中提取用户问题）",
+            "suggested_input": "【用户历史提问或常见新手问题】比如：“AI 提高学习效率到底有没有用？”“怎么用 AI 做笔记？”“新手最快上手 AI 的3个工具是什么？”；也可提供目标人群描述（如：大学生、职场新人、备考者）。",
+            "expected_output": "一句话的选题卡：包含目标人群、痛点、看完收益。例如：“大学新生面临大量阅读和笔记整理，用 AI 工具（如通义千问）10 分钟搞定摘要和知识图谱，节省 80% 时间。”",
+            "execution_tip": "先列出 3-5 个更窄的备选标题（如“三款免费 AI 学习工具实测”），再选一个最能抓住新手注意力的。",
+            "ready_check": "选题能回答“谁为什么要点开”，且有明确的看完收益（节省时间/减少焦虑/直接可操作）。"
+          },
+          {
+            "step_name": "2. 搭建正文结构",
+            "step_goal": "生成包含开头钩子、可操作步骤、避坑提醒和结尾引导的正文草稿，避免内容像百科介绍。",
+            "primary_tool": "ChatGPT / 通义千问（正文生成+改写）",
+            "backup_tool": "豆包（轻量替代，快速生成初稿）",
+            "suggested_input": "选题卡 + 要求结构：①开头（一个真实场景或痛点故事） ②3-4步具体操作（每步配一个 AI 工具示例） ③1-2个避坑提醒（如“不要直接让 AI 写完整笔记，要先给框架”） ④结尾引导（关注/收藏/评论）",
+            "expected_output": "800-1000字的正文草稿，每步都有具体操作和工具名称，至少包含 1 个用户真实案例（如“小明用 Kimi 整理课程资料”）、1 个可操作步骤、1 个避坑点。",
+            "execution_tip": "生成后人工检查：删除空泛形容词（如“非常强大”），替换为具体动作（“1分钟生成5000字摘要”）；加入新手会问的疑问句（“AI 会不会漏掉重点？”）。",
+            "ready_check": "正文不是泛泛介绍，而是有可操作步骤；至少有 1 个具体例子、1 个步骤和 1 个避坑点。"
+          },
+          {
+            "step_name": "3. 生成配图与素材",
+            "step_goal": "制作与正文信息点对应的视觉素材（首图、步骤图、对比图或清单图），确保每张图都能单独传达信息。",
+            "primary_tool": "即梦 / 豆包图像（生成主视觉或示意图）",
+            "backup_tool": "Canva 素材库（直接使用现成插画和图标）",
+            "suggested_input": "正文中的关键步骤或结论：例如“步骤1：用 Kimi 分解大文件”→ 配图：一个手机屏幕显示 Kimi 界面 + 文件分段图标；或者“AI vs 手工效率对比”→ 配图：时间轴对比图。",
+            "expected_output": "至少 3 张图：1 张首图（可先通过 Canva 加标题）、2 张内页图（步骤图或清单图）。每张图对应正文中的一个信息点。",
+            "execution_tip": "不要用 AI 直接生成整张封面，先生成主视觉（如人物+电脑），再到 Canva 里叠加标题文字；内页图建议用“截图+标注”方式，更真实。",
+            "ready_check": "每张图缩小到手机列表尺寸后，2 秒内能看清主题和收益。"
+          },
+          {
+            "step_name": "4. 包装标题与封面",
+            "step_goal": "创作 3 个有不同吸引点的标题（痛点型、结果型、数字型），并确定首图文案和版式方向。",
+            "primary_tool": "ChatGPT / 通义千问（标题生成+A/B测试建议）",
+            "backup_tool": "小红书内置编辑器（标题&封面预览）",
+            "suggested_input": "正文核心卖点 + 目标人群痛点。例如：“新手用 AI 学习” → 标题方向：①“别再手动做笔记了！3 个 AI 工具让我效率翻 3 倍”②“不会用 AI 学习？90% 的新手都踩过这 3 个坑”③“用 AI 学习一周后，我后悔没早点这么做”",
+            "expected_output": "3 个标题（每个不超过 20 字）+ 封面首图（标题文字 8-14 字，突出收益）。",
+            "execution_tip": "封面标题先精简到 10 字左右，比如“3 个 AI 工具让学习效率翻倍”；做 3 个版本（痛点、结果、数字）后在手机大小下对比效果。",
+            "ready_check": "手机列表尺寸下，2 秒内能看清主题和收益；标题有明确数字或强烈收益感。"
+          },
+          {
+            "step_name": "5. 发布与数据记录",
+            "step_goal": "选择发布时间和标签，发布并记录关键数据，为下一篇内容提供调整依据。",
+            "primary_tool": "平台数据面板（小红书创作者中心）",
+            "backup_tool": "手工记录表（Excel 或 Notion）",
+            "suggested_input": "标题、首图、发布时间、标签（如 #AI学习 #效率工具 #新手必看）、正文前 50 字。",
+            "expected_output": "发布时间记录表（至少记录标题、封面、发布时间、标签）；发布后记录曝光、点击、收藏、评论中的至少 2 项数据。",
+            "execution_tip": "发布后 1 小时内记录首小时数据；2-3 天后记录累计数据。把表现好的标题、封面、主题单独归类。",
+            "ready_check": "至少记录了 2 项数据（曝光、点击、收藏或评论）；下一篇选题或标题能引用上一篇数据作为依据。"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "content_close_success_01",
+      "scenario": "内容生产流程",
+      "user_goal": "我想做内容",
+      "followup_answer": "做一套小红书文案生成流程，能批量出标题、正文和封面文案",
+      "expected_behavior": "覆盖补问收口到内容创作生产链路。",
+      "should_generate_route": true,
+      "final_stage": "route_generated",
+      "route_generated": true,
+      "schema_valid": true,
+      "json_parse_success": true,
+      "step_count": 6,
+      "required_fields_complete": true,
+      "route_step_names": [
+        "明确受众与选题方向",
+        "批量生成正文草稿",
+        "生成多版本标题与封面文案",
+        "配图/视觉素材生产",
+        "发布前检查与排期",
+        "发布与数据复盘模板"
+      ],
+      "retrieval_count": 1,
+      "retrieval_doc_count": 9,
+      "retrieved_sources": [
+        "tools",
+        "workflows",
+        "blockages"
+      ],
+      "retrieved_snippet_preview": [
+        {
+          "source": "tools",
+          "file_name": "tools.md",
+          "section_index": "2",
+          "chunk_index": "19",
+          "excerpt": "## 常用工具组合 ### ChatGPT / 通义千问 - 常用步骤：选题、标题、正文草稿、文案改写、发布复盘。 - 适合产出：选题池、图文大纲、口播稿、标题版本、复盘分析。 - 轻量替代：豆包、Kimi。 - 最小用法：输入受众、平台、"
+        },
+        {
+          "source": "workflows",
+          "file_name": "workflows.md",
+          "section_index": "6",
+          "chunk_index": "27",
+          "excerpt": "## 路径模式 1：小红书图文笔记 - 适用场景：用户想用 AI 做小红书图文、经验帖、工具推荐、学习笔记。 - 目标产物：一篇可发布的小红书图文笔记。 - 关键中间产物：选题卡、正文草稿、首图标题、配图清单、标签和发布复盘。 ### 推荐"
+        },
+        {
+          "source": "workflows",
+          "file_name": "workflows.md",
+          "section_index": "7",
+          "chunk_index": "28",
+          "excerpt": "## 路径模式 2：文案生成/改写 - 适用场景：用户需要广告文案、产品介绍、社群文案、短视频口播稿。 - 目标产物：一组可测试的文案版本。 - 关键中间产物：目标人群、卖点清单、语气样例、版本对比表。 ### 推荐阶段 1. 明确文案任务"
+        }
+      ],
+      "route_context_chars": 3704,
+      "route_context_preview": "# 工具知识片段\n【片段 1】\nsource: tools\nfile_name: tools.md\nsection_index: 2\nchunk_index: 19\ncontent:\n## 常用工具组合\n\n### ChatGPT / 通义千问\n\n- 常用步骤：选题、标题、正文草稿、文案改写、发布复盘。\n- 适合产出：选题池、图文大纲、口播稿、标题版本、复盘分析。\n- 轻量替代：豆包、Kimi。\n- 最小用法：输入受众、平台、内容目标和参考风格，要求多版本对比。\n\n### Kimi\n\n- 常用步骤：参考资料整理、竞品内容分析、长文压缩。\n- 适合产出：素材摘要、观点清单、可引用资料、内容结构。\n",
+      "model_call_count": 1,
+      "chroma_db_exists": true,
+      "vector_store_dir": "D:\\ai_projects\\AI-Workflow-Coach\\vector_store\\chroma_db",
+      "retrieval_trace_available": true,
+      "latency_ms": 33243,
+      "failure_type": "none",
+      "self_correction_count": 0,
+      "manual_tool_fit_score": null,
+      "manual_actionability_score": null,
+      "manual_specificity_score": null,
+      "manual_assumption_control_score": null,
+      "manual_overall_quality_score": null,
+      "notes": "检查路线是否从泛内容变成可执行生产链路。",
+      "workflow_run_id": "route_20260522_173243_38751b",
+      "error_message": "",
+      "route_result": {
+        "task_summary": "为用户设计一条可批量产出小红书标题、正文和封面文案的 AI 工作流，从选题定位到发布复盘闭环，确保每步可执行、可验证。",
+        "route_type": "完整路线",
+        "steps": [
+          {
+            "step_name": "明确受众与选题方向",
+            "step_goal": "框定目标人群、痛点、收益，生成多个具体选题，避免大而空。",
+            "primary_tool": "ChatGPT / 通义千问",
+            "backup_tool": "豆包 / Kimi（轻量替代）",
+            "suggested_input": "你计划覆盖的人群（如职场新人、宝妈、考研党）、内容大类（如效率工具、育儿经验、学习方法）、以及你希望提供的核心价值（如省时间、避坑、省钱）。",
+            "expected_output": "一份选题卡片：至少包含5个具体选题，每个选题写清“谁看、解决什么问题、看完获得什么”。",
+            "execution_tip": "每个选题必须窄到能回答‘用户为什么点开’，避免‘AI工具推荐’这类泛选题；同时给每个选题生成3个更窄的标题候选。",
+            "ready_check": "存在至少1个选题，能一句话说清“目标人群 + 痛点 + 笔记承诺”，且该人群不是“所有人”。"
+          },
+          {
+            "step_name": "批量生成正文草稿",
+            "step_goal": "基于选定选题，生成多条正文结构和草稿，符合小红书可操作、有步骤的风格。",
+            "primary_tool": "ChatGPT / 通义千问 + 自定义提示词模板",
+            "backup_tool": "Kimi（整理参考资料后生成）",
+            "suggested_input": "选中的1~2个选题，附加参考风格（如步骤清单型、对比分析型、避坑指南型），以及希望包含的具体例子或数据（如有）。",
+            "expected_output": "每篇正文草稿包含：开头钩子（1~2句）、核心步骤（3~5个可操作点）、避坑提醒、结尾引导（关注/收藏/评论）。至少2个版本（不同结构或语气）。",
+            "execution_tip": "如果正文显得AI味重，手动加入1个具体场景或用户原话；删掉‘高效’‘强大’等空泛词，换成具体动作或结果。",
+            "ready_check": "正文里至少有1个具体例子、1个可操作步骤和1个避坑点；不同版本不是同义改写，而是角度或结构不同。"
+          },
+          {
+            "step_name": "生成多版本标题与封面文案",
+            "step_goal": "为每篇正文产出至少3个标题和对应的封面首图文案，突出收益点。",
+            "primary_tool": "ChatGPT / 通义千问 + Canva / 稿定设计",
+            "backup_tool": "即梦 / 豆包图像（生成视觉后进排版工具）",
+            "suggested_input": "正文草稿全文、已选定的选题卡片、目标受众特征。",
+            "expected_output": "每个正文对应：3个不同角度的标题（痛点型、结果型、数字型），每个标题对应的封面首图文案（8~14字），封面的版式方向建议（如上下结构、文案占1/3区域）。",
+            "execution_tip": "封面标题控制在8~14字，手机缩小到列表尺寸后主标题和收益点必须2秒内看清；如果使用AI生图，先生成背景视觉，再进排版工具叠文字。",
+            "ready_check": "标题与封面文案不是简单同义改写，至少覆盖2种不同说服角度；封面缩小到手机列表尺寸后，2秒内能看清主题和收益。"
+          },
+          {
+            "step_name": "配图/视觉素材生产",
+            "step_goal": "根据正文信息点生成对应配图（首图、步骤图、对比图等），确保每张图有明确信息承载。",
+            "primary_tool": "即梦 / 豆包图像（生成主视觉） + Canva（排版文字与标注）",
+            "backup_tool": "Canva 内置素材库 / 截图标注（轻量替代）",
+            "suggested_input": "正文中的核心步骤、对比点、或数据结论；封面首图文案；视觉风格偏好（如简约、手绘、实拍感）。",
+            "expected_output": "至少3张图：1张首图（含标题文案）、2张正文配图（步骤图或对比图），每张图对应正文中的一个具体信息点。",
+            "execution_tip": "不要直接生成整张封面，先由AI生成主视觉元素（如人物、场景、数字），再进Canva添加文字和层级；配图尺寸统一为3:4竖屏。",
+            "ready_check": "每张图都明确对应正文中的一个信息点，且缩放后文字仍然可读；首图视觉焦点只有一个（主标题+一个视觉主体）。"
+          },
+          {
+            "step_name": "发布前检查与排期",
+            "step_goal": "确认内容合法、无敏感词、符合平台风格，并批量安排发布计划。",
+            "primary_tool": "ChatGPT / Kimi（检查口吻与风险） + 日历工具（如Notion / 飞书表格）",
+            "backup_tool": "小红书内置编辑器（预览） + 手动记录表",
+            "suggested_input": "第2~4步产出的所有标题、正文、封面、配图；平台发布要求（如禁用词、引人不适内容）。",
+            "expected_output": "通过风险检查的最终内容包（文本+图片）；一个至少包含1周发布日期的排期表（每篇对应发布时间、标题、封面图、标签）。",
+            "execution_tip": "检查文案中是否包含夸大承诺（如‘月入过万’‘包学会’）、敏感话题；正文至少修改掉3处空泛形容词改为具体描述。",
+            "ready_check": "标题与正文无敏感词或平台禁用表达；排期表能连续列出至少3篇内容，每篇发布时间间隔合理。"
+          },
+          {
+            "step_name": "发布与数据复盘模板",
+            "step_goal": "实际发布内容，并建好记录表，以便后续迭代标题和封面。",
+            "primary_tool": "平台数据面板（发布后观察） + 飞书/Notion 记录表",
+            "backup_tool": "手工记录表（Excel/纸笔）",
+            "suggested_input": "每篇的标题、封面图、发布时间、标签、内容角度简述。",
+            "expected_output": "一个发布记录表，每行记录一篇：标题、封面文案、发布时间、曝光数、点击数、收藏数、评论数（至少记录2项）。",
+            "execution_tip": "发布后1小时内记录首次曝光和点击；不要只用点赞衡量，优先关注点击率（点击/曝光）和收藏/评论数。",
+            "ready_check": "记录表中已填写至少1篇数据，且观察项包含曝光和点击；能初步判断出表现较好的标题和封面方向。"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "learning_direct_01",
+      "scenario": "学习计划",
+      "user_goal": "用 AI 做一个 14 天英语学习计划，重点提升阅读和单词复习",
+      "followup_answer": "",
+      "expected_behavior": "学习辅助直通 case。",
+      "should_generate_route": true,
+      "final_stage": "route_generated",
+      "route_generated": true,
+      "schema_valid": true,
+      "json_parse_success": true,
+      "step_count": 6,
+      "required_fields_complete": true,
+      "route_step_names": [
+        "目标诊断与学习画像",
+        "拆学习模块",
+        "生成14天每日任务表",
+        "设计单词复习卡片与练习",
+        "设计阅读练习与AI即时反馈",
+        "搭建打卡表与复盘模板"
+      ],
+      "retrieval_count": 1,
+      "retrieval_doc_count": 9,
+      "retrieved_sources": [
+        "tools",
+        "workflows",
+        "blockages"
+      ],
+      "retrieved_snippet_preview": [
+        {
+          "source": "tools",
+          "file_name": "tools.md",
+          "section_index": "1",
+          "chunk_index": "18",
+          "excerpt": "## 常用工具组合 ### ChatGPT / 通义千问 - 常用步骤：目标诊断、学习计划、练习生成、即时反馈、错题解释。 - 适合产出：学习画像、每日任务、练习题、答题反馈、复盘建议。 - 轻量替代：豆包、Kimi。 - 最小用法：让模型"
+        },
+        {
+          "source": "workflows",
+          "file_name": "workflows.md",
+          "section_index": "2",
+          "chunk_index": "23",
+          "excerpt": "## 路径模式 1：AI 学习计划 - 适用场景：用户想学习 AI、英语、考试科目、技能课程，但不知道如何安排。 - 目标产物：一份可执行的 7 天或 14 天学习计划。 - 关键中间产物：当前水平诊断、学习目标、每日任务表、练习清单、复盘"
+        },
+        {
+          "source": "workflows",
+          "file_name": "workflows.md",
+          "section_index": "3",
+          "chunk_index": "24",
+          "excerpt": "## 路径模式 2：AI 背单词工具 - 适用场景：用户想做背单词、词汇复习、错词回顾类小工具。 - 目标产物：一个能跑通“导入词汇 -> 练习 -> 反馈 -> 复习”的 MVP。 - 关键中间产物：词库字段、练习题样例、记忆反馈模板、错"
+        }
+      ],
+      "route_context_chars": 3845,
+      "route_context_preview": "# 工具知识片段\n【片段 1】\nsource: tools\nfile_name: tools.md\nsection_index: 1\nchunk_index: 18\ncontent:\n## 常用工具组合\n\n### ChatGPT / 通义千问\n\n- 常用步骤：目标诊断、学习计划、练习生成、即时反馈、错题解释。\n- 适合产出：学习画像、每日任务、练习题、答题反馈、复盘建议。\n- 轻量替代：豆包、Kimi。\n- 最小用法：让模型按“目标、当前水平、每日时间、练习、验收”输出，不只生成鼓励性计划。\n\n### Kimi\n\n- 常用步骤：资料阅读、课程笔记整理、长文总结、错题归纳。\n- 适合产出：知识框",
+      "model_call_count": 1,
+      "chroma_db_exists": true,
+      "vector_store_dir": "D:\\ai_projects\\AI-Workflow-Coach\\vector_store\\chroma_db",
+      "retrieval_trace_available": true,
+      "latency_ms": 41460,
+      "failure_type": "none",
+      "self_correction_count": 0,
+      "manual_tool_fit_score": null,
+      "manual_actionability_score": null,
+      "manual_specificity_score": null,
+      "manual_assumption_control_score": null,
+      "manual_overall_quality_score": null,
+      "notes": "检查路线是否覆盖诊断、计划、练习、反馈和复盘。",
+      "workflow_run_id": "route_20260522_173316_2b36a1",
+      "error_message": "",
+      "route_result": {
+        "task_summary": "为用户制定一个14天英语学习计划，重点提升阅读能力和单词复习效率。需要结合AI工具完成目标诊断、模块拆分、每日任务生成、练习反馈与复盘迭代，形成完整闭环。",
+        "route_type": "完整路线",
+        "steps": [
+          {
+            "step_name": "目标诊断与学习画像",
+            "step_goal": "明确用户当前英语水平、每日可用时间、词汇基础以及阅读偏好（如新闻、短文、小说等），确定14天后的可验收成果。",
+            "primary_tool": "ChatGPT / 通义千问（对话式诊断）",
+            "backup_tool": "Kimi（可用于引导用户填写诊断问卷）",
+            "suggested_input": "待确认项：当前英语水平（如四级/六级/雅思5.0等）、每日可投入时间（分钟）、词汇基础（估算词汇量）、阅读偏好（体裁与难度）、单词复习方式偏好（如卡片、自测）",
+            "expected_output": "一份学习画像：包含当前水平、目标边界（14天后能读懂什么材料、掌握多少新词）、每日时间预算、14天总目标（如阅读5篇短文+复习200个单词）",
+            "execution_tip": "避免生成泛泛的鼓励性计划，要求用户提供具体信息后再往下走。如果用户不确定水平，可用AI出一道快速摸底题。",
+            "ready_check": "能清晰写出：当前英语水平描述、每日可用时间（分钟）、14天后要交付的具体成果（如读完10篇300词文章+掌握150个新词）"
+          },
+          {
+            "step_name": "拆学习模块",
+            "step_goal": "将14天计划拆分为阅读能力、单词复习两个主要模块，每个模块再拆为3-5个子任务，确保任务可执行且不重叠。",
+            "primary_tool": "Kimi（用于整理模块清单与优先级）",
+            "backup_tool": "ChatGPT思维导图功能或Notion列表",
+            "suggested_input": "学习画像中的水平、时间、目标；参考模块示例：阅读模块可拆分（速读技巧、长难句理解、主题阅读、精读分析）；单词模块可拆分（词库筛选、每日新词学习、间隔复习、错词重做）",
+            "expected_output": "模块清单与优先级：例如Day1-7以阅读为主、单词为辅；Day8-14强化单词复习+阅读实战。每个模块都有对应的可练习任务。",
+            "execution_tip": "每个子任务必须能独立练习，且每天总任务量不超过用户可用时间。建议阅读任务限时20-30分钟，单词任务限时15-20分钟。",
+            "ready_check": "每个模块下至少列出3个子任务，且每个子任务能对应一个具体练习（如‘精读一篇300词文章并画出5个生词’）。"
+          },
+          {
+            "step_name": "生成14天每日任务表",
+            "step_goal": "按天分配阅读与单词任务，产出可执行的每日任务表。每天包含1个主任务（阅读或单词）和1个配套练习。",
+            "primary_tool": "ChatGPT（按模板生成Markdown表格）",
+            "backup_tool": "Notion / 飞书表格（手动调整）",
+            "suggested_input": "模块清单、每日时间预算、用户可选择的任务难度；要求：每天任务标注预计耗时、区分必做和选做。",
+            "expected_output": "14天任务表格，包含：日期、任务类型（阅读/单词）、具体内容、预计时长、完成标记（待用户填写）。例如：Day1-精读一篇英语新闻+学习20个新词。",
+            "execution_tip": "确保前三天任务量稍微轻松（如30分钟内可完成），之后逐步加量。至少预留2天作为复习日或机动日。",
+            "ready_check": "表格中有14行，每行包含任务描述和预计时长。用户可以一天内完成当天任务（不超过其可用时间）。"
+          },
+          {
+            "step_name": "设计单词复习卡片与练习",
+            "step_goal": "为每日单词任务设计可即时复习的学习卡片和练习题，形成“学习→测试→错词复习”闭环。",
+            "primary_tool": "Quizlet / Anki（用于词卡制作和间隔复习）",
+            "backup_tool": "ChatGPT + 飞书表格（生成卡片内容，手动导入或自制表）",
+            "suggested_input": "每日新词列表（来自阅读材料或指定词库）、单词复习要求（如每天新增20词，复习前日错词）；示例字段：单词、释义、例句、助记、难度。",
+            "expected_output": "每日词卡集（至少10个词），包含学习卡片和练习题（选择题、填空题、例句理解）。错词自动加入第二天复习队列。",
+            "execution_tip": "避免只生成单词列表。每个词卡必须配一个练习题；错词要记录错误原因并生成助记。前三天先测试16-20个词的小规模闭环。",
+            "ready_check": "至少10个词能完成“学习→测试→错词复习”完整流程，且用户能直接使用词卡进行复习。"
+          },
+          {
+            "step_name": "设计阅读练习与AI即时反馈",
+            "step_goal": "为每日阅读任务提供适合水平的短文和配套练习，用户提交回答后AI给出具体错因分析和改进建议。",
+            "primary_tool": "ChatGPT（生成阅读材料、问题并批改反馈）",
+            "backup_tool": "Kimi（可用于长文阅读后摘录要点）",
+            "suggested_input": "阅读偏好（如科技新闻、短篇故事、考试阅读）、用户水平、每日阅读时长；用户阅读后回答3-5道理解题或做摘要。",
+            "expected_output": "每日阅读任务：一篇300-500词短文 + 5道理解题（细节、推断、词汇）。用户作答后AI反馈内容应包括：事实总结、错因分析（如定位错误、生词影响）、1-2条明日改进建议。",
+            "execution_tip": "反馈必须引用当天用户答案中的具体错误，不能泛泛说‘继续加油’。如果用户未作答，AI应提示提交后再给建议。",
+            "ready_check": "用户能完成一次阅读并提交答案，AI反馈能明确指出一个具体错因（如‘第三题定位到第二段，但答案出现在第四段’），并提供下一次练习调整。"
+          },
+          {
+            "step_name": "搭建打卡表与复盘模板",
+            "step_goal": "建立每日打卡记录表和每周复盘模板，用于跟踪完成情况、记录卡点和调整后续计划。",
+            "primary_tool": "Notion / 飞书表格（模板化）",
+            "backup_tool": "Excel / 纸质记录",
+            "suggested_input": "打卡字段：日期、任务类型、预计时长、实际时长、完成情况（完成/未完成/部分完成）、问题/卡点、明日调整。复盘字段：周完成率、主要困难、下周调整动作。",
+            "expected_output": "一张可每日填写的打卡表（14行），和一个周复盘模板（包含事实总结、问题识别、调整建议）。用户每天1分钟内可完成记录。",
+            "execution_tip": "建议设置低配完成版：即使只完成阅读或只复习了5个词也算记录。复盘时AI要基于本周记录给出具体调整（如减少阅读量或增加单词复习时间）。",
+            "ready_check": "用户能在14天内至少完成7天打卡记录（第7天和第14天做两次复盘），并能根据复盘模板识别出1个执行卡点（如每天单词任务过重）。"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "learning_close_success_01",
+      "scenario": "背单词工具",
+      "user_goal": "我想做个学习工具",
+      "followup_answer": "做一个 AI 背单词工具，能生成例句、测验和错词复习",
+      "expected_behavior": "学习工具闭环清晰，适合评估工具路线。",
+      "should_generate_route": true,
+      "final_stage": "route_generated",
+      "route_generated": true,
+      "schema_valid": true,
+      "json_parse_success": true,
+      "step_count": 6,
+      "required_fields_complete": true,
+      "route_step_names": [
+        "设定目标与词库范围",
+        "设计学习卡片",
+        "生成练习任务",
+        "做即时反馈",
+        "设置复习规则",
+        "迭代与维护"
+      ],
+      "retrieval_count": 1,
+      "retrieval_doc_count": 9,
+      "retrieved_sources": [
+        "tools",
+        "workflows",
+        "blockages"
+      ],
+      "retrieved_snippet_preview": [
+        {
+          "source": "tools",
+          "file_name": "tools.md",
+          "section_index": "1",
+          "chunk_index": "18",
+          "excerpt": "## 常用工具组合 ### ChatGPT / 通义千问 - 常用步骤：目标诊断、学习计划、练习生成、即时反馈、错题解释。 - 适合产出：学习画像、每日任务、练习题、答题反馈、复盘建议。 - 轻量替代：豆包、Kimi。 - 最小用法：让模型"
+        },
+        {
+          "source": "workflows",
+          "file_name": "workflows.md",
+          "section_index": "3",
+          "chunk_index": "24",
+          "excerpt": "## 路径模式 2：AI 背单词工具 - 适用场景：用户想做背单词、词汇复习、错词回顾类小工具。 - 目标产物：一个能跑通“导入词汇 -> 练习 -> 反馈 -> 复习”的 MVP。 - 关键中间产物：词库字段、练习题样例、记忆反馈模板、错"
+        },
+        {
+          "source": "workflows",
+          "file_name": "workflows.md",
+          "section_index": "2",
+          "chunk_index": "23",
+          "excerpt": "## 路径模式 1：AI 学习计划 - 适用场景：用户想学习 AI、英语、考试科目、技能课程，但不知道如何安排。 - 目标产物：一份可执行的 7 天或 14 天学习计划。 - 关键中间产物：当前水平诊断、学习目标、每日任务表、练习清单、复盘"
+        }
+      ],
+      "route_context_chars": 3845,
+      "route_context_preview": "# 工具知识片段\n【片段 1】\nsource: tools\nfile_name: tools.md\nsection_index: 1\nchunk_index: 18\ncontent:\n## 常用工具组合\n\n### ChatGPT / 通义千问\n\n- 常用步骤：目标诊断、学习计划、练习生成、即时反馈、错题解释。\n- 适合产出：学习画像、每日任务、练习题、答题反馈、复盘建议。\n- 轻量替代：豆包、Kimi。\n- 最小用法：让模型按“目标、当前水平、每日时间、练习、验收”输出，不只生成鼓励性计划。\n\n### Kimi\n\n- 常用步骤：资料阅读、课程笔记整理、长文总结、错题归纳。\n- 适合产出：知识框",
+      "model_call_count": 1,
+      "chroma_db_exists": true,
+      "vector_store_dir": "D:\\ai_projects\\AI-Workflow-Coach\\vector_store\\chroma_db",
+      "retrieval_trace_available": true,
+      "latency_ms": 42647,
+      "failure_type": "none",
+      "self_correction_count": 0,
+      "manual_tool_fit_score": null,
+      "manual_actionability_score": null,
+      "manual_specificity_score": null,
+      "manual_assumption_control_score": null,
+      "manual_overall_quality_score": null,
+      "notes": "检查是否围绕背词闭环，而不是泛学习计划。",
+      "workflow_run_id": "route_20260522_173357_2bdb30",
+      "error_message": "",
+      "route_result": {
+        "task_summary": "用户希望构建一个AI背单词工具，核心功能包括：生成例句、测验（选择题/填空题等）和错词复习。需要从词库定义、卡片设计、练习生成、即时反馈到复习闭环的完整工作流。",
+        "route_type": "完整路线",
+        "steps": [
+          {
+            "step_name": "设定目标与词库范围",
+            "step_goal": "明确词库来源（如考试/教材/主题）、用户当前水平、每日可投入时间和目标词汇量，避免目标泛化。",
+            "primary_tool": "ChatGPT / 通义千问（用于诊断对话，生成词库建议）",
+            "backup_tool": "手动表格（如果用户偏好离线操作）",
+            "suggested_input": "用户回答：学英语的目的（如四级、考研、日常）、当前词汇水平（如3000词）、每天可学时间（如30分钟）、目标期限（如3个月）",
+            "expected_output": "一份词库范围说明（例如“四级核心词汇1500词”）、用户水平画像、每日建议学习量（如每天新学10词+复习20词）",
+            "execution_tip": "先聚焦一个具体词库（如考研词汇），不要用泛泛的“英语单词”。如果用户不确定，可以先选一个常见词库做MVP。",
+            "ready_check": "能明确写出“学什么词汇（具体来源）、用户当前水平、每日时间、7天后的交付目标”"
+          },
+          {
+            "step_name": "设计学习卡片",
+            "step_goal": "定义单词卡片的字段结构（单词、释义、例句、助记、难度等），确保每张卡片能支持“学一次+复习一次”。",
+            "primary_tool": "Notion / 飞书表格（结构化存储）或 Anki（间隔重复专用）",
+            "backup_tool": "Excel（快速原型）",
+            "suggested_input": "第一步确定的词库范围（至少10个词作为样例）",
+            "expected_output": "一张卡片模板（字段列表），以及至少10张填充好的示例卡片（包含单词、释义、例句）",
+            "execution_tip": "例句最好来自真实语境（AI生成后人工校验），助记可以关联词根或场景。字段不要过多，先保留5个核心字段。",
+            "ready_check": "每张卡片至少包含单词、释义、一个例句；样例卡片数≥10"
+          },
+          {
+            "step_name": "生成练习任务",
+            "step_goal": "使用AI根据词库生成多种题型（选择题、填空题、例句理解题、拼写题），达到“学后即测”的效果。",
+            "primary_tool": "ChatGPT / 通义千问（输入词汇列表，指令生成题目和答案）",
+            "backup_tool": "Kimi（支持文件上传，批量处理长词表）",
+            "suggested_input": "第二步生成的卡片列表（至少10个词），以及用户偏好的题型（如选择题+填空题）",
+            "expected_output": "至少10道练习题（不同题型），含正确答案和干扰项（如选择题的3个错误选项）",
+            "execution_tip": "要求AI生成时明确区分题目、答案、解析。对于拼写题，可让AI自动生成发音提示。",
+            "ready_check": "能直接从输出中提取10道不同词的练习题，且每道题有唯一正确答案"
+          },
+          {
+            "step_name": "做即时反馈",
+            "step_goal": "用户答题后，AI提供具体错因解释（如词义混淆、拼写错误）、记忆提示和相似词推荐，避免空泛鼓励。",
+            "primary_tool": "ChatGPT / 通义千问（根据用户答案和标准答案生成反馈）",
+            "backup_tool": "自定义规则（如if错误则显示预设的助记）",
+            "suggested_input": "用户刚答完的题目、他的答案、正确答案、单词详情（释义、例句）",
+            "expected_output": "反馈模板：事实（对/错）、错因分析（如“混淆了词义，正确意思是X”）、记忆提示（如词根拆分）、下一步建议（如“再听一遍发音”）",
+            "execution_tip": "反馈必须引用用户的错误答案，不能只说“继续加油”。一次只指出1-2个改进点。",
+            "ready_check": "反馈中能明确指出一个具体错因（如“你把‘abandon’理解成了‘放弃’而正确是‘抛弃’”）"
+          },
+          {
+            "step_name": "设置复习规则",
+            "step_goal": "建立错词本、间隔复习规则和每日回顾任务，确保第二天能自动列出需要复习的词，形成闭环。",
+            "primary_tool": "Anki（内置间隔重复算法）或 飞书表格+手动标记（简易版）",
+            "backup_tool": "纸质卡片或备忘录",
+            "suggested_input": "用户答题记录（哪些词答错、哪些答对）、掌握状态（未掌握、已掌握）",
+            "expected_output": "错词本列表（含错误次数）、复习计划（如答错的词第二天必须复习，隔3天再测）、每日回顾任务清单",
+            "execution_tip": "先确保能标记“今天答错的词”，再手动安排明天复习。如果使用Anki可直接配置学习队列。",
+            "ready_check": "第二天能列出至少5个需要复习的错词（基于今天的答错记录）"
+          },
+          {
+            "step_name": "迭代与维护",
+            "step_goal": "记录每日学习数据（学习量、正确率、耗时），定期复盘并调整词量、难度或题型，使工具持续适配用户。",
+            "primary_tool": "Notion / 飞书表格（打卡记录）+ AI周复盘（输入记录生成调整建议）",
+            "backup_tool": "Excel（手动录入）",
+            "suggested_input": "一周的打卡表（日期、新学词数、复习词数、正确率、错因类型）",
+            "expected_output": "周复盘报告（完成率、高频错因、下轮调整建议，如“降低每日新词量至5个”或“增加拼写题比例”）",
+            "execution_tip": "反馈必须引用具体数据（如“本周拼写错率60%，建议先练习拼写”），不能只说“继续努力”。",
+            "ready_check": "能根据一周记录（至少3天数据）生成一条具体的调整建议（如“减少每日新词量”）"
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "generic_ai_something_01",
+      "scenario": "模糊边界",
+      "user_goal": "用 AI 做点东西",
+      "followup_answer": "",
+      "expected_behavior": "检查模糊输入是否停在补问，而不是强行生成路线。",
+      "should_generate_route": false,
+      "final_stage": "task_analyzed",
+      "route_generated": false,
+      "schema_valid": false,
+      "json_parse_success": false,
+      "step_count": 0,
+      "required_fields_complete": false,
+      "route_step_names": [],
+      "retrieval_count": 0,
+      "retrieval_doc_count": 0,
+      "retrieved_sources": [],
+      "retrieved_snippet_preview": [],
+      "route_context_chars": 0,
+      "route_context_preview": "",
+      "model_call_count": 0,
+      "chroma_db_exists": true,
+      "vector_store_dir": "D:\\ai_projects\\AI-Workflow-Coach\\vector_store\\chroma_db",
+      "retrieval_trace_available": false,
+      "latency_ms": 9,
+      "failure_type": "followup_required",
+      "self_correction_count": 0,
+      "manual_tool_fit_score": null,
+      "manual_actionability_score": null,
+      "manual_specificity_score": null,
+      "manual_assumption_control_score": null,
+      "manual_overall_quality_score": null,
+      "notes": "边界 case，不作为路线质量主样本；followup_required 不算 route quality failure。",
+      "workflow_run_id": "route_20260522_173440_62a4ed",
+      "error_message": "",
+      "route_result": null
+    }
+  ]
+}
