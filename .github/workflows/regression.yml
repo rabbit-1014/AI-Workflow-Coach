@@ -1,0 +1,38 @@
+name: Regression Gate
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    env:
+      CHAT_PROVIDER: openai_compatible
+      CHAT_API_KEY: fake-chat-key
+      CHAT_BASE_URL: https://api.example.test
+      DASHSCOPE_API_KEY: fake-dashscope-key
+      PYTHONIOENCODING: utf-8
+      PYTHONUTF8: "1"
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
+
+      - name: Run local regression gate
+        run: python evals/run_regression_gate.py
